@@ -5,8 +5,11 @@ import WhyWeExistSection from "@/components/WhyWeExistSection";
 import MissionSection from "@/components/MissionSection";
 import SynapseSection from "@/components/SynapseSection";
 import ServicesSection from "@/components/ServicesSection";
+import CTASection from "@/components/CTASection";
+import DonationSection from "@/components/DonationSection";
 import ResourcesSection from "@/components/ResourcesSection";
 import FaqSection from "@/components/FaqSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -18,8 +21,11 @@ const Index = () => (
     <MissionSection />
     <SynapseSection />
     <ServicesSection />
+    <CTASection />
+    <DonationSection />
     <ResourcesSection />
     <FaqSection />
+    <ContactSection />
     <Footer />
   </div>
 );
