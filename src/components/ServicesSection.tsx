@@ -1,35 +1,40 @@
-import { Lock, TestTube, Video, Pill, Activity, Truck } from "lucide-react";
+import serviceTelemedicine from "@/assets/service-telemedicine.png";
+import serviceTesting from "@/assets/service-testing.png";
+import serviceMedications from "@/assets/service-medications.png";
+import serviceDelivery from "@/assets/service-delivery.png";
+import serviceCondoms from "@/assets/service-condoms.png";
+import serviceNutrition from "@/assets/service-nutrition.png";
 
 const services = [
   {
-    icon: Lock,
-    title: "Anonymous Registration & Access",
-    desc: "Create a private profile using only a unique ID — no personal information required.",
-  },
-  {
-    icon: TestTube,
-    title: "Self-Testing",
-    desc: "Order discreet home test kits for HIV, Hepatitis B, and full STI panels. Results uploaded securely and privately.",
-  },
-  {
-    icon: Video,
+    image: serviceTelemedicine,
     title: "Telemedicine Consultations",
     desc: "Connect anonymously with affirming doctors and nurses via voice call or text chat — all end-to-end encrypted.",
   },
   {
-    icon: Pill,
-    title: "PrEP & PEP Access",
-    desc: "Start or continue PrEP/PEP safely with virtual initiation, follow-up, and reminders.",
+    image: serviceTesting,
+    title: "Self-Testing Kits",
+    desc: "Order discreet home test kits for HIV, Hepatitis B, and full STI panels. Results uploaded securely and privately.",
   },
   {
-    icon: Activity,
-    title: "ART & Medication Support",
-    desc: "Adherence support, refill requests, issue tracking, daily reminders, and a progress dashboard.",
+    image: serviceMedications,
+    title: "PrEP, PEP & ART Access",
+    desc: "Start or continue PrEP/PEP safely with virtual initiation, follow-up, reminders, adherence support, and refills.",
   },
   {
-    icon: Truck,
-    title: "Discreet Delivery & Nutrition Support",
-    desc: "Home or safe-point delivery of medications plus basic nutritional guidance to support your health journey.",
+    image: serviceDelivery,
+    title: "Discreet Delivery",
+    desc: "Home or safe-point delivery of medications via anonymous third-party couriers. Plain, tamper-evident packaging.",
+  },
+  {
+    image: serviceCondoms,
+    title: "Condoms & Lubricants",
+    desc: "Discreet delivery of condoms, lubricants, and other prevention supplies to your chosen safe location.",
+  },
+  {
+    image: serviceNutrition,
+    title: "Nutrition & Wellness Support",
+    desc: "Targeted nutritional packages — fortified supplements and high-protein foods to support adherence and viral suppression.",
   },
 ];
 
@@ -42,10 +47,19 @@ const ServicesSection = () => (
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s) => (
-          <div key={s.title} className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-            <s.icon className="text-primary mb-4" size={28} />
-            <h3 className="text-lg font-semibold text-card-foreground mb-2 font-sans">{s.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+          <div key={s.title} className="bg-card rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow overflow-hidden flex flex-col">
+            <div className="bg-muted flex items-center justify-center p-4">
+              <img
+                src={s.image}
+                alt={s.title}
+                loading="lazy"
+                className="h-40 w-auto object-contain"
+              />
+            </div>
+            <div className="p-5 flex-1">
+              <h3 className="text-lg font-semibold text-card-foreground mb-2 font-sans">{s.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+            </div>
           </div>
         ))}
       </div>
