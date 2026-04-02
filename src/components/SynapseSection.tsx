@@ -1,10 +1,11 @@
 import { Smartphone, ShieldCheck, Lock } from "lucide-react";
+import synapseLogo from "@/assets/synapse-logo.png";
 
 const SynapseSection = () => (
   <section id="synapse" className="py-16 md:py-24 bg-background">
     <div className="container mx-auto px-4 md:px-8 max-w-3xl">
-      <div className="flex items-center gap-3 mb-8">
-        <Smartphone className="text-primary" size={28} />
+      <div className="flex items-center gap-4 mb-8">
+        <img src={synapseLogo} alt="Synapse" className="h-14 w-14 rounded-xl shadow-md" />
         <h2 className="text-3xl md:text-4xl text-foreground">About Synapse</h2>
       </div>
       <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">

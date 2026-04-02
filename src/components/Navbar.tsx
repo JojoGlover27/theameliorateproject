@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import ameliorateLogo from "@/assets/ameliorate-logo.png";
 
 const navLinks = [
   { label: "About Us", href: "#about" },
@@ -14,12 +15,14 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-8">
-        <a href="#" className="font-serif text-xl md:text-2xl font-bold text-foreground leading-tight">
-          The Ameliorate<br className="md:hidden" /> Project
+      <div className="container mx-auto flex items-center justify-between py-3 px-4 md:px-8">
+        <a href="#" className="flex items-center gap-3">
+          <img src={ameliorateLogo} alt="The Ameliorate Project" className="h-10 md:h-12 rounded-md" />
+          <span className="font-serif text-lg md:text-xl font-bold text-foreground leading-tight hidden sm:block">
+            The Ameliorate<br />Project
+          </span>
         </a>
 
-        {/* Desktop */}
         <ul className="hidden lg:flex items-center gap-8">
           {navLinks.map((l) => (
             <li key={l.href}>
@@ -30,13 +33,11 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden bg-background border-b border-border px-6 pb-6">
           <ul className="flex flex-col gap-4">
