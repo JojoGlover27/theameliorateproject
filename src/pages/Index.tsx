@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import RotatingKeywordsBar from "@/components/RotatingKeywordsBar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
@@ -15,6 +16,7 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
+    <RotatingKeywordsBar />
     <HeroSection />
     <AboutSection />
     <WhyWeExistSection />

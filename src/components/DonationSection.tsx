@@ -14,7 +14,7 @@ const funds = [
     icon: Heart,
     title: "Synapse Access Fund",
     description:
-      "Many HIV-positive LGBTQI+ individuals in rural Ghana lack smartphones, internet access, or the financial means to afford treatment. The Synapse Access Fund directly subsidises care for these community members — covering medication delivery, data costs, and device access so they can connect to Synapse and receive life-saving ART, PrEP, PEP, and counselling services. Your gift removes the barriers between our most vulnerable community members and the care they deserve.",
+      "All Synapse services are completely free — but reaching them still requires a smartphone, mobile data, and reliable connectivity. Many HIV-positive LGBTQI+ individuals in rural Ghana lack these basic enablers, leaving them cut off from anonymous, life-saving care. The Synapse Access Fund bridges that gap by providing data bundles, device access, and discreet last-mile delivery logistics so every member of our community — no matter how remote — can connect to Synapse and stay engaged in care. Your gift removes the digital barriers between our most vulnerable community members and the care they deserve.",
   },
 ];
 
