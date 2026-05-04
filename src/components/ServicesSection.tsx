@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
-import serviceTelemedicine from "@/assets/service-telemedicine.png";
-import serviceTesting from "@/assets/service-testing.png";
-import serviceMedications from "@/assets/service-medications.png";
-import serviceDelivery from "@/assets/service-delivery.png";
-import serviceCondoms from "@/assets/service-condoms.png";
-import serviceNutrition from "@/assets/service-nutrition.png";
+import serviceTelemedicine from "@/assets/service-telemedicine.jpg";
+import serviceTesting from "@/assets/service-testing.jpg";
+import serviceMedications from "@/assets/service-medications.jpg";
+import serviceDelivery from "@/assets/service-delivery.jpg";
+import serviceCondoms from "@/assets/service-condoms.jpg";
+import serviceNutrition from "@/assets/service-nutrition.jpg";
 
 const services = [
   { image: serviceTelemedicine, title: "Telemedicine Consultations", desc: "Connect anonymously with affirming doctors and nurses via voice call or text chat — all end-to-end encrypted." },
@@ -34,8 +34,13 @@ const ServicesSection = () => (
       >
         {services.map((s) => (
           <motion.div key={s.title} variants={fadeUp} className="bg-card rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow overflow-hidden flex flex-col">
-            <div className="bg-muted flex items-center justify-center p-4">
-              <img src={s.image} alt={s.title} loading="lazy" className="h-40 w-auto object-contain" />
+            <div className="aspect-[4/3] w-full overflow-hidden">
+              <img
+                src={s.image}
+                alt={s.title}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
             </div>
             <div className="p-5 flex-1">
               <h3 className="text-lg font-semibold text-card-foreground mb-2 font-sans">{s.title}</h3>
