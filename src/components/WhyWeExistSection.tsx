@@ -8,10 +8,12 @@ const stats = [
   { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-brand-blue" },
 ];
 
+const insightColors = ["text-primary", "text-brand-magenta", "text-accent", "text-brand-blue", "text-brand-gold", "text-primary"];
+
 const insights = [
   { pct: "54.4%", text: "prefer discreet delivery of HIV medications" },
   { pct: "53.2%", text: "do NOT trust current systems to keep HIV status confidential" },
-  { pct: "76.8%", text: "prefer remote/phone/app access to HIV services over facilities" },
+  { pct: "76.8%", text: "prefer remote, phone, or app access to HIV services over facilities" },
   { pct: "85.4%", text: "say anonymity would make them more likely to access and stay on treatment" },
   { pct: "75.8%", text: "believe a platform like Synapse would improve access to care" },
   { pct: "88.3%", text: "would recommend Synapse to other queer people" },
