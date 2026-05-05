@@ -64,9 +64,9 @@ const WhyWeExistSection = () => (
         viewport={{ once: true, amount: 0.1 }}
         variants={staggerContainer}
       >
-        {insights.map((i) => (
+        {insights.map((i, idx) => (
           <motion.div key={i.pct} variants={fadeUp} className="flex items-start gap-4 bg-card rounded-xl p-4 shadow-sm border border-border">
-            <span className="text-xl md:text-2xl font-bold text-primary shrink-0 w-20 text-right">{i.pct}</span>
+            <span className={`text-xl md:text-2xl font-bold ${insightColors[idx % insightColors.length]} shrink-0 w-20 text-right`}>{i.pct}</span>
             <p className="text-card-foreground text-sm md:text-base">{i.text}</p>
           </motion.div>
         ))}
