@@ -14,7 +14,7 @@ const faqs = [
   { q: "How do deliveries work?", a: "Orders are fulfilled via secure, anonymous third-party couriers. You choose a safe drop-off location (e.g., locker or neutral spot). Packaging is plain and tamper-evident." },
   { q: "Is there any cost?", a: "No. All Synapse services are completely free — during the pilot phase and in every future phase. Consultations, self-test kits, PrEP/PEP, ART, counselling, and discreet delivery do not attract any charges. Access is, and will always remain, barrier-free." },
   { q: "Who can use Synapse?", a: "Anyone 18+ in Ghana seeking confidential HIV-related support, especially LGBTQI+ individuals facing stigma or access challenges." },
-  { q: "What if I have technical issues?", a: "Use the in-app anonymous feedback form or contact our support line (0244 677 743) — we'll guide you without collecting personal info." },
+  { q: "What if I have technical issues?", a: "Use the in-app anonymous feedback form or our anonymous contact form on this website. Our team will guide you without ever collecting personal information, so your identity stays fully protected." },
   { q: "How does Synapse ensure safety and quality?", a: "All clinicians are trained in affirming, non-judgmental care. The platform complies with global privacy standards, and we regularly audit for security." },
   { q: "Can I get nutritional support?", a: "Yes — targeted packages (fortified supplements, high-protein foods) are available for HIV-positive users to improve adherence and viral suppression." },
 ];
