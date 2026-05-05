@@ -18,7 +18,7 @@ const SynapseSection = () => (
             Synapse is our secure, fully anonymous digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalized LGBTQI+ communities in Ghana.
           </p>
           <p>
-            With Synapse, users can engage entirely through generated unique IDs — no personal data is collected, no face-to-face interaction is required, and all communications are end-to-end encrypted.
+            With Synapse, users can engage entirely through generated unique IDs, no personal data is collected, no face-to-face interaction is required, and all communications are end-to-end encrypted.
           </p>
           <p>
             The platform offers telemedicine consultations with affirming clinicians, self-testing kits for HIV and Hepatitis (delivered discreetly), PrEP/PEP initiation and follow-up, ART adherence reminders and refills, and nutritional support to accelerate viral suppression and sustain U=U (Undetectable = Untransmittable).
@@ -41,7 +41,7 @@ const SynapseSection = () => (
         </motion.div>
         <motion.div variants={fadeUp} className="flex items-start gap-3 bg-secondary p-5 rounded-xl">
           <ShieldCheck className="text-primary mt-1 shrink-0" size={20} />
-          <p className="text-secondary-foreground text-sm">Anonymous unique IDs — no names, emails, or phone numbers required</p>
+          <p className="text-secondary-foreground text-sm">Anonymous unique IDs, no names, emails, or phone numbers required</p>
         </motion.div>
       </motion.div>
     </div>

@@ -8,15 +8,15 @@ import {
 
 const faqs = [
   { q: "What is Synapse?", a: "Synapse is a privacy-first app that allows anonymous access to essential HIV services without any personal information or in-person contact. It's built for those who face barriers like stigma or fear of disclosure." },
-  { q: "How do I get started?", a: "Download Synapse from the Google Play Store or Apple App Store (coming soon). Create a unique ID during registration — no name, phone, or email required. Start exploring services immediately." },
+  { q: "How do I get started?", a: "Download Synapse from the Google Play Store or Apple App Store (coming soon). Create a unique ID during registration, no name, phone, or email required. Start exploring services immediately." },
   { q: "Is Synapse truly anonymous?", a: "Yes. We use generated unique IDs only, with end-to-end encryption and no data storage. Your interactions are private, and deliveries use third-party couriers with no branding or traceable details." },
   { q: "What services does Synapse offer?", a: "Anonymous telemedicine consultations, HIV/Hepatitis self-test kits, PrEP/PEP initiation, ART adherence support and refills, discreet delivery of condoms, lubricants, and nutritional packages for better health outcomes." },
   { q: "How do deliveries work?", a: "Orders are fulfilled via secure, anonymous third-party couriers. You choose a safe drop-off location (e.g., locker or neutral spot). Packaging is plain and tamper-evident." },
-  { q: "Is there any cost?", a: "No. All Synapse services are completely free — during the pilot phase and in every future phase. Consultations, self-test kits, PrEP/PEP, ART, counselling, and discreet delivery do not attract any charges. Access is, and will always remain, barrier-free." },
+  { q: "Is there any cost?", a: "No. All Synapse services are completely free, during the pilot phase and in every future phase. Consultations, self-test kits, PrEP/PEP, ART, counselling, and discreet delivery do not attract any charges. Access is, and will always remain, barrier-free." },
   { q: "Who can use Synapse?", a: "Anyone 18+ in Ghana seeking confidential HIV-related support, especially LGBTQI+ individuals facing stigma or access challenges." },
-  { q: "What if I have technical issues?", a: "Use the in-app anonymous feedback form or contact our support line (0244 677 743) — we'll guide you without collecting personal info." },
+  { q: "What if I have technical issues?", a: "Use the in-app anonymous feedback form or our anonymous contact form on this website. Our team will guide you without ever collecting personal information, so your identity stays fully protected." },
   { q: "How does Synapse ensure safety and quality?", a: "All clinicians are trained in affirming, non-judgmental care. The platform complies with global privacy standards, and we regularly audit for security." },
-  { q: "Can I get nutritional support?", a: "Yes — targeted packages (fortified supplements, high-protein foods) are available for HIV-positive users to improve adherence and viral suppression." },
+  { q: "Can I get nutritional support?", a: "Yes, targeted packages (fortified supplements, high-protein foods) are available for HIV-positive users to improve adherence and viral suppression." },
 ];
 
 const FaqSection = () => (

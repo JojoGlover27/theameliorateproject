@@ -16,7 +16,7 @@ const MissionSection = () => (
         <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-6">Our Mission</h2>
         <p className="text-lg text-muted-foreground mb-4 leading-relaxed">Our mission is simple yet powerful:</p>
         <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
-          To ensure that every LGBTQI+ person in Ghana can access life-saving HIV services — PrEP, PEP, ART, testing, counseling, and support — anonymously, safely, and without judgment.
+          To ensure that every LGBTQI+ person in Ghana can access life-saving HIV services, PrEP, PEP, ART, testing, counseling, and support, anonymously, safely, and without judgment.
         </p>
         <p className="text-lg font-semibold text-secondary-foreground mb-8">
           We believe health is a right, not a risk.
@@ -41,7 +41,7 @@ const MissionSection = () => (
       </motion.div>
       <AnimatedSection>
         <p className="mt-8 text-muted-foreground leading-relaxed">
-          We work quietly but relentlessly — because your health matters, and your privacy is non-negotiable.
+          We work quietly but relentlessly, because your health matters, and your privacy is non-negotiable.
         </p>
       </AnimatedSection>
     </div>

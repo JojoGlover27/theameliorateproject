@@ -2,16 +2,18 @@ import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 
 const stats = [
-  { value: "330,000", label: "People living with HIV in Ghana", color: "text-destructive" },
-  { value: "18.1–26.1%", label: "HIV prevalence among MSM in Ghana", color: "text-accent" },
-  { value: "5.3–28.1%", label: "HIV prevalence transgender women in Ghana", color: "text-primary" },
-  { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-accent" },
+  { value: "330,000", label: "People living with HIV in Ghana", color: "text-primary" },
+  { value: "18.1–26.1%", label: "HIV prevalence among MSM in Ghana", color: "text-brand-magenta" },
+  { value: "5.3–28.1%", label: "HIV prevalence transgender women in Ghana", color: "text-accent" },
+  { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-brand-blue" },
 ];
+
+const insightColors = ["text-primary", "text-brand-magenta", "text-accent", "text-brand-blue", "text-brand-gold", "text-primary"];
 
 const insights = [
   { pct: "54.4%", text: "prefer discreet delivery of HIV medications" },
   { pct: "53.2%", text: "do NOT trust current systems to keep HIV status confidential" },
-  { pct: "76.8%", text: "prefer remote/phone/app access to HIV services over facilities" },
+  { pct: "76.8%", text: "prefer remote, phone, or app access to HIV services over facilities" },
   { pct: "85.4%", text: "say anonymity would make them more likely to access and stay on treatment" },
   { pct: "75.8%", text: "believe a platform like Synapse would improve access to care" },
   { pct: "88.3%", text: "would recommend Synapse to other queer people" },
@@ -62,9 +64,9 @@ const WhyWeExistSection = () => (
         viewport={{ once: true, amount: 0.1 }}
         variants={staggerContainer}
       >
-        {insights.map((i) => (
+        {insights.map((i, idx) => (
           <motion.div key={i.pct} variants={fadeUp} className="flex items-start gap-4 bg-card rounded-xl p-4 shadow-sm border border-border">
-            <span className="text-xl md:text-2xl font-bold text-primary shrink-0 w-20 text-right">{i.pct}</span>
+            <span className={`text-xl md:text-2xl font-bold ${insightColors[idx % insightColors.length]} shrink-0 w-20 text-right`}>{i.pct}</span>
             <p className="text-card-foreground text-sm md:text-base">{i.text}</p>
           </motion.div>
         ))}

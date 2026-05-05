@@ -8,13 +8,13 @@ const funds = [
     icon: Shield,
     title: "Synapse Development & Security Fund",
     description:
-      "Synapse is the backbone of The Ameliorate Project — a secure, anonymous telemedicine platform built specifically for LGBTQI+ individuals in Ghana. Your donation to this fund supports the ongoing development of end-to-end encryption, anonymous user infrastructure, and platform maintenance. Every contribution ensures that Synapse remains a safe digital space where users can access HIV care without fear of exposure or data breaches. Help us build the technology that keeps our community safe.",
+      "Synapse is the backbone of The Ameliorate Project, a secure, anonymous telemedicine platform built specifically for LGBTQI+ individuals in Ghana. Your donation to this fund supports the ongoing development of end-to-end encryption, anonymous user infrastructure, and platform maintenance. Every contribution ensures that Synapse remains a safe digital space where users can access HIV care without fear of exposure or data breaches. Help us build the technology that keeps our community safe.",
   },
   {
     icon: Heart,
     title: "Synapse Access Fund",
     description:
-      "All Synapse services are completely free — but reaching them still requires a smartphone, mobile data, and reliable connectivity. Many HIV-positive LGBTQI+ individuals in rural Ghana lack these basic enablers, leaving them cut off from anonymous, life-saving care. The Synapse Access Fund bridges that gap by providing data bundles, device access, and discreet last-mile delivery logistics so every member of our community — no matter how remote — can connect to Synapse and stay engaged in care. Your gift removes the digital barriers between our most vulnerable community members and the care they deserve.",
+      "All Synapse services are completely free, but reaching them still requires a smartphone, mobile data, and reliable connectivity. Many HIV-positive LGBTQI+ individuals in rural Ghana lack these basic enablers, leaving them cut off from anonymous, life-saving care. The Synapse Access Fund bridges that gap by providing data bundles, device access, and discreet last-mile delivery logistics so every member of our community, no matter how remote, can connect to Synapse and stay engaged in care. Your gift removes the digital barriers between our most vulnerable community members and the care they deserve.",
   },
 ];
 

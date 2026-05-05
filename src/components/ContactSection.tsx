@@ -28,7 +28,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 md:px-8 max-w-lg">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl text-foreground mb-2 text-center">
-            Get in Touch — Anonymously
+            Get in Touch, Anonymously
           </h2>
           <p className="text-center text-muted-foreground mb-8">
             No real names required. Use any nickname you feel comfortable with.
@@ -59,7 +59,7 @@ const ContactSection = () => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Your Message</Label>
-              <Textarea id="message" placeholder="Ask us anything — questions about services, support, or how to get involved…" maxLength={1000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
+              <Textarea id="message" placeholder="Ask us anything, questions about services, support, or how to get involved…" maxLength={1000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
             </div>
             <Button type="submit" className="w-full" disabled={sending}>
               {sending ? "Sending…" : "Send Message"}
