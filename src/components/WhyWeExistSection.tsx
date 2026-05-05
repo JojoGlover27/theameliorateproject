@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 
 const stats = [
-  { value: "330,000", label: "People living with HIV in Ghana", color: "text-destructive" },
-  { value: "18.1–26.1%", label: "HIV prevalence among MSM in Ghana", color: "text-accent" },
-  { value: "5.3–28.1%", label: "HIV prevalence transgender women in Ghana", color: "text-primary" },
-  { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-accent" },
+  { value: "330,000", label: "People living with HIV in Ghana", color: "text-primary" },
+  { value: "18.1–26.1%", label: "HIV prevalence among MSM in Ghana", color: "text-brand-magenta" },
+  { value: "5.3–28.1%", label: "HIV prevalence transgender women in Ghana", color: "text-accent" },
+  { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-brand-blue" },
 ];
 
 const insights = [
