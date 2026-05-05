@@ -31,7 +31,7 @@ const HeroSection = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground mb-6">
-              Safe, Anonymous Access to HIV Care — Right Where{" "}
+              Safe, Anonymous Access to HIV Care, Right Where{" "}
               <span className="relative inline-block align-baseline">
                 <AnimatePresence mode="wait">
                   <motion.span

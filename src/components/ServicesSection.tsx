@@ -8,12 +8,12 @@ import serviceCondoms from "@/assets/service-condoms.jpg";
 import serviceNutrition from "@/assets/service-nutrition.jpg";
 
 const services = [
-  { image: serviceTelemedicine, title: "Telemedicine Consultations", desc: "Connect anonymously with affirming doctors and nurses via voice call or text chat — all end-to-end encrypted." },
+  { image: serviceTelemedicine, title: "Telemedicine Consultations", desc: "Connect anonymously with affirming doctors and nurses via voice call or text chat, all end-to-end encrypted." },
   { image: serviceTesting, title: "Self-Testing Kits", desc: "Order discreet home test kits for HIV, Hepatitis B, and full STI panels. Results uploaded securely and privately." },
   { image: serviceMedications, title: "PrEP, PEP & ART Access", desc: "Start or continue PrEP/PEP safely with virtual initiation, follow-up, reminders, adherence support, and refills." },
   { image: serviceDelivery, title: "Discreet Delivery", desc: "Home or safe-point delivery of medications via anonymous third-party couriers. Plain, tamper-evident packaging." },
   { image: serviceCondoms, title: "Condoms & Lubricants", desc: "Discreet delivery of condoms, lubricants, and other prevention supplies to your chosen safe location." },
-  { image: serviceNutrition, title: "Nutrition & Wellness Support", desc: "Targeted nutritional packages — fortified supplements and high-protein foods to support adherence and viral suppression." },
+  { image: serviceNutrition, title: "Nutrition & Wellness Support", desc: "Targeted nutritional packages, fortified supplements and high-protein foods to support adherence and viral suppression." },
 ];
 
 const ServicesSection = () => (
