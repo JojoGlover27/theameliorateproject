@@ -43,6 +43,11 @@ export default {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        brand: {
+          magenta: "hsl(var(--brand-magenta))",
+          gold: "hsl(var(--brand-gold))",
+          blue: "hsl(var(--brand-blue))",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
