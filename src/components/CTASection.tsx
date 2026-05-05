@@ -13,7 +13,7 @@ const CTASection = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="rounded-md text-base px-8" asChild>
-            <a href="#synapse">Access Synapse</a>
+            <a href="https://synapse-prototype.lovable.app/" target="_blank" rel="noopener noreferrer">Access Synapse</a>
           </Button>
           <Button size="lg" variant="outline" className="rounded-md text-base px-8" asChild>
             <a href="#donate">Support Our Work</a>
