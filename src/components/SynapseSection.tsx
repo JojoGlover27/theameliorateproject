@@ -15,7 +15,7 @@ const SynapseSection = () => (
       <AnimatedSection>
         <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
           <p>
-            Synapse is our secure, fully anonymous digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalized LGBTQI+ communities in Ghana.
+            Synapse is our secure, anonymous digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalized LGBTQI+ communities in Ghana.
           </p>
           <p>
             With Synapse, users can engage entirely through generated unique IDs, no personal data is collected, no face-to-face interaction is required, and all communications are end-to-end encrypted.
