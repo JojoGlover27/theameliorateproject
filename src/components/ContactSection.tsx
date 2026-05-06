@@ -39,17 +39,8 @@ const ContactSection = () => {
             <span>Your identity is never stored or tracked.</span>
           </div>
 
-          <div className="text-center text-sm text-muted-foreground mb-6 space-y-1">
-            <p>
-              <Mail className="w-4 h-4 inline mr-1 text-primary" />
-              <a href="mailto:info@ameliorateproject.org" className="text-primary hover:underline">info@ameliorateproject.org</a>
-            </p>
-            <p>
-              <Globe className="w-4 h-4 inline mr-1 text-primary" />
-              <a href="https://www.ameliorateproject.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.ameliorateproject.org</a>
-            </p>
-          </div>
         </AnimatedSection>
+
 
         <AnimatedSection>
           <form onSubmit={handleSubmit} className="space-y-5 bg-card border border-border rounded-xl p-6 shadow-sm">
