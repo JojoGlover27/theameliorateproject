@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const rotating = [
   "You Are",
-  "You Need",
+  "You Need It",
   "You're Safe",
   "Community Finds You",
 ];

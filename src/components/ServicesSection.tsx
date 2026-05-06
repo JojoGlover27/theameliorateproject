@@ -22,7 +22,7 @@ const ServicesSection = () => (
       <AnimatedSection>
         <h2 className="text-3xl md:text-4xl text-foreground mb-4">Our Services</h2>
         <p className="text-lg text-muted-foreground mb-10 max-w-2xl">
-          We offer a complete, secure, and fully anonymous care pathway through the Synapse platform.
+          We offer a complete, secure, and anonymous care pathway through the Synapse platform.
         </p>
       </AnimatedSection>
       <motion.div
