@@ -23,6 +23,8 @@ const PrivacyPolicy = () => (
               The one exception is prescribed medication. For ART, PrEP, and PEP, Ghana Health Service regulations require that a clinician records a name and a contact for medication accountability and patient safety. This information is held only by your treating clinician, kept in strict confidence, and is never shared with the Ameliorate team, Synapse operations, or any third party. Everything else — testing, browsing, ordering supplies, counselling, and contact with our team — remains fully anonymous end to end.
             </p>
 
+          </div>
+
           <div>
             <h2 className="text-2xl text-foreground mb-3">Privacy</h2>
             <p>
