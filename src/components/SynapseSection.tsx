@@ -15,16 +15,19 @@ const SynapseSection = () => (
       <AnimatedSection>
         <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
           <p>
-            Synapse is our secure, anonymous digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalized LGBTQI+ communities in Ghana.
+            Synapse is our secure, privacy-first digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalised LGBTQI+ communities in Ghana.
           </p>
           <p>
-            With Synapse, users can engage entirely through generated unique IDs, no personal data is collected, no face-to-face interaction is required, and all communications are end-to-end encrypted.
+            On Synapse, you engage using a generated unique ID. No face-to-face interaction is required, and all communications are end-to-end encrypted. The Ameliorate team and Synapse operations never see your identity.
+          </p>
+          <p>
+            For prescribed medications such as ART, PrEP, and PEP, Ghana Health Service regulations require a clinician to hold a name and a contact for medication accountability. That information is shared only with your treating clinician, kept strictly confidential, and is never passed to the Ameliorate team, Synapse operations, or any external party. Self-testing, browsing, ordering supplies, and counselling remain anonymous end to end.
           </p>
           <p>
             The platform offers telemedicine consultations with affirming clinicians, self-testing kits for HIV and Hepatitis (delivered discreetly), PrEP/PEP initiation and follow-up, ART adherence reminders and refills, and nutritional support to accelerate viral suppression and sustain U=U (Undetectable = Untransmittable).
           </p>
           <p>
-            By eliminating stigma, discrimination, and exposure risks, Synapse empowers users to manage their health privately and independently, right where they are.
+            By removing stigma, discrimination, and exposure risks, Synapse empowers you to manage your health privately and confidently, right where you are.
           </p>
         </div>
       </AnimatedSection>

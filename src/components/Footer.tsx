@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8 text-background/80">
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <img src={ameliorateLogo} alt="The Ameliorate Project" className="h-9 rounded-md" />
+            <img src={ameliorateLogo} alt="The Ameliorate Project" className="h-10 w-10 rounded-full ring-2 ring-background/30 object-cover" />
             <h3 className="font-serif text-xl text-background">The Ameliorate Project</h3>
           </div>
           <p className="text-sm leading-relaxed">
@@ -20,7 +20,7 @@ const Footer = () => (
           <ul className="space-y-2 text-sm">
             <li><a href="#about" className="hover:text-background transition-colors">About Us</a></li>
             <li><a href="#services" className="hover:text-background transition-colors">Our Services</a></li>
-            <li><a href="#resources" className="hover:text-background transition-colors">Resources</a></li>
+            <li><a href="/resources" className="hover:text-background transition-colors">Resources</a></li>
             <li><a href="#faq" className="hover:text-background transition-colors">FAQ</a></li>
             <li><a href="#donate" className="hover:text-background transition-colors">Donate</a></li>
             <li><a href="/privacy" className="hover:text-background transition-colors">Privacy Policy</a></li>
