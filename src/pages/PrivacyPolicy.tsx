@@ -17,10 +17,10 @@ const PrivacyPolicy = () => (
           <div>
             <h2 className="text-2xl text-foreground mb-3">Anonymity</h2>
             <p>
-              The Ameliorate Project does not require or collect personal information to use the website or the Synapse platform. You browse, read, and access the platform through a generated unique ID — no name, email, phone number, or location is needed for the Ameliorate team or Synapse operations to serve you.
+              The Ameliorate Project does not require or collect personal information to use the website or the Synapse platform. You browse, read, and access the platform through a Generated Synapse ID, no name, email, phone number, or location is needed for the Ameliorate team or Synapse operations to serve you.
             </p>
             <p className="mt-3">
-              The one exception is prescribed medication. For ART, PrEP, and PEP, Ghana Health Service regulations require that a clinician records a name and a contact for medication accountability and patient safety. This information is held only by your treating clinician, kept in strict confidence, and is never shared with the Ameliorate team, Synapse operations, or any third party. Everything else — testing, browsing, ordering supplies, counselling, and contact with our team — remains fully anonymous end to end.
+              For prescribed medication (ART, PrEP, and PEP), you will speak with a licensed clinician who may ask for a name and a contact number for medication to user accountability, as required by national health programs. These details are collected only by the clinician, directly during your call, are not saved within Synapse, and are never accessible to the Ameliorate team or any third party. Synapse itself remains anonymous. Your Generated Synapse ID is all we ever see.
             </p>
 
           </div>
