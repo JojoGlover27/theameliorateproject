@@ -15,13 +15,13 @@ const SynapseSection = () => (
       <AnimatedSection>
         <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
           <p>
-            Synapse is our secure, privacy-first digital platform designed to provide safe access to HIV prevention, testing, and care services for hidden and marginalised LGBTQI+ communities in Ghana.
+            Synapse is our secure, privacy-first digital platform designed to provide safe, anonymous access to HIV prevention, testing, and care services for hidden and marginalised LGBTQI+ communities in Ghana.
           </p>
           <p>
-            On Synapse, you engage using a generated unique ID. No face-to-face interaction is required, and all communications are end-to-end encrypted. The Ameliorate team and Synapse operations never see your identity.
+            On Synapse, you engage using a Generated Synapse ID. No face-to-face interaction is required, and all communications are end-to-end encrypted. Your Generated Synapse ID is all our team ever sees.
           </p>
           <p>
-            For prescribed medications such as ART, PrEP, and PEP, Ghana Health Service regulations require a clinician to hold a name and a contact for medication accountability. That information is shared only with your treating clinician, kept strictly confidential, and is never passed to the Ameliorate team, Synapse operations, or any external party. Self-testing, browsing, ordering supplies, and counselling remain anonymous end to end.
+            For prescribed medications such as ART, PrEP, and PEP, you will first speak with a licensed clinician. During that call, the clinician may ask for a name and a contact number, this helps them support your care and maintain medication to user accountability as required by national health programs. These details are collected only by the clinician, directly during your call. They are not saved within Synapse and are never accessible to the Ameliorate team. Synapse itself remains anonymous.
           </p>
           <p>
             The platform offers telemedicine consultations with affirming clinicians, self-testing kits for HIV and Hepatitis (delivered discreetly), PrEP/PEP initiation and follow-up, ART adherence reminders and refills, and nutritional support to accelerate viral suppression and sustain U=U (Undetectable = Untransmittable).
