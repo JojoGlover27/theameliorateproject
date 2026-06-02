@@ -12,15 +12,27 @@ const ContactSection = () => {
   const [form, setForm] = useState({ nickname: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.nickname.trim() || !form.message.trim()) return;
     setSending(true);
-    setTimeout(() => {
-      toast({ title: "Message sent", description: "We'll get back to you through a secure channel." });
-      setForm({ nickname: "", message: "" });
+    try {
+      const response = await fetch("https://formspree.io/f/mjgzqyae", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ nickname: form.nickname, message: form.message }),
+      });
+      if (response.ok) {
+        toast({ title: "Message sent", description: "We'll get back to you through a secure channel." });
+        setForm({ nickname: "", message: "" });
+      } else {
+        toast({ title: "Something went wrong", description: "Please try again in a moment.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Network error", description: "Please check your connection and try again.", variant: "destructive" });
+    } finally {
       setSending(false);
-    }, 800);
+    }
   };
 
   return (
