@@ -15,10 +15,7 @@ const AboutSection = () => (
             We understand the real challenges: stigma, fear of exposure, legal risks, and limited safe access to services. That is why we built a privacy-first, digital ecosystem where your safety and dignity come before anything else.
           </p>
           <p>
-            Through our secure telemedicine platform, Synapse, you engage with our team and services anonymously, using only a generated unique ID. The Ameliorate team and Synapse operations never see your name, contact, or location.
-          </p>
-          <p>
-            For services that involve prescribed medication such as ART, PrEP, and PEP, Ghana Health Service regulations require that a clinician records a name and a contact for medication accountability. That information is shared only with your treating clinician, held in strict confidence, and is never disclosed to the Ameliorate team, Synapse operations, or any third party. Everything else, from browsing resources to ordering self-test kits, remains fully anonymous end to end.
+            Through our secure telemedicine platform, Synapse, you engage with our team and services anonymously, using only a generated unique ID. Your identity stays yours, end to end.
           </p>
           <p>
             Founded in Kumasi by passionate advocates and allies from within the community, we exist so that no one has to choose between their health and their safety.
