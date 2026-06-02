@@ -48,7 +48,7 @@ const HeroSection = () => {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              The Ameliorate Project empowers hidden LGBTQI+ communities, lost-to-follow-up individuals, and people who avoid traditional health facilities across Ghana with confidential telemedicine for PrEP, PEP, ART, mental wellness, and ongoing support. You stay anonymous to our team. Only your clinician holds the minimum information needed for safe medication, never shared with anyone else.
+              The Ameliorate Project empowers hidden LGBTQI+ communities, lost-to-follow-up individuals, and people who avoid traditional health facilities across Ghana with anonymous, confidential telemedicine for PrEP, PEP, ART, mental wellness, and ongoing support.
             </p>
             <Button variant="default" size="lg" className="rounded-md text-base px-8" asChild>
               <a href="#about">Learn More</a>
