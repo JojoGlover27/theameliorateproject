@@ -47,8 +47,11 @@ const HeroSection = () => {
                 </AnimatePresence>
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground mb-2 leading-relaxed">
               The Ameliorate Project empowers hidden LGBTQI+ communities, lost-to-follow-up individuals, and people who avoid traditional health facilities across Ghana with anonymous, confidential telemedicine for PrEP, PEP, ART, mental wellness, and ongoing support.
+            </p>
+            <p className="text-lg md:text-xl text-primary italic mb-8 leading-relaxed">
+              No Judgement, No Exposure, Just Care.
             </p>
             <Button variant="default" size="lg" className="rounded-md text-base px-8" asChild>
               <a href="#about">Learn More</a>
