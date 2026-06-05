@@ -5,6 +5,15 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const posts = [
   {
+    slug: "navigating-survival-guide",
+    title: "Navigating Survival: A Guide for LGBTQI+ People Living with HIV in Ghana Right Now",
+    category: "Community Health",
+    date: "June 2026",
+    readTime: "8 min read",
+    excerpt:
+      "The bill has passed. We know what that means for you, not in abstract policy terms, but in the very real, very personal calculation you are making right now. This is written for you. Not about you. For you.",
+  },
+  {
     slug: "the-clinic-was-never-the-problem",
     title: "The Clinic Was Never the Problem. Being Seen Was.",
     category: "Community Health",
