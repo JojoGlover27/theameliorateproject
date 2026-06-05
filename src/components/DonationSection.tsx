@@ -73,7 +73,7 @@ const DonationSection = () => (
             </div>
             <div className="space-y-2 text-sm text-card-foreground">
               <p><strong>Account Name:</strong> The Ameliorate Project</p>
-              <p><strong>Bank:</strong> Contact finance department</p>
+              <p><strong>Bank:</strong> Contact Finance Department</p>
               <p>
                 <strong>Email:</strong>{" "}
                 <a href="mailto:finance@ameliorateproject.org" className="text-primary hover:underline">
