@@ -1,4 +1,4 @@
-import { Heart, Shield, Phone, Mail } from "lucide-react";
+import { Heart, Shield, Banknote } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,21 +53,34 @@ const DonationSection = () => (
       </motion.div>
 
       <AnimatedSection>
-        <div className="bg-card rounded-xl border border-border p-6 md:p-8 max-w-lg mx-auto text-center shadow-sm">
-          <h3 className="font-sans text-sm uppercase tracking-wider font-semibold text-secondary-foreground mb-4">
-            How to Donate
-          </h3>
-          <div className="space-y-3 text-sm text-card-foreground">
-            <div className="flex items-center justify-center gap-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span><strong>Mobile Money:</strong> +233 246888486</span>
+        <div className="max-w-2xl mx-auto space-y-5">
+          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <Banknote className="w-6 h-6 text-primary" />
+              <h3 className="font-semibold text-lg text-card-foreground">Mobile Money</h3>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Mail className="w-4 h-4 text-primary" />
-              <span>
-                <strong>Bank Transfer:</strong>{" "}
-                <a href="mailto:finance@ameliorateproject.org" className="text-primary hover:underline">finance@ameliorateproject.org</a>
-              </span>
+            <div className="space-y-2 text-sm text-card-foreground">
+              <p><strong>MTN MoMo:</strong> +233 24 688 8486</p>
+              <p><strong>Telecel Cash:</strong> +233 20 000 0000</p>
+              <p className="text-muted-foreground">Reference: GiveAmelio</p>
+            </div>
+          </div>
+
+          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <Banknote className="w-6 h-6 text-primary" />
+              <h3 className="font-semibold text-lg text-card-foreground">Bank Transfer</h3>
+            </div>
+            <div className="space-y-2 text-sm text-card-foreground">
+              <p><strong>Account Name:</strong> The Ameliorate Project</p>
+              <p><strong>Bank:</strong> Contact finance department</p>
+              <p>
+                <strong>Email:</strong>{" "}
+                <a href="mailto:finance@ameliorateproject.org" className="text-primary hover:underline">
+                  finance@ameliorateproject.org
+                </a>
+              </p>
+              <p className="text-muted-foreground">Reference: GiveAmelio</p>
             </div>
           </div>
         </div>
