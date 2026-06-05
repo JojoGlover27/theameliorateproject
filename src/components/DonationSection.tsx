@@ -62,7 +62,7 @@ const DonationSection = () => (
             <div className="space-y-2 text-sm text-card-foreground">
               <p><strong>MTN MoMo:</strong> +233 24 688 8486</p>
               <p><strong>Telecel Cash:</strong> +233 20 000 0000</p>
-              <p className="text-muted-foreground">Reference: GiveAmelio</p>
+              <p className="text-muted-foreground">Reference: Give2Amelio</p>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ const DonationSection = () => (
                   finance@ameliorateproject.org
                 </a>
               </p>
-              <p className="text-muted-foreground">Reference: GiveAmelio</p>
+              <p className="text-muted-foreground">Reference: Give2Amelio</p>
             </div>
           </div>
         </div>
