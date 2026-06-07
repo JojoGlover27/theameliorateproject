@@ -136,6 +136,18 @@ const BlogPost = () => {
             </h1>
           </AnimatedSection>
 
+          {post.coverImage && (
+            <AnimatedSection>
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                width={1600}
+                height={900}
+                className="w-full aspect-[16/9] object-cover rounded-xl shadow-md mb-10"
+              />
+            </AnimatedSection>
+          )}
+
           <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
             {post.blocks.map((b, i) =>
               b.type === "h2" ? (
