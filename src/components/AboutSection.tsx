@@ -9,7 +9,7 @@ const AboutSection = () => (
       <AnimatedSection>
         <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
           <p>
-            The Ameliorate Project is a community-led initiative dedicated to removing barriers to essential HIV prevention, treatment, and care for hidden LGBTQI+ individuals in Ghana.
+            The Ameliorate Project is a community-led initiative dedicated to removing barriers to essential HIV prevention, treatment, and care for hidden LGBTQI+ individuals, key populations, and other marginalised populations in Ghana.
           </p>
           <p>
             We understand the real challenges: stigma, fear of exposure, legal risks, and limited safe access to services. That is why we built a privacy-first, digital ecosystem where your safety and dignity come before anything else.
