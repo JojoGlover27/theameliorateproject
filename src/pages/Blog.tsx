@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import coverNavigating from "@/assets/blog-navigating-survival.jpg";
+import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
 
 const posts = [
   {
@@ -10,6 +12,7 @@ const posts = [
     category: "Community Health",
     date: "June 2026",
     readTime: "8 min read",
+    coverImage: coverNavigating,
     excerpt:
       "The bill has passed. We know what that means for you, not in abstract policy terms, but in the very real, very personal calculation you are making right now. This is written for you. Not about you. For you.",
   },
@@ -19,6 +22,7 @@ const posts = [
     category: "Community Health",
     date: "May 2026",
     readTime: "4 min read",
+    coverImage: coverClinic,
     excerpt:
       "There is a particular kind of courage that nobody talks about. The quiet courage of deciding to walk into a health facility and ask for help, knowing that being seen could cost you everything.",
   },
@@ -44,18 +48,30 @@ const Blog = () => (
             <AnimatedSection key={p.slug}>
               <Link
                 to={`/blog/${p.slug}`}
-                className="block bg-card border border-border rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow"
+                className="block bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground mb-3">
-                  <span className="text-primary font-semibold">{p.category}</span>
-                  <span>•</span>
-                  <span>{p.date}</span>
-                  <span>•</span>
-                  <span>{p.readTime}</span>
+                {p.coverImage && (
+                  <img
+                    src={p.coverImage}
+                    alt={p.title}
+                    width={1600}
+                    height={900}
+                    loading="lazy"
+                    className="w-full aspect-[16/9] object-cover"
+                  />
+                )}
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground mb-3">
+                    <span className="text-primary font-semibold">{p.category}</span>
+                    <span>•</span>
+                    <span>{p.date}</span>
+                    <span>•</span>
+                    <span>{p.readTime}</span>
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">{p.title}</h2>
+                  <p className="text-muted-foreground leading-relaxed">{p.excerpt}</p>
+                  <span className="inline-block mt-4 text-primary font-medium text-sm">Read more →</span>
                 </div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">{p.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">{p.excerpt}</p>
-                <span className="inline-block mt-4 text-primary font-medium text-sm">Read more →</span>
               </Link>
             </AnimatedSection>
           ))}

@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import coverNavigating from "@/assets/blog-navigating-survival.jpg";
+import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
 
 type Block = { type: "p" | "h2"; text: string };
 
@@ -11,8 +13,10 @@ type Post = {
   category: string;
   date: string;
   readTime: string;
+  coverImage?: string;
   blocks: Block[];
 };
+
 
 const posts: Post[] = [
   {
@@ -21,6 +25,7 @@ const posts: Post[] = [
     category: "Community Health",
     date: "June 2026",
     readTime: "8 min read",
+    coverImage: coverNavigating,
     blocks: [
       { type: "p", text: "The bill has passed. We know. And we know what that means for you, not in abstract policy terms, but in the very real, very personal calculation you are making right now about whether it is safe to leave the house, whether it is safe to call your doctor, whether it is safe to pick up your medication." },
       { type: "p", text: "This is written for you. Not about you. For you." },
@@ -79,6 +84,7 @@ const posts: Post[] = [
     category: "Community Health",
     date: "May 2026",
     readTime: "4 min read",
+    coverImage: coverClinic,
     blocks: [
       { type: "p", text: "There is a particular kind of courage that nobody talks about." },
       { type: "p", text: "It is not the courage of marching in the streets or standing at a podium. It is quieter and far more private. It is the courage of deciding, on a Tuesday afternoon, to walk into a health facility and ask for help, knowing that someone you know might see you there, and that being seen could cost you everything." },
@@ -129,6 +135,18 @@ const BlogPost = () => {
               {post.title}
             </h1>
           </AnimatedSection>
+
+          {post.coverImage && (
+            <AnimatedSection>
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                width={1600}
+                height={900}
+                className="w-full aspect-[16/9] object-cover rounded-xl shadow-md mb-10"
+              />
+            </AnimatedSection>
+          )}
 
           <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
             {post.blocks.map((b, i) =>
