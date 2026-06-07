@@ -84,6 +84,7 @@ const posts: Post[] = [
     category: "Community Health",
     date: "May 2026",
     readTime: "4 min read",
+    coverImage: coverClinic,
     blocks: [
       { type: "p", text: "There is a particular kind of courage that nobody talks about." },
       { type: "p", text: "It is not the courage of marching in the streets or standing at a podium. It is quieter and far more private. It is the courage of deciding, on a Tuesday afternoon, to walk into a health facility and ask for help, knowing that someone you know might see you there, and that being seen could cost you everything." },
