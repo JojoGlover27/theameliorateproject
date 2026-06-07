@@ -25,6 +25,7 @@ const posts: Post[] = [
     category: "Community Health",
     date: "June 2026",
     readTime: "8 min read",
+    coverImage: coverNavigating,
     blocks: [
       { type: "p", text: "The bill has passed. We know. And we know what that means for you, not in abstract policy terms, but in the very real, very personal calculation you are making right now about whether it is safe to leave the house, whether it is safe to call your doctor, whether it is safe to pick up your medication." },
       { type: "p", text: "This is written for you. Not about you. For you." },
