@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import coverNavigating from "@/assets/blog-navigating-survival.jpg";
+import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
 
 type Block = { type: "p" | "h2"; text: string };
 
@@ -11,8 +13,10 @@ type Post = {
   category: string;
   date: string;
   readTime: string;
+  coverImage?: string;
   blocks: Block[];
 };
+
 
 const posts: Post[] = [
   {
