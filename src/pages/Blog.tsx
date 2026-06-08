@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -28,7 +29,12 @@ const posts = [
   },
 ];
 
-const Blog = () => (
+const Blog = () => {
+  useEffect(() => {
+    document.title = "Blog & Updates — The Ameliorate Project";
+  }, []);
+
+  return (
   <div className="min-h-screen">
     <Navbar />
     <main className="pt-28 md:pt-36 pb-16 md:pb-24">
