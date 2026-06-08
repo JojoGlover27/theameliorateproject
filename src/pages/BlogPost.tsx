@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Heart, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { Button } from "@/components/ui/button";
+import DownloadCallout from "@/components/DownloadCallout";
 import coverNavigating from "@/assets/blog-navigating-survival.jpg";
 import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
 
@@ -10,11 +14,13 @@ type Block = { type: "p" | "h2"; text: string };
 type Post = {
   slug: string;
   title: string;
+  excerpt: string;
   category: string;
   date: string;
   readTime: string;
   coverImage?: string;
   blocks: Block[];
+  downloadResource?: string;
 };
 
 
@@ -22,10 +28,13 @@ const posts: Post[] = [
   {
     slug: "navigating-survival-guide",
     title: "Navigating Survival: A Guide for LGBTQI+ People Living with HIV in Ghana Right Now",
+    excerpt:
+      "The bill has passed. We know what that means for you. This is written for you. Not about you. For you.",
     category: "Community Health",
     date: "June 2026",
     readTime: "8 min read",
     coverImage: coverNavigating,
+    downloadResource: "care-pathways",
     blocks: [
       { type: "p", text: "The bill has passed. We know. And we know what that means for you, not in abstract policy terms, but in the very real, very personal calculation you are making right now about whether it is safe to leave the house, whether it is safe to call your doctor, whether it is safe to pick up your medication." },
       { type: "p", text: "This is written for you. Not about you. For you." },
@@ -81,10 +90,13 @@ const posts: Post[] = [
   {
     slug: "the-clinic-was-never-the-problem",
     title: "The Clinic Was Never the Problem. Being Seen Was.",
+    excerpt:
+      "Hundreds of LGBTQI+ Ghanaians know treatment exists. They still don't go. Not because they don't care. Because caring requires a visibility that is simply too dangerous.",
     category: "Community Health",
     date: "May 2026",
     readTime: "4 min read",
     coverImage: coverClinic,
+    downloadResource: "community-brief",
     blocks: [
       { type: "p", text: "There is a particular kind of courage that nobody talks about." },
       { type: "p", text: "It is not the courage of marching in the streets or standing at a podium. It is quieter and far more private. It is the courage of deciding, on a Tuesday afternoon, to walk into a health facility and ask for help, knowing that someone you know might see you there, and that being seen could cost you everything." },
@@ -116,6 +128,21 @@ const posts: Post[] = [
 const BlogPost = () => {
   const { slug } = useParams();
   const post = posts.find((p) => p.slug === slug) ?? posts[0];
+  const related = posts.filter((p) => p.slug !== post.slug);
+  const downloadIdx = Math.floor(post.blocks.length / 2);
+
+  useEffect(() => {
+    const prevTitle = document.title;
+    const prevDesc = document.querySelector('meta[name="description"]')?.getAttribute("content");
+    document.title = `${post.title} — The Ameliorate Project`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", post.excerpt);
+    window.scrollTo({ top: 0 });
+    return () => {
+      document.title = prevTitle;
+      if (metaDesc && prevDesc) metaDesc.setAttribute("content", prevDesc);
+    };
+  }, [post]);
 
   return (
     <div className="min-h-screen">
@@ -140,7 +167,7 @@ const BlogPost = () => {
             <AnimatedSection>
               <img
                 src={post.coverImage}
-                alt={post.title}
+                alt={`Abstract illustration for ${post.title}`}
                 width={1600}
                 height={900}
                 className="w-full aspect-[16/9] object-cover rounded-xl shadow-md mb-10"
@@ -149,23 +176,87 @@ const BlogPost = () => {
           )}
 
           <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-            {post.blocks.map((b, i) =>
-              b.type === "h2" ? (
-                <AnimatedSection key={i}>
-                  <h2 className="text-2xl md:text-3xl text-foreground mt-10 mb-2">{b.text}</h2>
-                </AnimatedSection>
-              ) : (
-                <AnimatedSection key={i}>
-                  <p>{b.text}</p>
-                </AnimatedSection>
-              )
-            )}
+            {post.blocks.map((b, i) => (
+              <div key={i}>
+                {b.type === "h2" ? (
+                  <AnimatedSection>
+                    <h2 className="text-2xl md:text-3xl text-foreground mt-10 mb-2">{b.text}</h2>
+                  </AnimatedSection>
+                ) : (
+                  <AnimatedSection>
+                    <p>{b.text}</p>
+                  </AnimatedSection>
+                )}
+                {i === downloadIdx && (
+                  <DownloadCallout resourceId={post.downloadResource} />
+                )}
+              </div>
+            ))}
             <AnimatedSection>
               <p className="italic border-l-4 border-primary/60 pl-4 mt-8 text-base">
-                The Ameliorate Project is a Ghana-based NGO dedicated to improving HIV healthcare access for LGBTQI+ individuals and key populations through community evidence, digital innovation, and radical empathy.
+                The Ameliorate Project is a Ghana-based NGO dedicated to improving HIV healthcare access for LGBTQI+ individuals, key populations, and other marginalised populations through community evidence, digital innovation, and radical empathy.
               </p>
             </AnimatedSection>
           </div>
+
+          {/* Donate CTA after content */}
+          <AnimatedSection>
+            <div className="mt-14 rounded-xl p-7 md:p-9 text-center" style={{ background: "var(--hero-gradient)" }}>
+              <Heart className="text-primary mx-auto mb-3" size={28} aria-hidden="true" />
+              <h2 className="text-2xl md:text-3xl text-foreground mb-3">
+                If this resonated, help us build the infrastructure.
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto leading-relaxed">
+                Every contribution funds anonymous, stigma-free care for the people most at risk of being left behind.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button asChild size="lg">
+                  <Link to="/#donate">Support our work</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/get-involved">Other ways to help</Link>
+                </Button>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Related posts */}
+          {related.length > 0 && (
+            <AnimatedSection>
+              <div className="mt-16 pt-10 border-t border-border">
+                <h2 className="text-xl md:text-2xl text-foreground mb-6">Keep reading</h2>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {related.map((r) => (
+                    <Link
+                      key={r.slug}
+                      to={`/blog/${r.slug}`}
+                      className="group block bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      {r.coverImage && (
+                        <img
+                          src={r.coverImage}
+                          alt=""
+                          width={800}
+                          height={450}
+                          loading="lazy"
+                          className="w-full aspect-[16/9] object-cover"
+                        />
+                      )}
+                      <div className="p-5">
+                        <p className="text-xs uppercase tracking-wider text-primary font-semibold mb-2">{r.category}</p>
+                        <h3 className="text-base font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
+                          {r.title}
+                        </h3>
+                        <span className="inline-flex items-center gap-1 mt-3 text-sm text-primary">
+                          Read article <ArrowRight size={14} />
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          )}
         </article>
       </main>
       <Footer />
