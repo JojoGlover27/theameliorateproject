@@ -40,9 +40,15 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center gap-8">
           {primaryLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                {l.label}
-              </a>
+              {l.href.includes("#") ? (
+                <a href={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              ) : (
+                <Link to={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {l.label}
+                </Link>
+              )}
             </li>
           ))}
           <li>
@@ -71,13 +77,23 @@ const Navbar = () => {
           <ul className="flex flex-col gap-4">
             {primaryLinks.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {l.label}
-                </a>
+                {l.href.includes("#") ? (
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={l.href}
+                    onClick={() => setOpen(false)}
+                    className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li className="pt-2 mt-2 border-t border-border">
