@@ -8,6 +8,7 @@ import SynapseSection from "@/components/SynapseSection";
 import ServicesSection from "@/components/ServicesSection";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import DownloadCTASection from "@/components/DownloadCTASection";
 import DonationSection from "@/components/DonationSection";
 import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
@@ -25,6 +26,7 @@ const Index = () => (
     <ServicesSection />
     <CTASection />
     <TestimonialsSection />
+    <DownloadCTASection />
     <DonationSection />
     <FaqSection />
     <ContactSection />

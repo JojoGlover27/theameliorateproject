@@ -11,6 +11,8 @@ import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import Media from "./pages/Media.tsx";
 import Resources from "./pages/Resources.tsx";
+import GetInvolved from "./pages/GetInvolved.tsx";
+import BackToTop from "./components/BackToTop.tsx";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +30,11 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/media" element={<Media />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/get-involved" element={<GetInvolved />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <BackToTop />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
