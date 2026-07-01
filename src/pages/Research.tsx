@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -48,14 +48,7 @@ const TABS: { label: string; active: boolean }[] = [
 ];
 
 const Research = () => {
-  const [activeTab, setActiveTab] = [
-    // small inline state hook
-    ...(function useTab() {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const [t, s] = require("react").useState("All");
-      return [t as string, s as (v: string) => void];
-    })(),
-  ];
+  const [activeTab, setActiveTab] = useState<string>("All");
 
   useEffect(() => {
     window.scrollTo(0, 0);
