@@ -19,6 +19,7 @@ const primaryLinks = [
 const moreLinks = [
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
+  { label: "Research & Publications", href: "/research" },
   { label: "Resources & Information", href: "/resources" },
   { label: "Media", href: "/media" },
   { label: "Privacy Policy", href: "/privacy" },

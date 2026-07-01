@@ -8,9 +8,9 @@ import SynapseSection from "@/components/SynapseSection";
 import ServicesSection from "@/components/ServicesSection";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import DownloadCTASection from "@/components/DownloadCTASection";
 import DonationSection from "@/components/DonationSection";
 import FaqSection from "@/components/FaqSection";
+import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -26,9 +26,9 @@ const Index = () => (
     <ServicesSection />
     <CTASection />
     <TestimonialsSection />
-    <DownloadCTASection />
     <DonationSection />
     <FaqSection />
+    <TeamSection />
     <ContactSection />
     <Footer />
   </div>
