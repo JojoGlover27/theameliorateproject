@@ -68,6 +68,8 @@ const HeroSection = () => {
               alt="Diverse hands holding a padlock symbolizing privacy and care"
               width={1280}
               height={960}
+              fetchPriority="high"
+              decoding="async"
               className="w-full max-w-lg rounded-2xl shadow-xl"
             />
           </motion.div>
