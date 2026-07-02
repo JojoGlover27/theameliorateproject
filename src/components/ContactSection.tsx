@@ -51,7 +51,15 @@ const ContactSection = () => {
             <span>Your identity is never stored or tracked.</span>
           </div>
 
+          <p className="text-center text-sm text-muted-foreground mb-6">
+            Prefer email? Reach us at{" "}
+            <a href="mailto:info@ameliorateproject.org" className="text-primary hover:underline">
+              info@ameliorateproject.org
+            </a>
+          </p>
+
         </AnimatedSection>
+
 
 
         <AnimatedSection>
