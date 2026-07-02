@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import DownloadCallout from "@/components/DownloadCallout";
-import coverNavigating from "@/assets/blog-navigating-survival.jpg";
-import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
+const coverNavigating = "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1600&q=75";
+const coverClinic = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=75";
 
 type Block = { type: "p" | "h2"; text: string };
 

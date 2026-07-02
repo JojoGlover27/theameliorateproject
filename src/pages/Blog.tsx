@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import coverNavigating from "@/assets/blog-navigating-survival.jpg";
-import coverClinic from "@/assets/blog-clinic-was-never-problem.jpg";
+const coverNavigating = "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1600&q=70";
+const coverClinic = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=70";
 
 const posts = [
   {
