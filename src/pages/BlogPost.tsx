@@ -170,6 +170,8 @@ const BlogPost = () => {
                 alt={`Abstract illustration for ${post.title}`}
                 width={1600}
                 height={900}
+                loading="lazy"
+                decoding="async"
                 className="w-full aspect-[16/9] object-cover rounded-xl shadow-md mb-10"
               />
             </AnimatedSection>
