@@ -40,6 +40,13 @@ const PrivacyPolicy = () => (
           </div>
 
           <div>
+            <h2 className="text-2xl text-foreground mb-3">Newsletter Subscriber Data</h2>
+            <p>
+              Email addresses collected through our newsletter subscription form are stored securely and used only to send The Ameliorate Project's monthly newsletter. We do not share, sell, or transfer subscriber data to any third party. Subscribers may unsubscribe at any time by clicking the unsubscribe link included in every email.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-2xl text-foreground mb-3">Your Rights</h2>
             <p>
               You have the right to contact us anonymously at any time via the secure form or phone number listed on the site. We comply with Ghana's Data Protection Act, 2012 (Act 843) and follow international best practices for privacy and security. This policy is reviewed regularly and may be updated; the current version is always posted here.

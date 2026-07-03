@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import DownloadCallout from "@/components/DownloadCallout";
+import BlogNewsletterCTA from "@/components/BlogNewsletterCTA";
 const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd31?auto=format&fit=crop&w=1600&q=75";
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=75";
 
@@ -221,6 +222,11 @@ const BlogPost = () => {
               </div>
             </div>
           </AnimatedSection>
+
+          <AnimatedSection>
+            <BlogNewsletterCTA source={`blog-${post.slug}`} />
+          </AnimatedSection>
+
 
           {/* Related posts */}
           {related.length > 0 && (

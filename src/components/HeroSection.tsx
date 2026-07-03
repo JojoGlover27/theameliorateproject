@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import heroImage from "@/assets/hero-image.jpg";
+const heroImage = "https://images.unsplash.com/photo-1521790361543-f645cf042ec4?auto=format&fit=crop&w=1400&q=75";
 import { Button } from "@/components/ui/button";
 
 const rotating = [
@@ -65,12 +65,12 @@ const HeroSection = () => {
           >
             <img
               src={heroImage}
-              alt="Diverse hands holding a padlock symbolizing privacy and care"
-              width={1280}
-              height={960}
+              alt="Healthcare worker's hands offering care, symbolising safety and confidentiality"
+              width={1400}
+              height={933}
               fetchPriority="high"
               decoding="async"
-              className="w-full max-w-lg rounded-2xl shadow-xl"
+              className="w-full max-w-lg aspect-[4/3] object-cover rounded-2xl shadow-xl"
             />
           </motion.div>
         </div>
