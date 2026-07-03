@@ -1,5 +1,6 @@
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import FooterNewsletter from "@/components/FooterNewsletter";
 import ameliorateLogo from "@/assets/ameliorate-logo.png";
 
 const socials = [
@@ -51,6 +52,7 @@ const socials = [
 const Footer = () => (
   <footer className="bg-foreground py-14">
     <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+      <FooterNewsletter />
       <div className="grid md:grid-cols-4 gap-10 text-background/80">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 mb-3">
@@ -119,6 +121,7 @@ const Footer = () => (
             <li><Link to="/media" className="hover:text-background transition-colors">Media</Link></li>
             <li><a href="/#faq" className="hover:text-background transition-colors">FAQ</a></li>
             <li><a href="/#donate" className="hover:text-background transition-colors">Donate</a></li>
+            <li><Link to="/newsletter" className="hover:text-background transition-colors">Newsletter</Link></li>
             <li><Link to="/privacy" className="hover:text-background transition-colors">Privacy Policy</Link></li>
           </ul>
         </div>

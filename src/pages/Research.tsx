@@ -5,6 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ResearchLayout from "@/components/research/ResearchLayout";
+import NewsletterForm from "@/components/NewsletterForm";
 
 type Pub = {
   slug: string;
@@ -144,6 +145,16 @@ const Research = () => {
                 </span>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-16 rounded-2xl p-6 md:p-8" style={{ background: "#3C14A0" }}>
+            <h2 className="text-2xl md:text-3xl font-serif text-white mb-3">Stay updated on new publications</h2>
+            <p className="text-white/85 mb-5 max-w-2xl">
+              Subscribe to our newsletter to be notified when new research from The Ameliorate Project is available.
+            </p>
+            <div className="max-w-md">
+              <NewsletterForm source="research" variant="inline" />
+            </div>
           </div>
         </section>
       </main>

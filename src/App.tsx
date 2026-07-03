@@ -18,6 +18,7 @@ const GetInvolved = lazy(() => import("./pages/GetInvolved.tsx"));
 const Research = lazy(() => import("./pages/Research.tsx"));
 const NeedsAssessmentReport = lazy(() => import("./pages/research/NeedsAssessmentReport.tsx"));
 const AnonymityClinicalNecessity = lazy(() => import("./pages/research/AnonymityClinicalNecessity.tsx"));
+const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/research" element={<Research />} />
             <Route path="/research/access-safety-anonymity-ghana" element={<NeedsAssessmentReport />} />
             <Route path="/research/anonymity-clinical-necessity" element={<AnonymityClinicalNecessity />} />
+            <Route path="/newsletter" element={<Newsletter />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

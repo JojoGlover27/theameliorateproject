@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/get-involved-hero.jpg";
+const heroImg = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=75";
 import { downloads } from "@/lib/downloads";
 import { useEffect } from "react";
 
@@ -64,11 +64,12 @@ const GetInvolved = () => {
               <AnimatedSection>
                 <img
                   src={heroImg}
-                  alt="Abstract illustration evoking community and care"
+                  alt="Community members joining hands together in solidarity"
                   width={1600}
-                  height={900}
+                  height={1067}
                   loading="lazy"
-                  className="w-full rounded-xl shadow-md"
+                  decoding="async"
+                  className="w-full aspect-[4/3] object-cover rounded-xl shadow-md"
                 />
               </AnimatedSection>
             </div>

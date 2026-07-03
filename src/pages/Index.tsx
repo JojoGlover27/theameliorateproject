@@ -12,6 +12,7 @@ import DonationSection from "@/components/DonationSection";
 import FaqSection from "@/components/FaqSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -30,6 +31,7 @@ const Index = () => (
     <FaqSection />
     <TeamSection />
     <ContactSection />
+    <NewsletterSection />
     <Footer />
   </div>
 );
