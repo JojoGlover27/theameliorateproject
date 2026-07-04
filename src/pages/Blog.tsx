@@ -5,8 +5,19 @@ import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd31?auto=format&fit=crop&w=1600&q=70";
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=70";
+const coverNutrition = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=70";
 
 const posts = [
+  {
+    slug: "nutrition-is-hiv-care",
+    title: "Nutrition Is HIV Care: Why Food Security Belongs in Ghana's HIV Response",
+    category: "Community Health",
+    date: "July 2026",
+    readTime: "6 min read",
+    coverImage: coverNutrition,
+    excerpt:
+      "For many people living with HIV, the conversation about healthcare begins and ends with medication. But what happens when someone has medication, but not enough food?",
+  },
   {
     slug: "navigating-survival-guide",
     title: "Navigating Survival: A Guide for LGBTQI+ People Living with HIV in Ghana Right Now",

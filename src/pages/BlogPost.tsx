@@ -9,6 +9,7 @@ import DownloadCallout from "@/components/DownloadCallout";
 import BlogNewsletterCTA from "@/components/BlogNewsletterCTA";
 const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd31?auto=format&fit=crop&w=1600&q=75";
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=75";
+const coverNutrition = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=75";
 
 type Block = { type: "p" | "h2"; text: string };
 
@@ -26,6 +27,32 @@ type Post = {
 
 
 const posts: Post[] = [
+  {
+    slug: "nutrition-is-hiv-care",
+    title: "Nutrition Is HIV Care: Why Food Security Belongs in Ghana's HIV Response",
+    excerpt:
+      "For many people living with HIV, the conversation about healthcare begins and ends with medication. But what happens when someone has medication, but not enough food?",
+    category: "Community Health",
+    date: "July 2026",
+    readTime: "6 min read",
+    coverImage: coverNutrition,
+    downloadResource: "community-brief",
+    blocks: [
+      { type: "p", text: "For many people living with HIV, the conversation about healthcare begins and ends with medication. We talk about testing, viral suppression, treatment adherence, and the global ambition to end AIDS as a public health threat. Yet there is one question that receives far less attention:" },
+      { type: "p", text: "What happens when someone has medication, but not enough food?" },
+      { type: "p", text: "Across Ghana, many people living with HIV face impossible choices. Some skip medication because taking it on an empty stomach causes nausea, dizziness, or fatigue. Others reduce meals to stretch limited resources, making it harder to maintain their health and immune system. For LGBTQI+ people already navigating stigma, discrimination, and economic exclusion, these challenges can be even more severe." },
+      { type: "p", text: "For many LGBTQI+ people in Ghana, food insecurity is not simply the result of rising food prices. It is often rooted in persistent barriers to employment and economic participation. Real or perceived sexual orientation, gender identity, gender expression, appearance, or mannerisms can expose individuals to discrimination during recruitment, in the workplace, or even lead to dismissal from employment. Many are pushed into long periods of unemployment or precarious informal work, not because they lack qualifications or ambition, but because of prejudice. The consequences extend far beyond lost income. They affect housing stability, access to nutritious food, transportation to health facilities, and the ability to remain consistently engaged in HIV care. Addressing nutrition therefore also requires addressing the structural inequalities that push many people into economic vulnerability." },
+      { type: "h2", text: "Nutrition is not an optional extra. It is an essential part of HIV care." },
+      { type: "p", text: "Good nutrition helps people living with HIV maintain a stronger immune system, tolerate treatment more effectively, and remain adherent to medication. When people have consistent access to nutritious food, they are better positioned to stay healthy, attend clinic appointments, and achieve positive long-term health outcomes. Conversely, food insecurity can undermine treatment adherence, worsen health, and deepen cycles of vulnerability." },
+      { type: "p", text: "Despite this, nutrition support is too often viewed as a temporary humanitarian response rather than a core component of comprehensive HIV care. Healthcare should not end with a prescription. For many people, particularly those facing multiple forms of marginalisation, treatment only succeeds when the broader conditions for health are also addressed." },
+      { type: "p", text: "At The Ameliorate Project, we believe HIV care must be person-centred. That means recognising that medication, nutrition, privacy, mental wellbeing, social support, and dignity are all interconnected. A person should never have to choose between taking life-saving medication and enduring hunger, nor should stigma prevent them from accessing the support they need to live healthy and fulfilling lives." },
+      { type: "p", text: "As Ghana continues working towards ending AIDS as a public health threat, we must remember that success cannot be measured solely by the number of people receiving treatment. It must also be measured by whether people have the resources, support, and enabling environment needed to remain healthy over the long term." },
+      { type: "p", text: "This is why The Ameliorate Project is committed to building partnerships that integrate nutrition into broader HIV programming. We envision a future where food support, digital innovation, community-led care, and human rights work together to remove barriers to health, particularly for populations experiencing stigma and exclusion." },
+      { type: "p", text: "Ending AIDS requires more than medicine. It requires ensuring that no one is forced to fight hunger while fighting HIV." },
+      { type: "p", text: "Because healthcare should not stop at a prescription." },
+      { type: "p", text: "Sometimes, the most powerful intervention begins with a nutritious meal." },
+    ],
+  },
   {
     slug: "navigating-survival-guide",
     title: "Navigating Survival: A Guide for LGBTQI+ People Living with HIV in Ghana Right Now",
@@ -196,9 +223,16 @@ const BlogPost = () => {
               </div>
             ))}
             <AnimatedSection>
-              <p className="italic border-l-4 border-primary/60 pl-4 mt-8 text-base">
-                The Ameliorate Project is a Ghana-based NGO dedicated to improving HIV healthcare access for LGBTQI+ individuals, key populations, and other marginalised populations through community evidence, digital innovation, and radical empathy.
-              </p>
+              <div className="mt-10 border-l-4 border-primary/60 pl-5 text-base space-y-3">
+                <h3 className="text-lg font-semibold text-foreground not-italic">About The Ameliorate Project</h3>
+                <p>
+                  The Ameliorate Project (Amelio) is a Ghana-based civil society organisation working at the intersection of HIV access, digital rights, and human rights. Through research, advocacy, digital health innovation, and community-led programmes, Amelio is committed to expanding equitable access to healthcare for populations experiencing stigma, discrimination, and systemic barriers to care. Amelio is the developer of Synapse, a privacy-first digital health platform designed for people who cannot safely access conventional healthcare.
+                </p>
+                <p>
+                  Have thoughts on this perspective or are you interested in partnering with us? We would love to hear from you at{" "}
+                  <a href="mailto:info@ameliorateproject.org" className="text-primary hover:underline">info@ameliorateproject.org</a>.
+                </p>
+              </div>
             </AnimatedSection>
           </div>
 

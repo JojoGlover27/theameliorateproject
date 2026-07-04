@@ -1,6 +1,7 @@
 import NewsletterForm from "@/components/NewsletterForm";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const NewsletterSection = () => (
   <section id="newsletter" className="py-20 md:py-24" style={{ background: "#3C14A0" }}>
@@ -20,6 +21,11 @@ const NewsletterSection = () => (
         </p>
         <div className="max-w-md mx-auto">
           <NewsletterForm source="homepage" variant="inline" />
+          <p className="mt-3 text-sm">
+            <Link to="/newsletter" className="text-[#F0A028] hover:text-white underline underline-offset-4 transition-colors">
+              Learn more about our newsletter →
+            </Link>
+          </p>
         </div>
         <p className="mt-5 text-xs text-white/60">
           We respect your privacy. Your information is never shared. Unsubscribe at any time.
