@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-// Unsplash photo chosen so faces are naturally not visible (hands / silhouettes / back-turned).
-// Photo by "Hannah Busing" on Unsplash — hands together, no identifiable faces.
+// Team collaborating around a table — hands and laptops, no identifiable faces.
 const TEAM_PHOTO =
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=70";
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=70";
 
 const TeamSection = () => (
   <section id="team" className="py-20 md:py-28 bg-background">
@@ -34,7 +33,7 @@ const TeamSection = () => (
         <figure className="mt-12 md:mt-16 rounded-2xl overflow-hidden shadow-xl">
           <img
             src={TEAM_PHOTO}
-            alt="Hands of community members joined together, symbolising Amelio's team and the communities we serve."
+            alt="Amelio team members collaborating around a shared table, hands and laptops visible."
             loading="lazy"
             decoding="async"
             className="w-full h-[280px] md:h-[460px] object-cover"
