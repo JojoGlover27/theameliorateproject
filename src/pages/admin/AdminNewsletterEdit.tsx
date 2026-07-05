@@ -55,11 +55,11 @@ export default function AdminNewsletterEdit() {
       const mod: any = await import("@/pages/Blog");
       const post = (mod.posts as any[])?.find((p) => p.slug === slug);
       if (!post) return;
-      const url = `https://ameliorateproject.org/blog/${post.slug}`;
+      const url = `${window.location.origin}/blog/${post.slug}`;
       setNl({
         subject: post.title,
         preview_text: post.excerpt,
-        cover_image_url: post.image ?? "",
+        cover_image_url: post.coverImage ?? post.image ?? "",
         html: `<h2>${post.title}</h2><p>${post.excerpt}</p><p style="text-align:center;margin:24px 0;"><a href="${url}" style="display:inline-block;background:#3C14A0;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:600;">Read the full post</a></p>`,
         blog_slug: slug,
       });
