@@ -1,5 +1,6 @@
-// Newsletter signup → Resend Audience + branded welcome email
+// Newsletter signup → Resend Audience + local subscribers mirror + welcome email
 // deno-lint-ignore-file no-explicit-any
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -8,10 +9,11 @@ const corsHeaders = {
 };
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const AUDIENCE_NAME = "Amelio Newsletter";
 const FROM = "The Ameliorate Project <info@ameliorateproject.org>";
 
-// Simple in-memory rate limit (per edge instance) — pragmatic anti-spam.
 const rl = new Map<string, number[]>();
 const RL_WINDOW_MS = 60_000;
 const RL_MAX = 5;
@@ -91,7 +93,6 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const email = String(body?.email ?? "").trim().toLowerCase();
     const source = String(body?.source ?? "unknown").slice(0, 60);
-    // honeypot
     if (body?.website) return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
     if (!isValidEmail(email)) {
       return new Response(JSON.stringify({ error: "invalid_email" }), {
@@ -101,18 +102,34 @@ Deno.serve(async (req) => {
 
     const audienceId = await getOrCreateAudience();
 
-    // Add contact (Resend dedupes; 409 => already exists)
     const add = await resend(`/audiences/${audienceId}/contacts`, {
       method: "POST",
       body: JSON.stringify({ email, unsubscribed: false, first_name: source }),
     });
 
     if (!add.ok && add.status !== 409 && add.body?.name !== "validation_error") {
-      // Try to continue with welcome even on non-fatal errors, but surface if truly failed
       console.error("resend_add_failed", add.status, add.body);
     }
 
     const alreadyExists = add.status === 409 || add.body?.name === "validation_error";
+    const resendContactId = add.body?.id ?? null;
+
+    // Mirror to local subscribers table (service role bypasses RLS)
+    try {
+      const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
+      await admin.from("subscribers").upsert(
+        {
+          email,
+          source,
+          status: "active",
+          resend_contact_id: resendContactId,
+          unsubscribed_at: null,
+        },
+        { onConflict: "email" },
+      );
+    } catch (mirrorErr) {
+      console.error("subscriber_mirror_failed", mirrorErr);
+    }
 
     if (!alreadyExists) {
       const send = await resend("/emails", {

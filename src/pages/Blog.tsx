@@ -7,7 +7,7 @@ const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=70";
 const coverNutrition = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=70";
 
-const posts = [
+export const posts = [
   {
     slug: "nutrition-is-hiv-care",
     title: "Nutrition Is HIV Care: Why Food Security Belongs in Ghana's HIV Response",

@@ -19,6 +19,13 @@ const Research = lazy(() => import("./pages/Research.tsx"));
 const NeedsAssessmentReport = lazy(() => import("./pages/research/NeedsAssessmentReport.tsx"));
 const AnonymityClinicalNecessity = lazy(() => import("./pages/research/AnonymityClinicalNecessity.tsx"));
 const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
+const AdminSubscribers = lazy(() => import("./pages/admin/AdminSubscribers.tsx"));
+const AdminNewsletters = lazy(() => import("./pages/admin/AdminNewsletters.tsx"));
+const AdminNewsletterEdit = lazy(() => import("./pages/admin/AdminNewsletterEdit.tsx"));
+import RequireAdmin from "./components/admin/RequireAdmin";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +51,14 @@ const App = () => (
             <Route path="/research/access-safety-anonymity-ghana" element={<NeedsAssessmentReport />} />
             <Route path="/research/anonymity-clinical-necessity" element={<AnonymityClinicalNecessity />} />
             <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="subscribers" element={<AdminSubscribers />} />
+              <Route path="newsletters" element={<AdminNewsletters />} />
+              <Route path="newsletters/new" element={<AdminNewsletterEdit />} />
+              <Route path="newsletters/:id" element={<AdminNewsletterEdit />} />
+            </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

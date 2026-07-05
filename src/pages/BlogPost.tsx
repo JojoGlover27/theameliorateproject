@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Heart, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import DownloadCallout from "@/components/DownloadCallout";
 import BlogNewsletterCTA from "@/components/BlogNewsletterCTA";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd31?auto=format&fit=crop&w=1600&q=75";
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=75";
 const coverNutrition = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=75";
@@ -158,6 +159,7 @@ const BlogPost = () => {
   const post = posts.find((p) => p.slug === slug) ?? posts[0];
   const related = posts.filter((p) => p.slug !== post.slug);
   const downloadIdx = Math.floor(post.blocks.length / 2);
+  const { isAdmin } = useAdminAuth();
 
   useEffect(() => {
     const prevTitle = document.title;
@@ -178,7 +180,16 @@ const BlogPost = () => {
       <main className="pt-28 md:pt-36 pb-16 md:pb-24">
         <article className="container mx-auto px-4 md:px-8 max-w-3xl">
           <AnimatedSection>
-            <Link to="/blog" className="text-sm text-primary hover:underline mb-6 inline-block">← Back to Blog</Link>
+            <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+              <Link to="/blog" className="text-sm text-primary hover:underline inline-block">← Back to Blog</Link>
+              {isAdmin && (
+                <Button asChild size="sm" variant="outline">
+                  <Link to={`/admin/newsletters/new?fromBlog=${post.slug}`}>
+                    <Send className="h-3.5 w-3.5 mr-1.5" /> Send to Subscribers
+                  </Link>
+                </Button>
+              )}
+            </div>
             <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground mb-4">
               <span className="text-primary font-semibold">{post.category}</span>
               <span>•</span>
