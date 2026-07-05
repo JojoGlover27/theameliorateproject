@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Heart, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import DownloadCallout from "@/components/DownloadCallout";
 import BlogNewsletterCTA from "@/components/BlogNewsletterCTA";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 const coverNavigating = "https://images.unsplash.com/photo-1561612217-e5147162fd31?auto=format&fit=crop&w=1600&q=75";
 const coverClinic = "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=75";
 const coverNutrition = "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=75";
