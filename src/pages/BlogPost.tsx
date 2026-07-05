@@ -159,6 +159,7 @@ const BlogPost = () => {
   const post = posts.find((p) => p.slug === slug) ?? posts[0];
   const related = posts.filter((p) => p.slug !== post.slug);
   const downloadIdx = Math.floor(post.blocks.length / 2);
+  const { isAdmin } = useAdminAuth();
 
   useEffect(() => {
     const prevTitle = document.title;
@@ -179,7 +180,16 @@ const BlogPost = () => {
       <main className="pt-28 md:pt-36 pb-16 md:pb-24">
         <article className="container mx-auto px-4 md:px-8 max-w-3xl">
           <AnimatedSection>
-            <Link to="/blog" className="text-sm text-primary hover:underline mb-6 inline-block">← Back to Blog</Link>
+            <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+              <Link to="/blog" className="text-sm text-primary hover:underline inline-block">← Back to Blog</Link>
+              {isAdmin && (
+                <Button asChild size="sm" variant="outline">
+                  <Link to={`/admin/newsletters/new?fromBlog=${post.slug}`}>
+                    <Send className="h-3.5 w-3.5 mr-1.5" /> Send to Subscribers
+                  </Link>
+                </Button>
+              )}
+            </div>
             <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground mb-4">
               <span className="text-primary font-semibold">{post.category}</span>
               <span>•</span>
