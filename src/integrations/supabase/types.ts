@@ -14,16 +14,170 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      newsletter_sends: {
+        Row: {
+          created_at: string
+          error: string | null
+          id: string
+          newsletter_id: string
+          resend_message_id: string | null
+          sent_at: string | null
+          status: string
+          subscriber_email: string
+        }
+        Insert: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          newsletter_id: string
+          resend_message_id?: string | null
+          sent_at?: string | null
+          status?: string
+          subscriber_email: string
+        }
+        Update: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          newsletter_id?: string
+          resend_message_id?: string | null
+          sent_at?: string | null
+          status?: string
+          subscriber_email?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "newsletter_sends_newsletter_id_fkey"
+            columns: ["newsletter_id"]
+            isOneToOne: false
+            referencedRelation: "newsletters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      newsletters: {
+        Row: {
+          blog_slug: string | null
+          content_json: Json | null
+          cover_image_url: string | null
+          created_at: string
+          created_by: string | null
+          html: string
+          id: string
+          preview_text: string | null
+          recipient_count: number
+          sent_at: string | null
+          status: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          blog_slug?: string | null
+          content_json?: Json | null
+          cover_image_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          html: string
+          id?: string
+          preview_text?: string | null
+          recipient_count?: number
+          sent_at?: string | null
+          status?: string
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          blog_slug?: string | null
+          content_json?: Json | null
+          cover_image_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          html?: string
+          id?: string
+          preview_text?: string | null
+          recipient_count?: number
+          sent_at?: string | null
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          resend_contact_id: string | null
+          source: string | null
+          status: string
+          subscribed_at: string
+          tags: string[]
+          unsubscribed_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          resend_contact_id?: string | null
+          source?: string | null
+          status?: string
+          subscribed_at?: string
+          tags?: string[]
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          resend_contact_id?: string | null
+          source?: string | null
+          status?: string
+          subscribed_at?: string
+          tags?: string[]
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +304,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
