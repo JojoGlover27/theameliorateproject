@@ -40,10 +40,11 @@ async function hmac(email: string): Promise<string> {
   return b64url(sig);
 }
 
-export async function makeUnsubscribeToken(email: string): Promise<string> {
+async function makeUnsubscribeToken(email: string): Promise<string> {
   const sig = await hmac(email);
   return `${b64url(new TextEncoder().encode(email.toLowerCase()))}.${sig}`;
 }
+void makeUnsubscribeToken;
 
 async function verifyToken(token: string): Promise<string | null> {
   const [ePart, sig] = token.split(".");
