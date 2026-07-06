@@ -13,6 +13,28 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const FROM = "The Ameliorate Project <info@ameliorateproject.org>";
+const UNSUB_ENDPOINT = `${SUPABASE_URL}/functions/v1/newsletter-unsubscribe`;
+
+const b64url = (buf: ArrayBuffer | Uint8Array) => {
+  const bytes = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
+  let s = "";
+  for (const b of bytes) s += String.fromCharCode(b);
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+};
+async function makeUnsubscribeToken(email: string): Promise<string> {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(SUPABASE_SERVICE_ROLE_KEY),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(email.toLowerCase()));
+  return `${b64url(new TextEncoder().encode(email.toLowerCase()))}.${b64url(sig)}`;
+}
+async function unsubscribeUrl(email: string) {
+  return `${UNSUB_ENDPOINT}?token=${await makeUnsubscribeToken(email)}`;
+}
 
 async function resend(path: string, init: RequestInit = {}) {
   const r = await fetch(`https://api.resend.com${path}`, {
@@ -99,11 +121,22 @@ Deno.serve(async (req) => {
 
     const finalHtml = wrapHtml(nl.subject, nl.preview_text ?? "", nl.html, nl.cover_image_url);
 
-    // Test send: don't touch subscribers, don't mark sent
+    // Test send
     if (testEmail) {
+      const unsubUrl = await unsubscribeUrl(testEmail);
+      const html = finalHtml.replace(/\{\{RESEND_UNSUBSCRIBE_URL\}\}/g, unsubUrl);
       const r = await resend("/emails", {
         method: "POST",
-        body: JSON.stringify({ from: FROM, to: [testEmail], subject: `[TEST] ${nl.subject}`, html: finalHtml }),
+        body: JSON.stringify({
+          from: FROM,
+          to: [testEmail],
+          subject: `[TEST] ${nl.subject}`,
+          html,
+          headers: {
+            "List-Unsubscribe": `<${unsubUrl}>, <mailto:info@ameliorateproject.org?subject=unsubscribe>`,
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+          },
+        }),
       });
       if (!r.ok) {
         return new Response(JSON.stringify({ error: "test_send_failed", detail: r.body }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -126,14 +159,19 @@ Deno.serve(async (req) => {
     let sent = 0;
     let failed = 0;
     for (const s of subs ?? []) {
+      const unsubUrl = await unsubscribeUrl(s.email);
+      const html = finalHtml.replace(/\{\{RESEND_UNSUBSCRIBE_URL\}\}/g, unsubUrl);
       const r = await resend("/emails", {
         method: "POST",
         body: JSON.stringify({
           from: FROM,
           to: [s.email],
           subject: nl.subject,
-          html: finalHtml,
-          headers: { "List-Unsubscribe": "<mailto:info@ameliorateproject.org?subject=unsubscribe>" },
+          html,
+          headers: {
+            "List-Unsubscribe": `<${unsubUrl}>, <mailto:info@ameliorateproject.org?subject=unsubscribe>`,
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+          },
         }),
       });
       if (r.ok) {
@@ -154,7 +192,6 @@ Deno.serve(async (req) => {
           error: JSON.stringify(r.body).slice(0, 500),
         });
       }
-      // small throttle for Resend rate limits (~10/s)
       await new Promise((res) => setTimeout(res, 120));
     }
 

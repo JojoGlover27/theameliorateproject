@@ -19,6 +19,7 @@ const Research = lazy(() => import("./pages/Research.tsx"));
 const NeedsAssessmentReport = lazy(() => import("./pages/research/NeedsAssessmentReport.tsx"));
 const AnonymityClinicalNecessity = lazy(() => import("./pages/research/AnonymityClinicalNecessity.tsx"));
 const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
+const Unsubscribed = lazy(() => import("./pages/Unsubscribed.tsx"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/research/access-safety-anonymity-ghana" element={<NeedsAssessmentReport />} />
             <Route path="/research/anonymity-clinical-necessity" element={<AnonymityClinicalNecessity />} />
             <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
               <Route index element={<AdminDashboard />} />

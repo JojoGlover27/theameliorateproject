@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-// Team collaborating around a table — hands and laptops, no identifiable faces.
-const TEAM_PHOTO =
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=70";
+import teamAsset from "@/assets/team-solidarity.jpg.asset.json";
+const TEAM_PHOTO = teamAsset.url;
 
 const TeamSection = () => (
   <section id="team" className="py-20 md:py-28 bg-background">
