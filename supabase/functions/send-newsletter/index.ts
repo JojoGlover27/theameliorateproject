@@ -13,6 +13,28 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const FROM = "The Ameliorate Project <info@ameliorateproject.org>";
+const UNSUB_ENDPOINT = `${SUPABASE_URL}/functions/v1/newsletter-unsubscribe`;
+
+const b64url = (buf: ArrayBuffer | Uint8Array) => {
+  const bytes = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
+  let s = "";
+  for (const b of bytes) s += String.fromCharCode(b);
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+};
+async function makeUnsubscribeToken(email: string): Promise<string> {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(SUPABASE_SERVICE_ROLE_KEY),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(email.toLowerCase()));
+  return `${b64url(new TextEncoder().encode(email.toLowerCase()))}.${b64url(sig)}`;
+}
+async function unsubscribeUrl(email: string) {
+  return `${UNSUB_ENDPOINT}?token=${await makeUnsubscribeToken(email)}`;
+}
 
 async function resend(path: string, init: RequestInit = {}) {
   const r = await fetch(`https://api.resend.com${path}`, {
