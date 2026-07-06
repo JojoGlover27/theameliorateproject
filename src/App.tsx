@@ -52,6 +52,7 @@ const App = () => (
             <Route path="/research/access-safety-anonymity-ghana" element={<NeedsAssessmentReport />} />
             <Route path="/research/anonymity-clinical-necessity" element={<AnonymityClinicalNecessity />} />
             <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
               <Route index element={<AdminDashboard />} />
