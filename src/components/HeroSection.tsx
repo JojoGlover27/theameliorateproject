@@ -69,8 +69,9 @@ const HeroSection = () => {
               alt="Cupped hands protecting a glowing digital padlock, symbolising safe and confidential digital health"
               width={1000}
               height={1000}
-              fetchPriority="high"
+              loading="eager"
               decoding="async"
+              {...({ fetchpriority: "high" } as any)}
               className="w-full max-w-md aspect-square object-cover rounded-2xl shadow-xl"
             />
           </motion.div>
