@@ -19,6 +19,7 @@ const Research = lazy(() => import("./pages/Research.tsx"));
 const NeedsAssessmentReport = lazy(() => import("./pages/research/NeedsAssessmentReport.tsx"));
 const AnonymityClinicalNecessity = lazy(() => import("./pages/research/AnonymityClinicalNecessity.tsx"));
 const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
+const Unsubscribed = lazy(() => import("./pages/Unsubscribed.tsx"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
