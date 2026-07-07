@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import heroAsset from "@/assets/hero-hands-lock.png.asset.json";
-const heroImage = heroAsset.url;
+import heroImage from "@/assets/hero-hands-lock.png";
+
 import { Button } from "@/components/ui/button";
 
 const rotating = [
