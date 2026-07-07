@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-import TEAM_PHOTO from "@/assets/team-solidarity.jpg";
+import TEAM_PHOTO from "@/assets/20260704_170327.jpg";
 
 
 const TeamSection = () => (
