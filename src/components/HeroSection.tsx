@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import heroImage from "@/assets/hero-hands-lock.png";
+import heroImage from "@/assets/file_00000000b79c71f4bc1f94b483860931.png";
 
 import { Button } from "@/components/ui/button";
 
