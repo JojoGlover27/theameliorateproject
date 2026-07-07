@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-import teamAsset from "@/assets/team-solidarity.jpg.asset.json";
-const TEAM_PHOTO = teamAsset.url;
+import TEAM_PHOTO from "@/assets/team-solidarity.jpg";
+
 
 const TeamSection = () => (
   <section id="team" className="py-20 md:py-28 bg-background">
