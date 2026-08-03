@@ -101,10 +101,16 @@ const Footer = () => (
         </div>
 
         <div>
+          <h4 className="font-semibold text-background mb-3 text-sm uppercase tracking-wider">Innovations</h4>
+          <ul className="space-y-2 text-sm mb-6">
+            <li><Link to="/synapse" className="hover:text-background transition-colors">Synapse</Link></li>
+            <li><Link to="/orenta" className="hover:text-background transition-colors">Orenta</Link></li>
+            <li><Link to="/digihub" className="hover:text-background transition-colors">DigiHub</Link></li>
+          </ul>
           <h4 className="font-semibold text-background mb-3 text-sm uppercase tracking-wider">Explore</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="/#about" className="hover:text-background transition-colors">About Us</a></li>
-            <li><a href="/#services" className="hover:text-background transition-colors">Our Services</a></li>
+            <li><a href="/#impact" className="hover:text-background transition-colors">Our Impact</a></li>
             <li><Link to="/get-involved" className="hover:text-background transition-colors">Get Involved</Link></li>
             <li><Link to="/research" className="hover:text-background transition-colors">Research &amp; Publications</Link></li>
             <li><Link to="/resources" className="hover:text-background transition-colors">Resources &amp; Downloads</Link></li>
