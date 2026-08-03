@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InnovationPageHero from "@/components/InnovationPageHero";
@@ -51,6 +52,12 @@ const features = [
 
 const Orenta = () => (
   <div className="min-h-screen">
+    <Helmet>
+      <title>Orenta — Evidence-Aware AI for Health & Rights | The Ameliorate Project</title>
+      <meta name="description" content="Orenta is a privacy-respecting AI companion offering trusted health knowledge, human rights guidance and research intelligence, with no profiling." />
+      <meta property="og:title" content="Orenta — Evidence-Aware AI for Health & Rights | The Ameliorate Project" />
+      <meta property="og:description" content="Orenta is a privacy-respecting AI companion offering trusted health knowledge, human rights guidance and research intelligence, with no profiling." />
+    </Helmet>
     <Navbar />
     <InnovationPageHero
       emoji="💜"

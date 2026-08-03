@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SynapseSection from "@/components/SynapseSection";
@@ -10,6 +11,12 @@ import synapseLogo from "@/assets/logo-synapse.png";
 
 const Synapse = () => (
   <div className="min-h-screen">
+    <Helmet>
+      <title>Synapse — Anonymous HIV Care Telemedicine | The Ameliorate Project</title>
+      <meta name="description" content="Synapse delivers anonymous, offline-first HIV prevention and care in Ghana: PrEP, PEP, ART, self-testing, mental wellness and discreet delivery." />
+      <meta property="og:title" content="Synapse — Anonymous HIV Care Telemedicine | The Ameliorate Project" />
+      <meta property="og:description" content="Synapse delivers anonymous, offline-first HIV prevention and care in Ghana: PrEP, PEP, ART, self-testing, mental wellness and discreet delivery." />
+    </Helmet>
     <Navbar />
     <InnovationPageHero
       emoji="❤️"

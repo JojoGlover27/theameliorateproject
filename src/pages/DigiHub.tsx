@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InnovationPageHero from "@/components/InnovationPageHero";
@@ -45,6 +46,12 @@ const modules = [
 
 const DigiHub = () => (
   <div className="min-h-screen">
+    <Helmet>
+      <title>DigiHub — Digital Safety & Cybersecurity Academy | The Ameliorate Project</title>
+      <meta name="description" content="DigiHub teaches device safety, secure communication, privacy and threat awareness to communities most targeted online in Ghana." />
+      <meta property="og:title" content="DigiHub — Digital Safety & Cybersecurity Academy | The Ameliorate Project" />
+      <meta property="og:description" content="DigiHub teaches device safety, secure communication, privacy and threat awareness to communities most targeted online in Ghana." />
+    </Helmet>
     <Navbar />
     <InnovationPageHero
       emoji="💙"
