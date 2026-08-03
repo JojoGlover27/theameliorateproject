@@ -6,7 +6,7 @@ import CTASection from "@/components/CTASection";
 import FaqSection from "@/components/FaqSection";
 import DonationSection from "@/components/DonationSection";
 import InnovationPageHero from "@/components/InnovationPageHero";
-import synapseLogo from "@/assets/synapse-logo.png.asset.json";
+import synapseLogo from "@/assets/logo-synapse.png";
 
 const Synapse = () => (
   <div className="min-h-screen">
@@ -16,7 +16,7 @@ const Synapse = () => (
       name="Synapse"
       tagline="Anonymous healthcare access"
       accent="hsl(var(--destructive))"
-      logo={synapseLogo.url}
+      logo={synapseLogo}
       description="Synapse is an offline-first telemedicine platform that delivers anonymous HIV prevention and care to LGBTQI+ communities, key populations and other marginalized populations across Ghana. Users can reach PrEP, PEP, ART, self-testing, mental wellness support and discreet delivery without walking into a facility and without exposing who they are."
       cta={{ label: "Open the Synapse prototype", href: "https://synapse-prototype.lovable.app/" }}
     />

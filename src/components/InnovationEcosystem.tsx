@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
-import synapseLogo from "@/assets/synapse-logo.png.asset.json";
-import orentaLogo from "@/assets/orenta-logo.jpg.asset.json";
-import digihubLogo from "@/assets/digihub-logo.png.asset.json";
+import synapseLogo from "@/assets/logo-synapse.png";
+import orentaLogo from "@/assets/logo-orenta.jpg";
+import digihubLogo from "@/assets/logo-digihub.png";
 
 export const innovations = [
   {
@@ -12,7 +12,7 @@ export const innovations = [
     emoji: "❤️",
     name: "Synapse",
     tagline: "Anonymous healthcare access",
-    logo: synapseLogo.url,
+    logo: synapseLogo,
     href: "/synapse",
     ring: "hsl(var(--destructive))",
     summary:
@@ -24,7 +24,7 @@ export const innovations = [
     emoji: "💜",
     name: "Orenta",
     tagline: "Evidence-aware AI companion",
-    logo: orentaLogo.url,
+    logo: orentaLogo,
     href: "/orenta",
     ring: "hsl(var(--primary))",
     summary:
@@ -36,7 +36,7 @@ export const innovations = [
     emoji: "💙",
     name: "DigiHub",
     tagline: "Digital safety academy",
-    logo: digihubLogo.url,
+    logo: digihubLogo,
     href: "/digihub",
     ring: "hsl(var(--brand-blue))",
     summary:

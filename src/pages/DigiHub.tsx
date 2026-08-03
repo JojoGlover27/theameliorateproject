@@ -6,7 +6,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import { Smartphone, Lock, EyeOff, AlertTriangle, Users, GraduationCap } from "lucide-react";
-import digihubLogo from "@/assets/digihub-logo.png.asset.json";
+import digihubLogo from "@/assets/logo-digihub.png";
 
 const accent = "hsl(var(--brand-blue))";
 
@@ -51,7 +51,7 @@ const DigiHub = () => (
       name="DigiHub"
       tagline="Digital safety academy"
       accent={accent}
-      logo={digihubLogo.url}
+      logo={digihubLogo}
       description="DigiHub is our cybersecurity and digital rights academy. It teaches the people most targeted online, LGBTQI+ communities, key populations and other marginalized populations, how to protect their devices, their identities and their conversations from surveillance, blackmail and exposure."
     />
 

@@ -6,7 +6,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 import { BookOpen, Scale, Search, ShieldOff, MessageCircle, Sparkles } from "lucide-react";
-import orentaLogo from "@/assets/orenta-logo.jpg.asset.json";
+import orentaLogo from "@/assets/logo-orenta.jpg";
 
 const accent = "hsl(var(--primary))";
 
@@ -57,7 +57,7 @@ const Orenta = () => (
       name="Orenta"
       tagline="Evidence-aware AI companion"
       accent={accent}
-      logo={orentaLogo.url}
+      logo={orentaLogo}
       description="Orenta is a privacy-respecting AI companion built for people who need reliable answers about health, rights and services but cannot risk asking openly. It combines trusted health knowledge, human rights guidance and research intelligence in language anyone can act on."
       cta={{ label: "Try the Orenta prototype", href: "https://orenta-ai-prototype.lovable.app" }}
     />
