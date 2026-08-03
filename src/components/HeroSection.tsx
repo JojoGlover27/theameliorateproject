@@ -1,10 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import heroImage from "@/assets/file_00000000b79c71f4bc1f94b483860931.png";
+
 import { Button } from "@/components/ui/button";
 
-const rotating = ["Health", "Rights", "Digital Safety", "Dignity"];
+const rotating = [
+  "You Are",
+  "You Need It",
+  "You're Safe",
+  "Community Finds You",
+];
 
 const HeroSection = () => {
   const [i, setI] = useState(0);
@@ -26,11 +31,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="inline-block mb-5 rounded-full border border-primary/25 bg-background/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-              Privacy-first innovation from Ghana
-            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground mb-6">
-              Privacy-First Innovation for{" "}
+              Safe, Anonymous Access to HIV Care — Right Where{" "}
               <span className="relative inline-block align-baseline">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -46,25 +48,15 @@ const HeroSection = () => {
                 </AnimatePresence>
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-3 leading-relaxed">
-              We build technology, knowledge and protection systems that remove barriers for LGBTQI+ communities, key
-              populations and other marginalized populations across Ghana. Our innovations work anonymously, offline and
-              on the terms of the people who use them.
+            <p className="text-lg md:text-xl text-muted-foreground mb-2 leading-relaxed">
+              The Ameliorate Project empowers hidden LGBTQI+ communities, key populations, other marginalised populations, lost-to-follow-up individuals, and people who avoid traditional health facilities across Ghana with anonymous, confidential telemedicine for PrEP, PEP, ART, mental wellness, and ongoing support.
             </p>
             <p className="text-lg md:text-xl text-primary italic mb-8 leading-relaxed">
-              Better, Without Barriers.
+              No Judgement, No Exposure, Just Care.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Button size="lg" className="rounded-full text-base px-6" asChild>
-                <Link to="/synapse">❤️ Explore Synapse</Link>
-              </Button>
-              <Button size="lg" variant="secondary" className="rounded-full text-base px-6" asChild>
-                <Link to="/orenta">💜 Meet Orenta</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-base px-6" asChild>
-                <Link to="/digihub">💙 Visit DigiHub</Link>
-              </Button>
-            </div>
+            <Button variant="default" size="lg" className="rounded-md text-base px-8" asChild>
+              <a href="#about">Learn More</a>
+            </Button>
           </motion.div>
           <motion.div
             className="flex justify-center"
@@ -74,7 +66,7 @@ const HeroSection = () => {
           >
             <img
               src={heroImage}
-              alt="Cupped hands protecting a glowing digital padlock, symbolising safe and confidential digital innovation"
+              alt="Cupped hands protecting a glowing digital padlock, symbolising safe and confidential digital health"
               width={1000}
               height={1000}
               loading="eager"

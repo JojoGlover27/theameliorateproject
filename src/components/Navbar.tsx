@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, Heart } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import ameliorateLogo from "@/assets/ameliorate-logo.png";
-import { Button } from "@/components/ui/button";
-import { useDonate } from "@/components/DonateProvider";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,15 +9,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const innovationLinks = [
-  { label: "❤️ Synapse", href: "/synapse" },
-  { label: "💜 Orenta", href: "/orenta" },
-  { label: "💙 DigiHub", href: "/digihub" },
-];
-
 const primaryLinks = [
   { label: "About Us", href: "/#about" },
-  { label: "Impact", href: "/#impact" },
+  { label: "Our Services", href: "/#services" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -30,12 +22,11 @@ const moreLinks = [
   { label: "Research & Publications", href: "/research" },
   { label: "Resources & Information", href: "/resources" },
   { label: "Media", href: "/media" },
-  { label: "Privacy Commitment", href: "/privacy" },
+  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { openDonate } = useDonate();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -47,21 +38,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-7">
-          <li>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors outline-none">
-                Innovations <ChevronDown size={14} />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="bg-background border-border">
-                {innovationLinks.map((l) => (
-                  <DropdownMenuItem key={l.href} asChild>
-                    <Link to={l.href} className="cursor-pointer">{l.label}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </li>
+        <ul className="hidden lg:flex items-center gap-8">
           {primaryLinks.map((l) => (
             <li key={l.href}>
               {l.href.includes("#") ? (
@@ -89,12 +66,6 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           </li>
-          <li>
-            <Button size="sm" className="rounded-full px-5" onClick={openDonate}>
-              <Heart className="mr-1.5 h-3.5 w-3.5" />
-              Donate
-            </Button>
-          </li>
         </ul>
 
         <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Toggle menu">
@@ -105,22 +76,6 @@ const Navbar = () => {
       {open && (
         <div className="lg:hidden bg-background border-b border-border px-6 pb-6">
           <ul className="flex flex-col gap-4">
-            <li>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground/70 mb-2">Innovations</p>
-              <ul className="flex flex-col gap-3 pl-2">
-                {innovationLinks.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      to={l.href}
-                      onClick={() => setOpen(false)}
-                      className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
             {primaryLinks.map((l) => (
               <li key={l.href}>
                 {l.href.includes("#") ? (
@@ -157,18 +112,6 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-            </li>
-            <li>
-              <Button
-                className="w-full rounded-full"
-                onClick={() => {
-                  setOpen(false);
-                  openDonate();
-                }}
-              >
-                <Heart className="mr-1.5 h-3.5 w-3.5" />
-                Donate
-              </Button>
             </li>
           </ul>
         </div>

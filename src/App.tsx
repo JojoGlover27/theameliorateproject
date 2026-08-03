@@ -6,11 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import BackToTop from "./components/BackToTop.tsx";
-import { DonateProvider } from "./components/DonateProvider";
 
-const Synapse = lazy(() => import("./pages/Synapse.tsx"));
-const Orenta = lazy(() => import("./pages/Orenta.tsx"));
-const DigiHub = lazy(() => import("./pages/DigiHub.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const OurStory = lazy(() => import("./pages/OurStory.tsx"));
@@ -42,13 +38,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <DonateProvider>
         <Suspense fallback={<Fallback />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/synapse" element={<Synapse />} />
-            <Route path="/orenta" element={<Orenta />} />
-            <Route path="/digihub" element={<DigiHub />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/blog" element={<Blog />} />
@@ -74,7 +66,6 @@ const App = () => (
           </Routes>
         </Suspense>
         <BackToTop />
-        </DonateProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
