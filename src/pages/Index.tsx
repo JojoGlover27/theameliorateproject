@@ -1,15 +1,14 @@
 import Navbar from "@/components/Navbar";
 import RotatingKeywordsBar from "@/components/RotatingKeywordsBar";
 import HeroSection from "@/components/HeroSection";
+import InnovationEcosystem from "@/components/InnovationEcosystem";
 import AboutSection from "@/components/AboutSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
 import MissionSection from "@/components/MissionSection";
-import SynapseSection from "@/components/SynapseSection";
-import ServicesSection from "@/components/ServicesSection";
-import CTASection from "@/components/CTASection";
+import ImpactSection from "@/components/ImpactSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import DonationSection from "@/components/DonationSection";
-import FaqSection from "@/components/FaqSection";
+import PartnersSection from "@/components/PartnersSection";
+import SupportOurWork from "@/components/SupportOurWork";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -20,15 +19,14 @@ const Index = () => (
     <Navbar />
     <RotatingKeywordsBar />
     <HeroSection />
+    <InnovationEcosystem />
     <AboutSection />
     <WhyWeExistSection />
     <MissionSection />
-    <SynapseSection />
-    <ServicesSection />
-    <CTASection />
+    <ImpactSection />
     <TestimonialsSection />
-    <DonationSection />
-    <FaqSection />
+    <PartnersSection />
+    <SupportOurWork />
     <TeamSection />
     <ContactSection />
     <NewsletterSection />
