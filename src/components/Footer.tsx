@@ -66,7 +66,7 @@ const Footer = () => (
             <h3 className="font-serif text-xl text-background">The Ameliorate Project</h3>
           </div>
           <p className="text-sm leading-relaxed max-w-md">
-            Safe, anonymous, digital-first HIV care for LGBTQI+ communities, key populations, and other marginalised populations in Ghana.
+            Privacy-first innovation for health, rights and digital safety, built with and for LGBTQI+ communities, key populations and other marginalised populations in Ghana.
           </p>
 
           <ul className="mt-5 space-y-2 text-sm">
@@ -101,10 +101,16 @@ const Footer = () => (
         </div>
 
         <div>
+          <h4 className="font-semibold text-background mb-3 text-sm uppercase tracking-wider">Innovations</h4>
+          <ul className="space-y-2 text-sm mb-6">
+            <li><Link to="/synapse" className="hover:text-background transition-colors">Synapse</Link></li>
+            <li><Link to="/orenta" className="hover:text-background transition-colors">Orenta</Link></li>
+            <li><Link to="/digihub" className="hover:text-background transition-colors">DigiHub</Link></li>
+          </ul>
           <h4 className="font-semibold text-background mb-3 text-sm uppercase tracking-wider">Explore</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="/#about" className="hover:text-background transition-colors">About Us</a></li>
-            <li><a href="/#services" className="hover:text-background transition-colors">Our Services</a></li>
+            <li><a href="/#impact" className="hover:text-background transition-colors">Our Impact</a></li>
             <li><Link to="/get-involved" className="hover:text-background transition-colors">Get Involved</Link></li>
             <li><Link to="/research" className="hover:text-background transition-colors">Research &amp; Publications</Link></li>
             <li><Link to="/resources" className="hover:text-background transition-colors">Resources &amp; Downloads</Link></li>
@@ -120,7 +126,7 @@ const Footer = () => (
             <li><a href="/#faq" className="hover:text-background transition-colors">FAQ</a></li>
             <li><a href="/#donate" className="hover:text-background transition-colors">Donate</a></li>
             <li><Link to="/newsletter" className="hover:text-background transition-colors">Newsletter</Link></li>
-            <li><Link to="/privacy" className="hover:text-background transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/privacy" className="hover:text-background transition-colors">Privacy Commitment</Link></li>
           </ul>
         </div>
       </div>
