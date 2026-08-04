@@ -1,12 +1,10 @@
 import Navbar from "@/components/Navbar";
 import RotatingKeywordsBar from "@/components/RotatingKeywordsBar";
 import HeroSection from "@/components/HeroSection";
+import EcosystemSection from "@/components/EcosystemSection";
 import AboutSection from "@/components/AboutSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
 import MissionSection from "@/components/MissionSection";
-import SynapseSection from "@/components/SynapseSection";
-import ServicesSection from "@/components/ServicesSection";
-import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import DonationSection from "@/components/DonationSection";
 import FaqSection from "@/components/FaqSection";
@@ -20,12 +18,10 @@ const Index = () => (
     <Navbar />
     <RotatingKeywordsBar />
     <HeroSection />
+    <EcosystemSection />
     <AboutSection />
-    <WhyWeExistSection />
     <MissionSection />
-    <SynapseSection />
-    <ServicesSection />
-    <CTASection />
+    <WhyWeExistSection />
     <TestimonialsSection />
     <DonationSection />
     <FaqSection />
@@ -37,3 +33,4 @@ const Index = () => (
 );
 
 export default Index;
+

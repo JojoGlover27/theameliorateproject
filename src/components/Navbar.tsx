@@ -11,12 +11,14 @@ import {
 
 const primaryLinks = [
   { label: "About Us", href: "/#about" },
-  { label: "Our Services", href: "/#services" },
+  { label: "Synapse", href: "/synapse" },
+  { label: "DigiHub", href: "/digihub" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Contact", href: "/#contact" },
 ];
 
 const moreLinks = [
+  { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
   { label: "Research & Publications", href: "/research" },
