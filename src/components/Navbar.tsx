@@ -108,13 +108,25 @@ const Navbar = () => {
               <ul className="flex flex-col gap-3 pl-2">
                 {moreLinks.map((l) => (
                   <li key={l.href}>
-                    <Link
-                      to={l.href}
-                      onClick={() => setOpen(false)}
-                      className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {l.label}
-                    </Link>
+                    {l.external ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setOpen(false)}
+                        className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={l.href}
+                        onClick={() => setOpen(false)}
+                        className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
