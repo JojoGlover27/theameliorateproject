@@ -23,7 +23,7 @@ const WhyWeExistSection = () => (
   <section className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-4 md:px-8 max-w-4xl">
       <AnimatedSection>
-        <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4 text-center">Why We Exist</h2>
+        <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4 text-center">The Reality that Inspired Our Innovation</h2>
         <p className="text-center text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
           In Ghana, HIV disproportionately affects LGBTQI+ communities, key populations, and other marginalised populations, yet stigma, confidentiality concerns, and limited inclusive services prevent many from accessing care.
         </p>

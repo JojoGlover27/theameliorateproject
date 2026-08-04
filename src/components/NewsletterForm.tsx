@@ -29,7 +29,7 @@ const NewsletterForm = ({ source, variant = "hero", buttonLabel = "Subscribe", c
       });
       if (error || (data as any)?.error) throw new Error((data as any)?.error ?? error?.message ?? "error");
       setStatus("success");
-      setMessage("Thank you for subscribing. Please check your inbox for a confirmation email from info@ameliorateproject.org.");
+      setMessage("Almost there. We have sent a confirmation link to your inbox, please click it to complete your subscription.");
       setEmail("");
     } catch (err) {
       setStatus("error");

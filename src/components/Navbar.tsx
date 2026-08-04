@@ -11,12 +11,14 @@ import {
 
 const primaryLinks = [
   { label: "About Us", href: "/#about" },
-  { label: "Our Services", href: "/#services" },
+  { label: "Synapse", href: "/synapse" },
+  { label: "DigiHub", href: "/digihub" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Contact", href: "/#contact" },
 ];
 
-const moreLinks = [
+const moreLinks: { label: string; href: string; external?: boolean }[] = [
+  { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
   { label: "Research & Publications", href: "/research" },
@@ -60,7 +62,11 @@ const Navbar = () => {
               <DropdownMenuContent align="end" className="bg-background border-border">
                 {moreLinks.map((l) => (
                   <DropdownMenuItem key={l.href} asChild>
-                    <Link to={l.href} className="cursor-pointer">{l.label}</Link>
+                    {l.external ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="cursor-pointer">{l.label}</a>
+                    ) : (
+                      <Link to={l.href} className="cursor-pointer">{l.label}</Link>
+                    )}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -102,13 +108,25 @@ const Navbar = () => {
               <ul className="flex flex-col gap-3 pl-2">
                 {moreLinks.map((l) => (
                   <li key={l.href}>
-                    <Link
-                      to={l.href}
-                      onClick={() => setOpen(false)}
-                      className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {l.label}
-                    </Link>
+                    {l.external ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setOpen(false)}
+                        className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={l.href}
+                        onClick={() => setOpen(false)}
+                        className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
