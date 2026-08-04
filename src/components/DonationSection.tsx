@@ -1,20 +1,32 @@
-import { Heart, Shield, Banknote } from "lucide-react";
+import { Heart, Shield, Banknote, Sparkles, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const funds = [
   {
-    icon: Shield,
-    title: "Synapse Development & Security Fund",
+    icon: Heart,
+    title: "Synapse Fund",
     description:
-      "Synapse is the backbone of The Ameliorate Project, a secure, anonymous telemedicine platform built specifically for LGBTQI+ individuals in Ghana. Your donation to this fund supports the ongoing development of end-to-end encryption, anonymous user infrastructure, and platform maintenance. Every contribution ensures that Synapse remains a safe digital space where users can access HIV care without fear of exposure or data breaches. Help us build the technology that keeps our community safe.",
+      "Support anonymous healthcare, telemedicine, HIV prevention, treatment and discreet care services.",
   },
   {
-    icon: Heart,
-    title: "Synapse Access Fund",
+    icon: Sparkles,
+    title: "Orenta Fund",
     description:
-      "All Synapse services are completely free, and the app is built to work offline so connectivity is never a barrier. What still stands in the way for many HIV-positive LGBTQI+ individuals in rural Ghana is access to a smartphone. The Synapse Access Fund closes that gap by providing devices to community members who need them, so every person, no matter how remote, can connect to Synapse and stay engaged in care. Your gift puts a private, life-saving tool directly into the hands of our most vulnerable community members.",
+      "Support evidence-aware AI, trusted knowledge, research integration and responsible AI development.",
+  },
+  {
+    icon: Shield,
+    title: "DigiHub Fund",
+    description:
+      "Support cybersecurity education, Digital Rights & Safety Clinics, learning resources and digital inclusion.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation Fund",
+    description:
+      "Support The Ameliorate Project's overall innovation ecosystem, helping us design, build and scale new privacy-first solutions where they are needed most.",
   },
 ];
 
@@ -22,11 +34,9 @@ const DonationSection = () => (
   <section id="donate" className="py-16 md:py-24 bg-secondary">
     <div className="container mx-auto px-4 md:px-8 max-w-4xl">
       <AnimatedSection>
-        <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4 text-center">
-          Support The Ameliorate Project
-        </h2>
+        <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4 text-center">Support Our Work</h2>
         <p className="text-center text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-          Every donation fuels anonymous, stigma-free HIV care for LGBTQI+ communities in Ghana. Choose a fund to support:
+          Every contribution helps us build and sustain privacy-first innovations that improve lives. Your support allows us to expand access to healthcare, trusted knowledge, digital rights education and safer digital participation for communities too often left behind.
         </p>
       </AnimatedSection>
 

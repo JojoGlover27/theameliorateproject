@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 
 const aims = [
-  { icon: Heart, text: "Reduce fear and stigma that keeps people from seeking care" },
-  { icon: Shield, text: "Increase timely access to prevention and treatment" },
-  { icon: Users, text: "Support adherence and overall wellbeing through discreet, reliable tools" },
-  { icon: BookOpen, text: "Empower hidden communities with knowledge, resources, and connection" },
+  { icon: Heart, text: "Expand access to healthcare for people excluded by stigma and fear" },
+  { icon: BookOpen, text: "Make trusted knowledge clear, accessible and safe to seek" },
+  { icon: Shield, text: "Strengthen digital rights, cybersecurity and safer digital participation" },
+  { icon: Users, text: "Design with communities, grounded in lived experience and real needs" },
 ];
 
 const MissionSection = () => (
@@ -14,15 +14,14 @@ const MissionSection = () => (
     <div className="container mx-auto px-4 md:px-8 max-w-3xl">
       <AnimatedSection>
         <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-6">Our Mission</h2>
-        <p className="text-lg text-muted-foreground mb-4 leading-relaxed">Our mission is simple yet powerful:</p>
         <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
-          To ensure that every LGBTQI+ person, key population, and other marginalised individuals in Ghana can access life-saving HIV services, PrEP, PEP, ART, testing, counseling, and support, anonymously, safely, and without judgment.
+          Our mission is to build privacy-first innovations that expand access to healthcare, trusted knowledge, digital rights and cybersecurity for LGBTQI+ communities, key populations and other marginalized populations in Ghana.
         </p>
-        <p className="text-lg font-semibold text-secondary-foreground mb-8">
-          We believe health is a right, not a risk.
+        <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+          We combine technology, research, community insight and human-centred design to remove barriers created by stigma, surveillance, misinformation and digital exclusion.
         </p>
-        <p className="text-muted-foreground mb-6">
-          By building an integrated, anonymity-first digital health ecosystem, we aim to:
+        <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+          By building practical, trusted and privacy-respecting solutions, we are creating a future where people can access services, knowledge and opportunities safely, confidently and without barriers.
         </p>
       </AnimatedSection>
       <motion.div
@@ -39,11 +38,6 @@ const MissionSection = () => (
           </motion.div>
         ))}
       </motion.div>
-      <AnimatedSection>
-        <p className="mt-8 text-muted-foreground leading-relaxed">
-          We work quietly but relentlessly, because your health matters, and your privacy is non-negotiable.
-        </p>
-      </AnimatedSection>
     </div>
   </section>
 );

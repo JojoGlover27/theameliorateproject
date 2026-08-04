@@ -1,16 +1,24 @@
 const keywords = [
   "Synapse",
+  "Orenta",
+  "DigiHub",
   "Telemedicine",
   "PrEP / PEP",
   "ART",
   "Mental Health",
   "Privacy First",
   "Anonymous Care",
+  "Cybersecurity",
+  "Digital Rights",
+  "Evidence-Aware AI",
   "Self Testing",
+  "Digital Safety",
   "Affirming Support",
   "End to End Encrypted",
   "Discreet Delivery",
+  "Digital Literacy",
   "Stigma Free",
+  "Better, Without Barriers",
 ];
 
 const RotatingKeywordsBar = () => {
