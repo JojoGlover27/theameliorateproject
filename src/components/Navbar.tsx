@@ -17,7 +17,7 @@ const primaryLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
-const moreLinks = [
+const moreLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
