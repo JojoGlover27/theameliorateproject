@@ -18,7 +18,24 @@ const rl = new Map<string, number[]>();
 const RL_WINDOW_MS = 60_000;
 const RL_MAX = 5;
 
-let cachedAudienceId: string | null = null;
+const b64url = (buf: ArrayBuffer | Uint8Array) => {
+  const bytes = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
+  let str = "";
+  for (const b of bytes) str += String.fromCharCode(b);
+  return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+};
+
+async function confirmToken(email: string): Promise<string> {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(SUPABASE_SERVICE_ROLE_KEY + ":confirm"),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(email.toLowerCase()));
+  return `${b64url(new TextEncoder().encode(email.toLowerCase()))}.${b64url(sig)}`;
+}
 
 async function resend(path: string, init: RequestInit = {}) {
   const r = await fetch(`https://api.resend.com${path}`, {
@@ -49,20 +66,21 @@ async function getOrCreateAudience(): Promise<string> {
   return (cachedAudienceId = created.body.id);
 }
 
-const welcomeHtml = () => `<!doctype html><html><body style="margin:0;padding:0;background:#f6f4fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1a1030;">
+const confirmHtml = (link: string) => `<!doctype html><html><body style="margin:0;padding:0;background:#f6f4fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1a1030;">
 <div style="max-width:560px;margin:0 auto;padding:32px 24px;">
   <div style="background:#3C14A0;padding:28px 24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:22px;font-weight:600;">Welcome to The Ameliorate Project</h1>
-    <p style="color:#F0A028;margin:8px 0 0;font-size:14px;letter-spacing:1px;text-transform:uppercase;">Newsletter</p>
+    <h1 style="color:#fff;margin:0;font-size:22px;font-weight:600;">Please confirm your subscription</h1>
+    <p style="color:#F0A028;margin:8px 0 0;font-size:14px;letter-spacing:1px;text-transform:uppercase;">The Ameliorate Project</p>
   </div>
   <div style="background:#ffffff;padding:28px 24px;border-radius:0 0 12px 12px;line-height:1.6;font-size:15px;">
-    <p>Thank you for subscribing to updates from The Ameliorate Project.</p>
-    <p>Each month, we share our latest research, community health insights, advocacy updates, and news from the development of Synapse, our privacy-first digital health platform for LGBTQI+ people and people living with HIV in Ghana.</p>
-    <p>We are glad you are here.</p>
-    <p style="margin-top:24px;"><strong>The Ameliorate Project Team</strong><br/>
-    <a href="https://ameliorateproject.org" style="color:#3C14A0;">ameliorateproject.org</a></p>
+    <p>You asked to receive updates from The Ameliorate Project. Confirm your email address to complete your subscription.</p>
+    <p style="text-align:center;margin:28px 0;">
+      <a href="${link}" style="background:#3C14A0;color:#ffffff;text-decoration:none;padding:13px 26px;border-radius:8px;font-weight:600;display:inline-block;">Confirm subscription</a>
+    </p>
+    <p style="font-size:13px;color:#6b6580;">If the button does not work, copy this link into your browser:<br/>
+    <a href="${link}" style="color:#3C14A0;word-break:break-all;">${link}</a></p>
+    <p style="font-size:13px;color:#6b6580;">If you did not request this, simply ignore this email. Nothing will be sent to you.</p>
   </div>
-  <p style="text-align:center;color:#6b6580;font-size:12px;margin-top:20px;">You can unsubscribe at any time using the link in any email we send.</p>
 </div></body></html>`;
 
 function isValidEmail(e: string) {
@@ -100,45 +118,31 @@ Deno.serve(async (req) => {
       });
     }
 
-    const audienceId = await getOrCreateAudience();
+    // Double opt-in: store as pending and email a confirmation link.
+    // The subscriber is only added to the Resend audience after confirming.
+    const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
+    const { data: existing } = await admin
+      .from("subscribers")
+      .select("status")
+      .eq("email", email)
+      .maybeSingle();
 
-    const add = await resend(`/audiences/${audienceId}/contacts`, {
-      method: "POST",
-      body: JSON.stringify({ email, unsubscribed: false, first_name: source }),
-    });
-
-    if (!add.ok && add.status !== 409 && add.body?.name !== "validation_error") {
-      console.error("resend_add_failed", add.status, add.body);
-    }
-
-    const alreadyExists = add.status === 409 || add.body?.name === "validation_error";
-    const resendContactId = add.body?.id ?? null;
-
-    // Mirror to local subscribers table (service role bypasses RLS)
-    try {
-      const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
-      await admin.from("subscribers").upsert(
-        {
-          email,
-          source,
-          status: "active",
-          resend_contact_id: resendContactId,
-          unsubscribed_at: null,
-        },
-        { onConflict: "email" },
-      );
-    } catch (mirrorErr) {
-      console.error("subscriber_mirror_failed", mirrorErr);
-    }
+    const alreadyExists = existing?.status === "active";
 
     if (!alreadyExists) {
+      await admin.from("subscribers").upsert(
+        { email, source, status: "pending", unsubscribed_at: null },
+        { onConflict: "email" },
+      );
+
+      const link = `${SUPABASE_URL}/functions/v1/newsletter-confirm?token=${await confirmToken(email)}`;
       const send = await resend("/emails", {
         method: "POST",
         body: JSON.stringify({
           from: FROM,
           to: [email],
-          subject: "Welcome to The Ameliorate Project Newsletter",
-          html: welcomeHtml(),
+          subject: "Please confirm your newsletter subscription",
+          html: confirmHtml(link),
         }),
       });
       if (!send.ok) console.error("resend_send_failed", send.status, send.body);
