@@ -62,7 +62,11 @@ const Navbar = () => {
               <DropdownMenuContent align="end" className="bg-background border-border">
                 {moreLinks.map((l) => (
                   <DropdownMenuItem key={l.href} asChild>
-                    <Link to={l.href} className="cursor-pointer">{l.label}</Link>
+                    {l.external ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="cursor-pointer">{l.label}</a>
+                    ) : (
+                      <Link to={l.href} className="cursor-pointer">{l.label}</Link>
+                    )}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
