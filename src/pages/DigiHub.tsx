@@ -29,7 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import digihubLogo from "@/assets/digihub-logo.png.asset.json";
+import digihubLogo from "@/assets/digihub-logo.png";
 
 const courses = [
   {
@@ -207,7 +207,7 @@ const DigiHub = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <img
-              src={digihubLogo.url}
+              src={digihubLogo}
               alt="DigiHub logo"
               className="h-20 w-20 object-contain mx-auto mb-6"
               loading="eager"

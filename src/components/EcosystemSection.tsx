@@ -5,8 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import synapseLogo from "@/assets/synapse-logo.png";
-import orentaLogo from "@/assets/orenta-logo.png.asset.json";
-import digihubLogo from "@/assets/digihub-logo.png.asset.json";
+import orentaLogo from "@/assets/orenta-logo.png";
+import digihubLogo from "@/assets/digihub-logo.png";
 
 type Item = {
   name: string;
@@ -30,7 +30,7 @@ const items: Item[] = [
   },
   {
     name: "Orenta",
-    logo: orentaLogo.url,
+    logo: orentaLogo,
     tagline: "Find Clarity. Navigate Safely.",
     description:
       "A privacy-first evidence-aware AI that helps people understand health, human rights, digital rights, research and public policy through trusted evidence, multiple perspectives and plain-language explanations. Orenta transforms complex information into clear, accessible knowledge people can trust.",
@@ -39,7 +39,7 @@ const items: Item[] = [
   },
   {
     name: "DigiHub",
-    logo: digihubLogo.url,
+    logo: digihubLogo,
     tagline: "Learn. Protect. Thrive.",
     description:
       "A privacy-first digital rights and cybersecurity learning platform helping individuals and communities build safer digital lives through practical education, trusted resources, Digital Action Plans, Digital Rights & Safety Clinics, secure technology recommendations and threat awareness.",

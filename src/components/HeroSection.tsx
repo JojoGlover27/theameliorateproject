@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
-import ecosystemImage from "@/assets/ecosystem-ring.png.asset.json";
+import ecosystemImage from "@/assets/ecosystem-ring.jpg";
 
 const HeroSection = () => (
   <section
@@ -66,7 +66,7 @@ const HeroSection = () => (
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         >
           <img
-            src={ecosystemImage.url}
+            src={ecosystemImage}
             alt="The Ameliorate Project innovation ecosystem: Synapse, Orenta and DigiHub connected around the Ameliorate Project logo"
             width={1254}
             height={1121}
