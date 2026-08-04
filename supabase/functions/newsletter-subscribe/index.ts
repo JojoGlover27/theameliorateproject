@@ -24,6 +24,8 @@ const b64url = (buf: ArrayBuffer | Uint8Array) => {
   for (const b of bytes) str += String.fromCharCode(b);
   return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 };
+let cachedAudienceId: string | null = null;
+
 
 async function confirmToken(email: string): Promise<string> {
   const key = await crypto.subtle.importKey(
