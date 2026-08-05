@@ -48,8 +48,13 @@ const WhyWeExistSection = () => (
           </motion.div>
         ))}
       </motion.div>
-      <p className="text-center text-xs text-muted-foreground mb-12">
+      <p className="text-center text-xs text-muted-foreground mb-8">
         UNAIDS, Ghana AIDS Commission, NACP 2023–2024 reports
+      </p>
+      <p className="text-center text-muted-foreground text-base md:text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
+        The barriers preventing people from accessing HIV care are often the same barriers preventing safe
+        participation online. Fear of stigma, discrimination, surveillance, and unwanted disclosure exists both
+        offline and online, making digital safety an essential part of community wellbeing.
       </p>
 
       <AnimatedSection>
