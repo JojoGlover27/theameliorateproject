@@ -1,516 +1,490 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
-  PlayCircle,
-  Download,
-  GraduationCap,
-  Activity,
+  Shield,
   Lock,
-  Smartphone,
-  Eye,
+  GraduationCap,
+  Megaphone,
   Users,
+  Scale,
+  BookOpen,
+  Smartphone,
+  PlayCircle,
   AlertTriangle,
-  TrendingUp,
-  FileText,
+  Newspaper,
+  Download,
+  ClipboardCheck,
+  Sparkles,
+  AppWindow,
+  CalendarDays,
+  Award,
+  Target,
+  ArrowRight,
   CheckCircle2,
+  Eye,
+  HeartHandshake,
 } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NewsletterForm from "@/components/NewsletterForm";
+import ThreatMap from "@/components/digihub/ThreatMap";
+import AskOrenta from "@/components/digihub/AskOrenta";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import digihubLogo from "@/assets/digihub-logo.png";
+import { alerts, badges, challenge, clinicEvents, news, secureApps, videos } from "@/data/digihub";
+import { getScore, PrivacyScoreResult } from "@/lib/digihub-store";
 
-const courses = [
-  {
-    icon: Lock,
-    level: "Beginner",
-    title: "Digital Safety Foundations",
-    lessons: 8,
-    minutes: 55,
-    blurb:
-      "Passwords, passphrases, two-factor authentication and account recovery, explained without jargon.",
-  },
-  {
-    icon: Smartphone,
-    level: "Beginner",
-    title: "Safer Phones, Safer Lives",
-    lessons: 6,
-    minutes: 40,
-    blurb:
-      "Lock screens, app permissions, backups, encrypted messaging and what to do if a device is seized or lost.",
-  },
-  {
-    icon: Eye,
-    level: "Intermediate",
-    title: "Privacy & Surveillance Awareness",
-    lessons: 7,
-    minutes: 62,
-    blurb:
-      "How data trails form, how profiling works, and practical ways to reduce your visible footprint online.",
-  },
-  {
-    icon: AlertTriangle,
-    level: "Intermediate",
-    title: "Blackmail, Catfishing & Online Entrapment",
-    lessons: 9,
-    minutes: 74,
-    blurb:
-      "Recognising entrapment patterns targeting LGBTQI+ people, safe dating practices and evidence preservation.",
-  },
-  {
-    icon: ShieldCheck,
-    level: "Advanced",
-    title: "Incident Response & Digital Action Plans",
-    lessons: 10,
-    minutes: 90,
-    blurb:
-      "Build a personal Digital Action Plan: threat modelling, escalation paths, trusted contacts and recovery steps.",
-  },
-  {
-    icon: Users,
-    level: "Advanced",
-    title: "Community Digital Rights Advocacy",
-    lessons: 6,
-    minutes: 58,
-    blurb:
-      "Ghanaian and regional digital rights law, documenting violations, and advocating safely as a community.",
-  },
+const journey = [
+  { icon: ClipboardCheck, title: "Take Privacy Score", sub: "Know your risk level", to: "/digihub/privacy-score" },
+  { icon: Sparkles, title: "Ask Orenta", sub: "Get instant answers", to: "#ask-orenta" },
+  { icon: AppWindow, title: "Explore Secure Apps", sub: "Find trusted tools", to: "/digihub/apps" },
+  { icon: Users, title: "Join the Clinics", sub: "Workshops & cohorts", to: "/digihub/clinics" },
+  { icon: Target, title: "Create Action Plan", sub: "Personalised for you", to: "/digihub/action-plan" },
 ];
 
-const videos = [
-  { title: "Set up a strong passphrase in 3 minutes", duration: "3:12", topic: "Accounts" },
-  { title: "Turning on two-factor authentication", duration: "4:40", topic: "Accounts" },
-  { title: "Locking down your phone before you travel", duration: "6:05", topic: "Devices" },
-  { title: "Spotting a catfish profile", duration: "7:22", topic: "Threats" },
-  { title: "Encrypted messaging, step by step", duration: "5:18", topic: "Messaging" },
-  { title: "What to do in the first hour after a breach", duration: "8:47", topic: "Response" },
+const capabilities = [
+  { icon: Scale, title: "Digital Rights", blurb: "Understand your rights online and offline.", to: "/digihub/digital-rights", tone: "text-primary bg-primary/10" },
+  { icon: ShieldCheck, title: "Cybersecurity", blurb: "Practical tools and training to stay safe online.", to: "/digihub/cybersecurity", tone: "text-brand-blue bg-brand-blue/10" },
+  { icon: Lock, title: "Privacy Guides", blurb: "Step-by-step guides to protect your privacy.", to: "/digihub/privacy-guides", tone: "text-brand-magenta bg-brand-magenta/10" },
+  { icon: Smartphone, title: "Secure Apps You Can Trust", blurb: "Curated list of privacy-friendly apps and tools.", to: "/digihub/apps", tone: "text-emerald-600 bg-emerald-500/10" },
+  { icon: PlayCircle, title: "Video Library & Tutorials", blurb: "Learn at your own pace with short, practical videos.", to: "/digihub/videos", tone: "text-brand-gold bg-brand-gold/10" },
+  { icon: Users, title: "Digital Rights & Safety Clinics", blurb: "Workshops, training and community support.", to: "/digihub/clinics", tone: "text-primary bg-primary/10" },
+  { icon: AlertTriangle, title: "Scam Alerts", blurb: "Stay updated on the latest scams and threats.", to: "/digihub/alerts", tone: "text-destructive bg-destructive/10" },
+  { icon: Newspaper, title: "News & Explainers", blurb: "Short updates on digital rights and privacy issues.", to: "/digihub/news", tone: "text-brand-blue bg-brand-blue/10" },
+  { icon: Download, title: "Digital Safety Toolkit", blurb: "Downloads, checklists and practical templates.", to: "/digihub/toolkits", tone: "text-accent bg-accent/10" },
 ];
 
-const resources = [
-  { title: "Digital Action Plan Template", format: "PDF", size: "420 KB" },
-  { title: "Personal Threat Model Worksheet", format: "PDF", size: "310 KB" },
-  { title: "Safer Dating & Meet-Up Checklist", format: "PDF", size: "275 KB" },
-  { title: "Device Seizure Response Card", format: "PDF", size: "180 KB" },
-  { title: "Secure Tools We Recommend", format: "PDF", size: "512 KB" },
-  { title: "Community Facilitator Guide", format: "PDF", size: "1.1 MB" },
+const clinicFeatures = [
+  { icon: Users, label: "In-person Workshops", sub: "Accra, Kumasi and beyond" },
+  { icon: PlayCircle, label: "Virtual Workshops", sub: "Join from any device" },
+  { icon: ClipboardCheck, label: "Practical Exercises", sub: "Hands-on, not theory" },
+  { icon: HeartHandshake, label: "Community Cohorts", sub: "Learn together over weeks" },
+  { icon: Target, label: "Personal Safety Plans", sub: "Leave with your own plan" },
+  { icon: Award, label: "Completion Certificates", sub: "Earn and share" },
 ];
 
-const clinics = [
-  {
-    title: "Module 1 — Intake & Safety Triage",
-    body:
-      "A short, anonymous intake that identifies whether someone faces an active threat, an ongoing risk or a learning need. No names required, only a generated participant code.",
-  },
-  {
-    title: "Module 2 — Threat Modelling With the Participant",
-    body:
-      "Facilitators map what the participant wants to protect, who they are protecting it from, and what happens if protection fails. Output is a written, plain-language risk picture.",
-  },
-  {
-    title: "Module 3 — Device & Account Hardening Clinic",
-    body:
-      "Hands-on session: screen locks, encrypted backups, passphrase managers, two-factor authentication, app permission clean-up and social media privacy review.",
-  },
-  {
-    title: "Module 4 — Blackmail & Entrapment Response",
-    body:
-      "Recognising entrapment scripts, safe evidence capture, when and how to disengage, safe reporting routes, and connecting to legal and psychosocial support.",
-  },
-  {
-    title: "Module 5 — Digital Action Plan",
-    body:
-      "Every participant leaves with a personal Digital Action Plan: their trusted contacts, escalation steps, backup locations and a review date.",
-  },
-  {
-    title: "Module 6 — Follow-Up & Community Referral",
-    body:
-      "Optional anonymous follow-up after 30 days, plus referral into Synapse for health needs and into peer support networks for continued care.",
-  },
+const heroLabels = [
+  { icon: GraduationCap, label: "Learn", pos: "top-2 left-2 md:top-4 md:left-6" },
+  { icon: Shield, label: "Protect", pos: "top-2 right-2 md:top-4 md:right-6" },
+  { icon: Megaphone, label: "Advocate", pos: "bottom-2 left-2 md:bottom-6 md:left-2" },
+  { icon: Users, label: "Empower", pos: "bottom-2 right-2 md:bottom-6 md:right-2" },
 ];
 
-const signals = [
-  { label: "Active threat advisories", value: "7", trend: "+2 this week", tone: "text-brand-magenta" },
-  { label: "Clinics delivered this quarter", value: "24", trend: "612 participants", tone: "text-primary" },
-  { label: "Digital Action Plans issued", value: "489", trend: "+63 this month", tone: "text-brand-blue" },
-  { label: "Reported incidents resolved", value: "82%", trend: "within 72 hours", tone: "text-accent" },
+const pillars = [
+  { icon: Lock, label: "Privacy First" },
+  { icon: Users, label: "People Centered" },
+  { icon: HeartHandshake, label: "Community Driven" },
+  { icon: Eye, label: "Evidence Informed" },
 ];
 
-const advisories = [
-  {
-    severity: "High",
-    title: "Fake dating profiles harvesting photos in Kumasi and Accra",
-    detail:
-      "Accounts request explicit images within the first conversation, then threaten exposure. Do not share identifiable images; capture screenshots and report through the clinic intake.",
-  },
-  {
-    severity: "High",
-    title: "SIM-swap attempts targeting community organisers",
-    detail:
-      "Set a SIM PIN with your mobile operator and move account recovery away from SMS to an authenticator app.",
-  },
-  {
-    severity: "Medium",
-    title: "Malicious 'health support' APK circulating on WhatsApp",
-    detail:
-      "The file requests contacts, storage and SMS permissions. Install apps only from official stores or verified Amelio links.",
-  },
-  {
-    severity: "Medium",
-    title: "Phishing emails impersonating donor organisations",
-    detail:
-      "Check sender domains carefully and never enter passwords from a link in an unexpected message.",
-  },
-];
-
-const severityTone: Record<string, string> = {
-  High: "bg-destructive/10 text-destructive border-destructive/30",
-  Medium: "bg-accent/10 text-accent border-accent/30",
-  Low: "bg-primary/10 text-primary border-primary/30",
-};
+const glass = "rounded-2xl border border-border bg-card/80 backdrop-blur shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5";
 
 const DigiHub = () => {
-  const [filter, setFilter] = useState("All");
-  const topics = ["All", ...Array.from(new Set(videos.map((v) => v.topic)))];
-  const shown = filter === "All" ? videos : videos.filter((v) => v.topic === filter);
+  const [score, setScore] = useState<PrivacyScoreResult | null>(null);
 
   useEffect(() => {
-    document.title = "DigiHub Academy — Digital Rights & Cybersecurity | The Ameliorate Project";
+    document.title = "DigiHub — Digital Rights & Safety Centre | The Ameliorate Project";
+    setScore(getScore());
   }, []);
 
   return (
     <div className="min-h-screen">
       <Navbar />
 
-      {/* Hero */}
+      {/* ================= HERO ================= */}
       <section
-        className="relative pt-32 md:pt-40 pb-14 md:pb-20 bg-[#070b1c]"
+        className="relative pt-28 md:pt-36 pb-14 md:pb-20 bg-[#070b1c] overflow-hidden"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 20%, hsl(218 80% 30% / 0.65), transparent 55%), radial-gradient(circle at 80% 70%, hsl(262 70% 30% / 0.6), transparent 55%)",
+            "radial-gradient(circle at 18% 22%, hsl(218 85% 32% / 0.65), transparent 55%), radial-gradient(circle at 82% 65%, hsl(275 72% 34% / 0.6), transparent 55%)",
         }}
       >
-        <div className="container mx-auto px-4 md:px-8 max-w-5xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <img
-              src={digihubLogo}
-              alt="DigiHub logo"
-              className="h-20 w-20 object-contain mx-auto mb-6"
-              loading="eager"
-            />
-            <h1 className="font-sans font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white mb-5">
-              DigiHub <span className="text-[#3B82F6]">Academy</span>
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-10 items-center">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <img src={digihubLogo} alt="DigiHub logo" className="h-16 w-16 object-contain mb-5" loading="eager" />
+            <h1 className="font-sans font-bold tracking-tight text-5xl md:text-6xl text-white mb-3">
+              Digi<span className="text-[#8B5CF6]">Hub</span>
             </h1>
-            <p className="text-[#F5A524] font-semibold mb-5">Learn. Protect. Thrive.</p>
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
-              A privacy-first digital rights and cybersecurity learning platform. Free courses, a video
-              library, practical downloads, Digital Rights &amp; Safety Clinics and live threat awareness,
-              built for individuals and communities who cannot afford to be exposed online.
+            <p className="text-[#F5A524] font-semibold text-lg mb-4">Learn. Protect. Thrive.</p>
+            <p className="text-slate-300 leading-relaxed max-w-xl mb-7">
+              DigiHub is The Ameliorate Project's Digital Rights &amp; Safety Centre, helping LGBTQI+ communities,
+              key populations and other marginalized populations build practical digital safety skills, understand
+              their rights and confidently navigate today's digital world.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Button size="lg" className="rounded-md px-6" asChild>
-                <a href="#courses">Start learning</a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-md px-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white"
-                asChild
-              >
-                <a href="#clinics">Book a safety clinic</a>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Courses */}
-      <section id="courses" className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-3">
-              <GraduationCap className="text-primary" size={26} />
-              <h2 className="text-3xl md:text-4xl text-foreground">Courses</h2>
-            </div>
-            <p className="text-muted-foreground text-lg max-w-3xl mb-10">
-              Self-paced learning tracks written in plain language, with no account, no tracking and no
-              personal details required. Work through them alone or with a facilitator.
-            </p>
-          </AnimatedSection>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
-          >
-            {courses.map((c) => (
-              <motion.div
-                key={c.title}
-                variants={fadeUp}
-                className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow flex flex-col"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <c.icon className="text-primary" size={24} />
-                  <Badge variant="secondary">{c.level}</Badge>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg">
+              {pillars.map((p) => (
+                <div key={p.label} className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-center">
+                  <p.icon className="text-[#3B82F6] mx-auto mb-1.5" size={18} />
+                  <p className="text-[11px] text-slate-300 leading-tight">{p.label}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-card-foreground mb-2">{c.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{c.blurb}</p>
-                <div className="mt-5 text-xs text-muted-foreground flex items-center gap-4">
-                  <span>{c.lessons} lessons</span>
-                  <span>{c.minutes} min</span>
-                </div>
-                <Progress value={0} className="mt-3 h-1.5" />
-                <Button variant="outline" className="mt-5 rounded-md" asChild>
-                  <a href="#newsletter">Join the next cohort</a>
-                </Button>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Video library */}
-      <section id="videos" className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-3">
-              <PlayCircle className="text-primary" size={26} />
-              <h2 className="text-3xl md:text-4xl text-secondary-foreground">Video Library</h2>
-            </div>
-            <p className="text-muted-foreground text-lg max-w-3xl mb-8">
-              Short, practical walkthroughs you can follow on a low-end phone, with low-data versions
-              available on request.
-            </p>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {topics.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setFilter(t)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
-                    filter === t
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-card text-muted-foreground border-border hover:text-primary"
-                  }`}
-                >
-                  {t}
-                </button>
               ))}
             </div>
-          </AnimatedSection>
+          </motion.div>
 
+          {/* Shield illustration with floating labels */}
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative aspect-square max-w-md mx-auto w-full"
           >
-            {shown.map((v) => (
+            <div className="absolute inset-[18%] rounded-full bg-[#8B5CF6]/25 blur-3xl" />
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-[20%] grid place-items-center rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#3B82F6]/25 to-[#8B5CF6]/30 backdrop-blur"
+            >
+              <Shield className="text-[#8B5CF6]" size={120} strokeWidth={1.2} />
+              <Lock className="absolute text-[#60A5FA]" size={44} />
+            </motion.div>
+            {heroLabels.map((l, i) => (
               <motion.div
-                key={v.title}
-                variants={fadeUp}
-                className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm"
+                key={l.label}
+                animate={{ y: [0, i % 2 === 0 ? -8 : 8, 0] }}
+                transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+                className={`absolute ${l.pos} flex flex-col items-center gap-1`}
               >
-                <div className="aspect-video bg-gradient-to-br from-primary/20 via-brand-blue/15 to-accent/20 grid place-items-center">
-                  <PlayCircle className="text-primary" size={44} />
-                </div>
-                <div className="p-5">
-                  <Badge variant="secondary" className="mb-2">{v.topic}</Badge>
-                  <h3 className="font-semibold text-card-foreground leading-snug">{v.title}</h3>
-                  <p className="text-xs text-muted-foreground mt-2">{v.duration}</p>
-                </div>
+                <span className="grid place-items-center h-11 w-11 rounded-xl border border-white/15 bg-white/10 backdrop-blur">
+                  <l.icon className="text-[#F5A524]" size={20} />
+                </span>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-200">{l.label}</span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Downloads */}
-      <section id="downloads" className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-5xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-3">
-              <Download className="text-primary" size={26} />
-              <h2 className="text-3xl md:text-4xl text-foreground">Downloads &amp; Toolkits</h2>
+      {/* ============ START YOUR DIGITAL SAFETY JOURNEY ============ */}
+      <section className="relative -mt-8 md:-mt-12 pb-4 z-10">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <div className="rounded-3xl border border-border bg-card/90 backdrop-blur shadow-xl p-5 md:p-7">
+            <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
+              Start Your Digital Safety Journey
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {journey.map((j) => {
+                const inner = (
+                  <>
+                    <span className="grid place-items-center h-10 w-10 rounded-xl bg-primary/10 text-primary shrink-0">
+                      <j.icon size={19} />
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-card-foreground">{j.title}</span>
+                      <span className="block text-xs text-muted-foreground">{j.sub}</span>
+                    </span>
+                  </>
+                );
+                const cls = `flex items-center gap-3 rounded-2xl border border-border bg-secondary/50 p-4 hover:border-primary hover:bg-secondary transition-all duration-300 hover:-translate-y-0.5`;
+                return j.to.startsWith("#") ? (
+                  <a key={j.title} href={j.to} className={cls}>{inner}</a>
+                ) : (
+                  <Link key={j.title} to={j.to} className={cls}>{inner}</Link>
+                );
+              })}
             </div>
-            <p className="text-muted-foreground text-lg max-w-3xl mb-10">
-              Printable, offline-friendly resources you can use in a clinic, a workshop or on your own.
-            </p>
-          </AnimatedSection>
-
-          <motion.div
-            className="grid sm:grid-cols-2 gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
-          >
-            {resources.map((r) => (
-              <motion.div
-                key={r.title}
-                variants={fadeUp}
-                className="flex items-center gap-4 bg-card border border-border rounded-xl p-5 shadow-sm"
-              >
-                <FileText className="text-primary shrink-0" size={22} />
-                <div className="flex-1">
-                  <p className="font-medium text-card-foreground">{r.title}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {r.format} · {r.size}
-                  </p>
-                </div>
-                <Button size="sm" variant="outline" className="rounded-md" asChild>
-                  <a href="#newsletter">Request</a>
-                </Button>
-              </motion.div>
-            ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Clinics */}
-      <section id="clinics" className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+      {/* ============ WHAT YOU CAN DO + THREAT MAP ============ */}
+      <section className="py-14 md:py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
           <AnimatedSection>
-            <div className="flex items-center gap-3 mb-3">
-              <ShieldCheck className="text-primary" size={26} />
-              <h2 className="text-3xl md:text-4xl text-secondary-foreground">
+            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+              <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
+                What You Can Do in DigiHub
+              </h2>
+              <motion.div
+                className="grid sm:grid-cols-2 xl:grid-cols-3 gap-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={staggerContainer}
+              >
+                {capabilities.map((c) => (
+                  <motion.div key={c.title} variants={fadeUp}>
+                    <Link to={c.to} className={`${glass} block p-4 h-full`}>
+                      <span className={`grid place-items-center h-9 w-9 rounded-lg mb-3 ${c.tone}`}>
+                        <c.icon size={17} />
+                      </span>
+                      <p className="text-sm font-semibold text-card-foreground leading-snug">{c.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{c.blurb}</p>
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.div>
+              <Button variant="outline" className="rounded-full mt-5" asChild>
+                <Link to="/digihub/toolkits">Explore all resources <ArrowRight size={15} /></Link>
+              </Button>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <ThreatMap />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============ CLINICS + ASK ORENTA ============ */}
+      <section className="pb-14 md:pb-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
+          <AnimatedSection>
+            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+              <h2 className="text-xl md:text-2xl font-semibold text-card-foreground">
                 Digital Rights &amp; Safety Clinics
               </h2>
-            </div>
-            <p className="text-muted-foreground text-lg mb-10">
-              Facilitated, anonymous sessions delivered in person and remotely. Six modules take a
-              participant from triage to a personal Digital Action Plan.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection>
-            <Accordion type="single" collapsible className="w-full">
-              {clinics.map((m) => (
-                <AccordionItem key={m.title} value={m.title}>
-                  <AccordionTrigger className="text-left">{m.title}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">
-                    {m.body}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button className="rounded-md" asChild>
-                <a href="/#contact">Request a clinic anonymously</a>
-              </Button>
-              <Button variant="outline" className="rounded-md" asChild>
-                <a href="#newsletter">Get clinic dates by email</a>
-              </Button>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Intelligence dashboard */}
-      <section id="intelligence" className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-3">
-              <Activity className="text-primary" size={26} />
-              <h2 className="text-3xl md:text-4xl text-foreground">Threat Intelligence Dashboard</h2>
-            </div>
-            <p className="text-muted-foreground text-lg max-w-3xl mb-10">
-              A community-sourced picture of the digital threats currently affecting LGBTQI+ people, key
-              populations and other marginalized populations in Ghana. Reports are aggregated and never
-              attributed to an individual.
-            </p>
-          </AnimatedSection>
-
-          <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
-          >
-            {signals.map((s) => (
-              <motion.div
-                key={s.label}
-                variants={fadeUp}
-                className="bg-card border border-border rounded-2xl p-6 shadow-sm"
-              >
-                <p className={`text-3xl md:text-4xl font-bold ${s.tone}`}>{s.value}</p>
-                <p className="text-sm text-card-foreground mt-2">{s.label}</p>
-                <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-                  <TrendingUp size={12} /> {s.trend}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <AnimatedSection>
-            <div className="bg-card border border-border rounded-2xl divide-y divide-border shadow-sm">
-              {advisories.map((a) => (
-                <div key={a.title} className="p-6 flex gap-4 items-start">
-                  <span
-                    className={`shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full border ${severityTone[a.severity]}`}
-                  >
-                    {a.severity}
-                  </span>
-                  <div>
-                    <p className="font-medium text-card-foreground">{a.title}</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">{a.detail}</p>
+              <p className="text-sm text-primary font-medium mt-1 mb-4">
+                Learning experiences, workshops and community cohorts.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {clinicFeatures.map((f) => (
+                  <div key={f.label} className="rounded-xl border border-border bg-secondary/50 p-3 text-center">
+                    <f.icon className="text-primary mx-auto mb-2" size={18} />
+                    <p className="text-xs font-semibold text-card-foreground leading-tight">{f.label}</p>
+                    <p className="text-[11px] text-muted-foreground mt-1">{f.sub}</p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="mt-5 rounded-xl bg-primary/5 border border-primary/20 p-4 text-sm text-muted-foreground">
+                Next up: {clinicEvents[0].title}, {clinicEvents[0].date}.
+              </div>
+              <Button className="rounded-full mt-5" asChild>
+                <Link to="/digihub/clinics">Join Next Clinic <ArrowRight size={15} /></Link>
+              </Button>
             </div>
-            <p className="text-xs text-muted-foreground mt-4">
-              Advisories are reviewed weekly. To report an incident anonymously, use the contact form,
-              no name or email is required.
-            </p>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <div id="ask-orenta" className="scroll-mt-24 h-full">
+              <AskOrenta />
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Double opt-in newsletter */}
-      <section id="newsletter" className="py-16 md:py-24 bg-secondary">
+      {/* ============ APPS / VIDEOS / ALERTS / PLAN ============ */}
+      <section className="pb-14 md:pb-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {/* Secure apps */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Secure Apps You Can Trust</h3>
+              <p className="text-xs text-muted-foreground mb-4">Curated privacy-friendly tools for daily life.</p>
+              <ul className="space-y-3">
+                {secureApps.slice(0, 4).map((a) => (
+                  <li key={a.name} className="flex items-start gap-3">
+                    <span className="grid place-items-center h-8 w-8 rounded-lg bg-primary/10 text-primary text-xs font-bold shrink-0">
+                      {a.name[0]}
+                    </span>
+                    <span>
+                      <span className="block text-sm font-medium text-card-foreground">{a.name}</span>
+                      <span className="block text-[11px] text-muted-foreground">{a.category}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/digihub/apps" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                Explore all apps <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Videos */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Video Library &amp; Tutorials</h3>
+              <p className="text-xs text-muted-foreground mb-4">Learn through short, practical videos.</p>
+              <ul className="space-y-3">
+                {videos.slice(0, 4).map((v) => (
+                  <li key={v.id} className="flex items-center gap-3">
+                    <img
+                      src={`https://i.ytimg.com/vi/${v.id}/default.jpg`}
+                      alt=""
+                      aria-hidden
+                      loading="lazy"
+                      className="h-10 w-16 rounded-md object-cover shrink-0"
+                    />
+                    <span className="text-xs text-card-foreground leading-snug line-clamp-2">{v.title}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/digihub/videos" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                Browse all videos <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Alerts */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Scam Alerts</h3>
+              <p className="text-xs text-muted-foreground mb-4">Stay informed. Stay protected.</p>
+              <ul className="space-y-3">
+                {alerts.slice(0, 3).map((a) => (
+                  <li key={a.slug} className="flex items-start gap-2.5">
+                    <AlertTriangle className="text-destructive shrink-0 mt-0.5" size={15} />
+                    <span>
+                      <span className="block text-xs font-medium text-card-foreground leading-snug">{a.title}</span>
+                      <span className="block text-[11px] text-muted-foreground mt-0.5 line-clamp-2">{a.summary}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/digihub/alerts" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                View all scam alerts <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Plan */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">My Digital Safety Plan</h3>
+              <p className="text-xs text-muted-foreground mb-4">Create your personalised plan in minutes.</p>
+              <ul className="space-y-2 text-xs text-muted-foreground">
+                {["Answer 10 quick questions", "Get your Privacy Score", "See personalised recommendations", "Download your action plan"].map((s) => (
+                  <li key={s} className="flex items-start gap-2">
+                    <CheckCircle2 size={13} className="text-primary mt-0.5 shrink-0" /> {s}
+                  </li>
+                ))}
+              </ul>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to={score ? "/digihub/action-plan" : "/digihub/privacy-score"}>
+                  {score ? "Open My Plan" : "Create My Plan"}
+                </Link>
+              </Button>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============ LOWER DASHBOARD ============ */}
+      <section className="pb-14 md:pb-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid md:grid-cols-2 xl:grid-cols-5 gap-5">
+          {/* Privacy score */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Privacy Score</h3>
+              <p className="text-xs text-muted-foreground mb-4">
+                Take the 10-question assessment and know your digital safety level.
+              </p>
+              <div className="text-center py-2">
+                <p className="text-4xl font-bold text-primary">{score ? `${score.score}%` : "--"}</p>
+                <p className="text-xs text-muted-foreground mt-1">{score ? score.band : "Not taken yet"}</p>
+                <Progress value={score?.score ?? 0} className="h-2 mt-3" />
+              </div>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/privacy-score">{score ? "Retake assessment" : "Take Privacy Score"}</Link>
+              </Button>
+            </div>
+          </AnimatedSection>
+
+          {/* Challenge */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Community Challenge</h3>
+              <p className="text-xs text-muted-foreground mb-4">Monthly challenges. Real impact.</p>
+              <div className="rounded-xl border border-border bg-secondary/50 p-3">
+                <p className="text-[11px] text-muted-foreground">{challenge.month} Challenge</p>
+                <p className="text-sm font-semibold text-card-foreground">{challenge.title}</p>
+                <p className="text-[11px] text-muted-foreground mt-1">{challenge.blurb}</p>
+                <Progress value={(challenge.participants / challenge.target) * 100} className="h-1.5 mt-3" />
+                <p className="text-[10px] text-muted-foreground mt-1.5">
+                  {challenge.participants} / {challenge.target} participants
+                </p>
+              </div>
+              <Link to="/digihub/challenge" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                Join the challenge <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Badges */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Digital Safety Badges</h3>
+              <p className="text-xs text-muted-foreground mb-4">Learn. Practice. Earn badges.</p>
+              <div className="grid grid-cols-2 gap-3">
+                {badges.map((b) => (
+                  <div key={b.name} className="text-center">
+                    <Award className={`mx-auto ${b.tone}`} size={26} />
+                    <p className="text-[11px] text-card-foreground mt-1 leading-tight">{b.name}</p>
+                  </div>
+                ))}
+              </div>
+              <Link to="/digihub/badges" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                View all badges <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Events */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">Events</h3>
+              <p className="text-xs text-muted-foreground mb-4">Upcoming workshops, webinars and community events.</p>
+              <ul className="space-y-3">
+                {clinicEvents.slice(0, 3).map((e) => (
+                  <li key={e.slug} className="flex items-start gap-2.5">
+                    <CalendarDays className="text-primary shrink-0 mt-0.5" size={14} />
+                    <span>
+                      <span className="block text-xs font-medium text-card-foreground leading-snug">{e.title}</span>
+                      <span className="block text-[11px] text-muted-foreground">{e.date} · {e.location}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/digihub/events" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                View all events <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* News */}
+          <AnimatedSection>
+            <div className={`${glass} p-5 h-full`}>
+              <h3 className="font-semibold text-card-foreground">News &amp; Explainers</h3>
+              <p className="text-xs text-muted-foreground mb-4">Latest updates on digital rights and online safety.</p>
+              <ul className="space-y-3">
+                {news.map((n) => (
+                  <li key={n.slug} className="flex items-start gap-2.5">
+                    <BookOpen className="text-brand-blue shrink-0 mt-0.5" size={14} />
+                    <span>
+                      <span className="block text-xs font-medium text-card-foreground leading-snug">{n.title}</span>
+                      <span className="block text-[11px] text-muted-foreground">{n.date}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/digihub/news" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
+                Read more <ArrowRight size={13} />
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============ NEWSLETTER (shared, existing system) ============ */}
+      <section className="py-14 md:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-8 max-w-2xl text-center">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4">
-              The DigiHub Safety Briefing
-            </h2>
+            <Badge variant="secondary" className="mb-3">Amelio Newsletter</Badge>
+            <h2 className="text-3xl md:text-4xl text-secondary-foreground mb-4">Stay ahead of the threats</h2>
             <p className="text-muted-foreground text-lg mb-6">
-              New courses, clinic dates, toolkits and current threat advisories, delivered to your inbox.
+              New guides, clinic dates, toolkits and current scam alerts, delivered with the rest of our updates.
             </p>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm text-left">
               <NewsletterForm source="digihub" buttonLabel="Subscribe" />
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
-                  Double opt-in: we send a confirmation email first, and you are only added once you
-                  confirm.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
-                  We store your email address only. No names, no profiling, no sharing with third
-                  parties.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
-                  One-click unsubscribe in every email.
-                </li>
-              </ul>
+              <p className="text-xs text-muted-foreground mt-4">
+                We send a confirmation email first, store your email address only, and every message carries a
+                one-click unsubscribe link.
+              </p>
             </div>
           </AnimatedSection>
         </div>

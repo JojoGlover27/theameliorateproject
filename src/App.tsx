@@ -21,6 +21,20 @@ const AnonymityClinicalNecessity = lazy(() => import("./pages/research/Anonymity
 const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
 const Synapse = lazy(() => import("./pages/Synapse.tsx"));
 const DigiHub = lazy(() => import("./pages/DigiHub.tsx"));
+const DhPrivacyScore = lazy(() => import("./pages/digihub/PrivacyScore.tsx"));
+const DhActionPlan = lazy(() => import("./pages/digihub/ActionPlan.tsx"));
+const DhApps = lazy(() => import("./pages/digihub/Apps.tsx"));
+const DhVideos = lazy(() => import("./pages/digihub/Videos.tsx"));
+const DhAlerts = lazy(() => import("./pages/digihub/Alerts.tsx"));
+const DhNews = lazy(() => import("./pages/digihub/News.tsx"));
+const DhToolkits = lazy(() => import("./pages/digihub/Toolkits.tsx"));
+const DhClinics = lazy(() => import("./pages/digihub/Clinics.tsx"));
+const DhEvents = lazy(() => import("./pages/digihub/Events.tsx"));
+const DhBadges = lazy(() => import("./pages/digihub/Badges.tsx"));
+const DhChallenge = lazy(() => import("./pages/digihub/Challenge.tsx"));
+const DhDigitalRights = lazy(() => import("./pages/digihub/DigitalRights.tsx"));
+const DhCybersecurity = lazy(() => import("./pages/digihub/Cybersecurity.tsx"));
+const DhPrivacyGuides = lazy(() => import("./pages/digihub/PrivacyGuides.tsx"));
 const Unsubscribed = lazy(() => import("./pages/Unsubscribed.tsx"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
@@ -56,6 +70,20 @@ const App = () => (
             <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/synapse" element={<Synapse />} />
             <Route path="/digihub" element={<DigiHub />} />
+            <Route path="/digihub/privacy-score" element={<DhPrivacyScore />} />
+            <Route path="/digihub/action-plan" element={<DhActionPlan />} />
+            <Route path="/digihub/apps" element={<DhApps />} />
+            <Route path="/digihub/videos" element={<DhVideos />} />
+            <Route path="/digihub/alerts" element={<DhAlerts />} />
+            <Route path="/digihub/news" element={<DhNews />} />
+            <Route path="/digihub/toolkits" element={<DhToolkits />} />
+            <Route path="/digihub/clinics" element={<DhClinics />} />
+            <Route path="/digihub/events" element={<DhEvents />} />
+            <Route path="/digihub/badges" element={<DhBadges />} />
+            <Route path="/digihub/challenge" element={<DhChallenge />} />
+            <Route path="/digihub/digital-rights" element={<DhDigitalRights />} />
+            <Route path="/digihub/cybersecurity" element={<DhCybersecurity />} />
+            <Route path="/digihub/privacy-guides" element={<DhPrivacyGuides />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
