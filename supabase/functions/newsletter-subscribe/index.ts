@@ -13,6 +13,7 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const AUDIENCE_NAME = "Amelio Newsletter";
 const FROM = "The Ameliorate Project <info@ameliorateproject.org>";
+const SITE_URL = "https://ameliorateproject.org";
 
 const rl = new Map<string, number[]>();
 const RL_WINDOW_MS = 60_000;
@@ -162,7 +163,7 @@ Deno.serve(async (req) => {
         { onConflict: "email" },
       );
 
-      const link = `${SUPABASE_URL}/functions/v1/newsletter-confirm?token=${await confirmToken(email)}`;
+      const link = `${SITE_URL}/newsletter/confirm?token=${await confirmToken(email)}`;
       const send = await resend("/emails", {
         method: "POST",
         body: JSON.stringify({

@@ -36,6 +36,7 @@ const DhDigitalRights = lazy(() => import("./pages/digihub/DigitalRights.tsx"));
 const DhCybersecurity = lazy(() => import("./pages/digihub/Cybersecurity.tsx"));
 const DhPrivacyGuides = lazy(() => import("./pages/digihub/PrivacyGuides.tsx"));
 const Unsubscribed = lazy(() => import("./pages/Unsubscribed.tsx"));
+const ConfirmSubscription = lazy(() => import("./pages/ConfirmSubscription.tsx"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
@@ -85,6 +86,8 @@ const App = () => (
             <Route path="/digihub/cybersecurity" element={<DhCybersecurity />} />
             <Route path="/digihub/privacy-guides" element={<DhPrivacyGuides />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
+            <Route path="/newsletter/confirm" element={<ConfirmSubscription />} />
+
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
               <Route index element={<AdminDashboard />} />

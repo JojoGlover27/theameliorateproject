@@ -99,20 +99,30 @@ Deno.serve(async (req) => {
 
   const url = new URL(req.url);
   const token = url.searchParams.get("token") ?? "";
+  const wantsJson = url.searchParams.get("format") === "json";
   const html = (s: string, status = 200) =>
     new Response(s, { status, headers: { ...corsHeaders, "Content-Type": "text/html; charset=utf-8" } });
+  const json = (status: string, code = 200) =>
+    new Response(JSON.stringify({ status }), {
+      status: code,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
 
   try {
     const email = await verifyToken(token);
     if (!email) {
-      return html(page("Link not valid", "This confirmation link is invalid or has already been used. Please subscribe again from our website."), 400);
+      return wantsJson
+        ? json("invalid", 400)
+        : html(page("Link not valid", "This confirmation link is invalid or has already been used. Please subscribe again from our website."), 400);
     }
 
     const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
     const { data: existing } = await admin.from("subscribers").select("status").eq("email", email).maybeSingle();
 
     if (existing?.status === "active") {
-      return html(page("You are already subscribed", "Your email address is already confirmed. Thank you for being with us."));
+      return wantsJson
+        ? json("already")
+        : html(page("You are already subscribed", "Your email address is already confirmed. Thank you for being with us."));
     }
 
     const audienceId = await getAudienceId();
@@ -135,9 +145,14 @@ Deno.serve(async (req) => {
     });
     if (!send.ok) console.error("resend_send_failed", send.status, send.body);
 
-    return html(page("Subscription confirmed", "Thank you. Your email address is confirmed and you are now subscribed to updates from The Ameliorate Project."));
+    return wantsJson
+      ? json("confirmed")
+      : html(page("Subscription confirmed", "Thank you. Your email address is confirmed and you are now subscribed to updates from The Ameliorate Project."));
   } catch (err) {
     console.error("confirm_error", err);
-    return html(page("Something went wrong", "We could not confirm your subscription right now. Please try the link again shortly."), 500);
+    return wantsJson
+      ? json("error", 500)
+      : html(page("Something went wrong", "We could not confirm your subscription right now. Please try the link again shortly."), 500);
   }
 });
+
