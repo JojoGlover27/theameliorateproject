@@ -86,6 +86,8 @@ const App = () => (
             <Route path="/digihub/cybersecurity" element={<DhCybersecurity />} />
             <Route path="/digihub/privacy-guides" element={<DhPrivacyGuides />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
+            <Route path="/newsletter/confirm" element={<ConfirmSubscription />} />
+
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
               <Route index element={<AdminDashboard />} />
