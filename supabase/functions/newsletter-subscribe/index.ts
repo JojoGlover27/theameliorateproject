@@ -131,7 +131,21 @@ Deno.serve(async (req) => {
 
     const alreadyExists = existing?.status === "active";
 
-    if (!alreadyExists) {
+    if (alreadyExists) {
+      // Previously: silently returned ok with no email at all, so an existing
+      // subscriber re-submitting the form saw nothing and nothing was logged.
+      console.log("already_active_resubmit", email);
+      const send = await resend("/emails", {
+        method: "POST",
+        body: JSON.stringify({
+          from: FROM,
+          to: [email],
+          subject: "You are already subscribed",
+          html: alreadyHtml(),
+        }),
+      });
+      if (!send.ok) console.error("resend_send_failed", send.status, send.body);
+    } else {
       await admin.from("subscribers").upsert(
         { email, source, status: "pending", unsubscribed_at: null },
         { onConflict: "email" },
