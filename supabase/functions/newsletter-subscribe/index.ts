@@ -162,7 +162,7 @@ Deno.serve(async (req) => {
         { onConflict: "email" },
       );
 
-      const link = `${SUPABASE_URL}/functions/v1/newsletter-confirm?token=${await confirmToken(email)}`;
+      const link = `${SITE_URL}/newsletter/confirm?token=${await confirmToken(email)}`;
       const send = await resend("/emails", {
         method: "POST",
         body: JSON.stringify({
