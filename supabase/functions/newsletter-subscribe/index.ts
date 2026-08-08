@@ -85,6 +85,17 @@ const confirmHtml = (link: string) => `<!doctype html><html><body style="margin:
   </div>
 </div></body></html>`;
 
+const alreadyHtml = () => `<!doctype html><html><body style="margin:0;padding:0;background:#f6f4fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1a1030;">
+<div style="max-width:560px;margin:0 auto;padding:32px 24px;">
+  <div style="background:#3C14A0;padding:28px 24px;border-radius:12px 12px 0 0;text-align:center;">
+    <h1 style="color:#fff;margin:0;font-size:22px;font-weight:600;">You are already subscribed</h1>
+    <p style="color:#F0A028;margin:8px 0 0;font-size:14px;letter-spacing:1px;text-transform:uppercase;">The Ameliorate Project</p>
+  </div>
+  <div style="background:#ffffff;padding:28px 24px;border-radius:0 0 12px 12px;line-height:1.6;font-size:15px;">
+    <p>Thanks for signing up again. Your email address is already on our newsletter list, so there is nothing more to do. Our next update will arrive in your inbox as usual.</p>
+  </div>
+</div></body></html>`;
+
 function isValidEmail(e: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e) && e.length <= 254;
 }
@@ -131,7 +142,21 @@ Deno.serve(async (req) => {
 
     const alreadyExists = existing?.status === "active";
 
-    if (!alreadyExists) {
+    if (alreadyExists) {
+      // Previously: silently returned ok with no email at all, so an existing
+      // subscriber re-submitting the form saw nothing and nothing was logged.
+      console.log("already_active_resubmit", email);
+      const send = await resend("/emails", {
+        method: "POST",
+        body: JSON.stringify({
+          from: FROM,
+          to: [email],
+          subject: "You are already subscribed",
+          html: alreadyHtml(),
+        }),
+      });
+      if (!send.ok) console.error("resend_send_failed", send.status, send.body);
+    } else {
       await admin.from("subscribers").upsert(
         { email, source, status: "pending", unsubscribed_at: null },
         { onConflict: "email" },
