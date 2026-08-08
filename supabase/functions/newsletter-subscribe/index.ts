@@ -13,6 +13,7 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const AUDIENCE_NAME = "Amelio Newsletter";
 const FROM = "The Ameliorate Project <info@ameliorateproject.org>";
+const SITE_URL = "https://ameliorateproject.org";
 
 const rl = new Map<string, number[]>();
 const RL_WINDOW_MS = 60_000;
