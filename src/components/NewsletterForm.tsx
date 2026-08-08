@@ -29,7 +29,11 @@ const NewsletterForm = ({ source, variant = "hero", buttonLabel = "Subscribe", c
       });
       if (error || (data as any)?.error) throw new Error((data as any)?.error ?? error?.message ?? "error");
       setStatus("success");
-      setMessage("Almost there. We have sent a confirmation link to your inbox, please click it to complete your subscription.");
+      setMessage(
+        (data as any)?.alreadyExists
+          ? "You are already subscribed with this email address. Nothing more to do."
+          : "Almost there. We have sent a confirmation link to your inbox, please click it to complete your subscription.",
+      );
       setEmail("");
     } catch (err) {
       setStatus("error");
