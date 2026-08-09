@@ -1,31 +1,47 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Pause, Play, Quote } from "lucide-react";
+import { useEffect, useCallback, useState, useMemo } from "react";
+import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { testimonials } from "@/data/testimonials";
 
-const AUTOPLAY_MS = 8000;
+const AUTOPLAY_MS = 6500;
 
 const TestimonialsSection = () => {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [hover, setHover] = useState(false);
-  const touchX = useRef<number | null>(null);
+  const [direction, setDirection] = useState(1);
+  const controls = useAnimationControls();
   const prefersReducedMotion = useMemo(
     () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
     []
   );
 
   const total = testimonials.length;
-  const go = useCallback((dir: 1 | -1) => setIndex((i) => (i + dir + total) % total), [total]);
-  const goTo = useCallback((i: number) => setIndex(((i % total) + total) % total), [total]);
+
+  const go = useCallback(
+    (dir: 1 | -1) => {
+      setDirection(dir);
+      setIndex((i) => (i + dir + total) % total);
+    },
+    [total]
+  );
+
+  const goTo = useCallback(
+    (i: number) => {
+      const target = ((i % total) + total) % total;
+      setDirection(target > index ? 1 : -1);
+      setIndex(target);
+    },
+    [total, index]
+  );
 
   // autoplay
   useEffect(() => {
-    if (paused || hover || prefersReducedMotion) return;
+    if (hover || prefersReducedMotion) return;
     const t = window.setInterval(() => go(1), AUTOPLAY_MS);
     return () => window.clearInterval(t);
-  }, [paused, hover, prefersReducedMotion, go]);
+  }, [hover, prefersReducedMotion, go]);
 
   // keyboard
   useEffect(() => {
@@ -37,108 +53,227 @@ const TestimonialsSection = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [go]);
 
-  const prev = (index - 1 + total) % total;
-  const next = (index + 1) % total;
+  const visible = useMemo(() => {
+    const prev2 = (index - 2 + total) % total;
+    const prev1 = (index - 1 + total) % total;
+    const next1 = (index + 1) % total;
+    const next2 = (index + 2) % total;
+    return [
+      { i: prev2, offset: -2 },
+      { i: prev1, offset: -1 },
+      { i: index, offset: 0 },
+      { i: next1, offset: 1 },
+      { i: next2, offset: 2 },
+    ];
+  }, [index, total]);
 
-  const Card = ({ position, quote }: { position: "left" | "center" | "right"; quote: string }) => {
-    const isCenter = position === "center";
-    return (
-      <div
-        aria-hidden={!isCenter}
-        className={[
-          "absolute top-1/2 left-1/2 -translate-y-1/2 rounded-full flex items-center justify-center text-center transition-all duration-700 ease-out",
-          "aspect-square",
-          isCenter
-            ? "w-[min(85vw,460px)] md:w-[460px] -translate-x-1/2 z-20 opacity-100 scale-100"
-            : "w-[min(60vw,340px)] md:w-[340px] z-10 opacity-40 blur-[1px]",
-          position === "left" ? "-translate-x-[125%] md:-translate-x-[135%]" : "",
-          position === "right" ? "translate-x-[25%] md:translate-x-[35%]" : "",
-          isCenter
-            ? "bg-gradient-to-br from-primary/25 via-background/40 to-background/10 border border-[hsl(var(--primary))]/60 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.6)]"
-            : "bg-background/5 border border-background/10",
-        ].join(" ")}
-      >
-        <div className={isCenter ? "px-8 md:px-12 py-8 max-w-[86%]" : "px-6 max-w-[80%]"}>
-          <Quote
-            className={isCenter ? "mx-auto mb-4 text-[hsl(var(--primary))]" : "mx-auto mb-3 text-background/40"}
-            size={isCenter ? 36 : 24}
-            aria-hidden
-          />
-          <p
-            className={[
-              "font-serif leading-snug text-background",
-              isCenter ? "text-lg md:text-2xl" : "text-sm md:text-base",
-            ].join(" ")}
-          >
-            &ldquo;{quote}&rdquo;
-          </p>
-        </div>
-      </div>
-    );
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const swipe = info.offset.x + info.velocity.x * 0.2;
+    if (swipe < -60) go(1);
+    else if (swipe > 60) go(-1);
   };
 
   return (
     <section
       id="voices"
       aria-label="Community Voices"
-      className="relative py-20 md:py-28 overflow-hidden bg-foreground"
+      className="relative py-24 md:py-32 overflow-hidden bg-foreground"
     >
-      {/* subtle brand gradient wash */}
+      {/* flowing gradient wash */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-70"
+        className="absolute inset-0 opacity-80"
         style={{
           background:
-            "radial-gradient(ellipse at 20% 10%, hsl(var(--primary) / 0.25), transparent 55%), radial-gradient(ellipse at 85% 90%, hsl(var(--accent) / 0.18), transparent 55%)",
+            "radial-gradient(ellipse at 20% 15%, hsl(var(--primary) / 0.28), transparent 60%), radial-gradient(ellipse at 80% 85%, hsl(var(--brand-magenta) / 0.20), transparent 55%), radial-gradient(ellipse at 50% 50%, hsl(var(--brand-gold) / 0.06), transparent 70%)",
+        }}
+      />
+
+      {/* soft grid texture */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--background)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--background)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
         }}
       />
 
       <div className="relative container mx-auto px-4 md:px-8 max-w-6xl">
-        <div className="text-center mb-14 md:mb-20">
-          <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-[hsl(var(--primary))] mb-4 font-semibold">
+        <div className="text-center mb-16 md:mb-24">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-xs md:text-sm uppercase tracking-[0.3em] text-[hsl(var(--primary))] mb-4 font-semibold"
+          >
             Community Voices
-          </p>
-          <p className="text-base md:text-lg text-background/80 max-w-3xl mx-auto leading-relaxed">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-base md:text-lg text-background/80 max-w-3xl mx-auto leading-relaxed"
+          >
             These anonymous voices come from participants in The Ameliorate Project&rsquo;s nationwide needs assessment. Every quote represents a lived experience that informs our research, strengthens our advocacy, and inspires our commitment to equitable healthcare access.
-          </p>
+          </motion.p>
         </div>
 
         {/* Carousel stage */}
         <div
-          className="relative h-[520px] md:h-[560px] mx-auto max-w-5xl"
+          className="relative h-[520px] md:h-[580px] mx-auto max-w-6xl select-none"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          onTouchStart={(e) => {
-            touchX.current = e.touches[0].clientX;
-            setHover(true);
-          }}
-          onTouchEnd={(e) => {
-            if (touchX.current == null) return;
-            const dx = e.changedTouches[0].clientX - touchX.current;
-            if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-            touchX.current = null;
-            setHover(false);
-          }}
           role="region"
           aria-roledescription="carousel"
           aria-label="Community testimonial carousel"
         >
-          <Card key={`l-${prev}`} position="left" quote={testimonials[prev].quote} />
-          <Card key={`c-${index}`} position="center" quote={testimonials[index].quote} />
-          <Card key={`r-${next}`} position="right" quote={testimonials[next].quote} />
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.12}
+            onDragEnd={handleDragEnd}
+            animate={controls}
+          >
+            <AnimatePresence initial={false} mode="popLayout">
+              {visible.map(({ i, offset }) => {
+                const isCenter = offset === 0;
+                const isEdge = Math.abs(offset) === 2;
+                const abs = Math.abs(offset);
+
+                return (
+                  <motion.div
+                    key={testimonials[i].id}
+                    layout
+                    initial={{
+                      opacity: 0,
+                      scale: 0.78,
+                      x: direction * 200,
+                    }}
+                    animate={{
+                      opacity: isEdge ? 0.15 : isCenter ? 1 : 0.45,
+                      scale: isCenter ? 1 : 0.82 - abs * 0.06,
+                      x: `${offset * 58}%`,
+                      zIndex: isCenter ? 30 : 20 - abs * 5,
+                      filter: isCenter ? "blur(0px)" : `blur(${abs * 1.5}px)`,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.72,
+                      x: -direction * 220,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 22,
+                      mass: 1.1,
+                    }}
+                    className={[
+                      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full aspect-square flex items-center justify-center text-center",
+                      "will-change-transform",
+                      isCenter
+                        ? "w-[min(86vw,440px)] md:w-[480px]"
+                        : "w-[min(58vw,320px)] md:w-[340px]",
+                    ].join(" ")}
+                  >
+                    {/* ambient glow behind active circle */}
+                    {isCenter && (
+                      <motion.div
+                        aria-hidden
+                        className="absolute inset-0 rounded-full"
+                        animate={{
+                          boxShadow: [
+                            "0 0 40px -10px hsl(var(--primary) / 0.5)",
+                            "0 0 70px -5px hsl(var(--brand-magenta) / 0.45)",
+                            "0 0 40px -10px hsl(var(--primary) / 0.5)",
+                          ],
+                        }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      />
+                    )}
+
+                    <div
+                      className={[
+                        "relative w-full h-full rounded-full flex items-center justify-center overflow-hidden",
+                        isCenter
+                          ? "bg-gradient-to-br from-primary/25 via-background/45 to-background/15 border border-[hsl(var(--primary))]/50 backdrop-blur-md"
+                          : "bg-gradient-to-br from-background/8 to-background/3 border border-background/15 backdrop-blur-sm",
+                      ].join(" ")}
+                    >
+                      {/* inner shimmer */}
+                      <motion.div
+                        aria-hidden
+                        className="absolute inset-0 rounded-full opacity-30"
+                        style={{
+                          background:
+                            "conic-gradient(from 0deg, transparent 0%, hsl(var(--primary) / 0.25) 35%, hsl(var(--brand-magenta) / 0.15) 55%, transparent 100%)",
+                        }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 18,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+
+                      <div
+                        className={[
+                          "relative z-10 flex flex-col items-center justify-center",
+                          isCenter ? "px-8 md:px-14 py-10 max-w-[86%]" : "px-6 md:px-8 max-w-[80%]",
+                        ].join(" ")}
+                      >
+                        <motion.div
+                          animate={isCenter ? { y: [0, -6, 0] } : {}}
+                          transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Quote
+                            className={isCenter ? "mx-auto mb-4 text-[hsl(var(--primary))]" : "mx-auto mb-3 text-background/30"}
+                            size={isCenter ? 40 : 22}
+                            aria-hidden
+                          />
+                        </motion.div>
+                        <p
+                          className={[
+                            "leading-snug text-background",
+                            isCenter ? "text-lg md:text-2xl font-medium" : "text-sm md:text-base font-normal",
+                          ].join(" ")}
+                        >
+                          &ldquo;{testimonials[i].quote}&rdquo;
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         </div>
 
-        {/* Controls */}
-        <div className="relative mt-8 flex items-center justify-center gap-4">
-          <button
+        {/* Controls — minimal, no play/pause */}
+        <div className="relative mt-4 flex items-center justify-center gap-5">
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => go(-1)}
             aria-label="Previous testimonial"
-            className="p-3 rounded-full border border-background/20 text-background hover:bg-background/10 transition"
+            className="p-3 rounded-full border border-background/20 text-background/80 hover:bg-background/10 hover:text-background transition-colors"
           >
             <ChevronLeft size={20} />
-          </button>
+          </motion.button>
 
-          <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial pagination">
+          <div className="flex items-center gap-2.5" role="tablist" aria-label="Testimonial pagination">
             {testimonials.map((t, i) => (
               <button
                 key={t.id}
@@ -147,32 +282,26 @@ const TestimonialsSection = () => {
                 aria-selected={i === index}
                 aria-label={`Show testimonial ${i + 1}`}
                 className={[
-                  "h-2 rounded-full transition-all",
-                  i === index ? "w-8 bg-[hsl(var(--primary))]" : "w-2 bg-background/30 hover:bg-background/50",
+                  "h-2 rounded-full transition-all duration-300",
+                  i === index ? "w-8 bg-[hsl(var(--primary))]" : "w-2 bg-background/30 hover:bg-background/55",
                 ].join(" ")}
               />
             ))}
           </div>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => go(1)}
             aria-label="Next testimonial"
-            className="p-3 rounded-full border border-background/20 text-background hover:bg-background/10 transition"
+            className="p-3 rounded-full border border-background/20 text-background/80 hover:bg-background/10 hover:text-background transition-colors"
           >
             <ChevronRight size={20} />
-          </button>
-
-          <button
-            onClick={() => setPaused((p) => !p)}
-            aria-label={paused ? "Resume autoplay" : "Pause autoplay"}
-            className="ml-2 p-3 rounded-full border border-background/20 text-background hover:bg-background/10 transition"
-          >
-            {paused ? <Play size={16} /> : <Pause size={16} />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Footer */}
-        <div className="relative mt-16 md:mt-20 text-center max-w-3xl mx-auto">
+        <div className="relative mt-16 md:mt-24 text-center max-w-3xl mx-auto">
           <p className="text-background/80 text-base md:text-lg leading-relaxed">
             Every statistic represents a person. Every voice represents a lived experience.
           </p>
