@@ -6,7 +6,7 @@ const BlogNewsletterCTA = ({ source = "blog" }: { source?: string }) => (
       Found this useful?
     </h3>
     <p className="text-muted-foreground mb-5 leading-relaxed">
-      Subscribe to receive our monthly updates on HIV access, digital health, and LGBTQI+ rights in Ghana.
+      Subscribe to receive updates on HIV access, digital health, digital rights, and the development of Synapse, Orenta, and DigiHub.
     </p>
     <NewsletterForm source={source} />
   </div>
