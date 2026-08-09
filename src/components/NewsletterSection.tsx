@@ -17,7 +17,7 @@ const NewsletterSection = () => (
           Stay Connected
         </h2>
         <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-          Monthly updates on HIV access, digital health, LGBTQI+ rights, and the development of Synapse, delivered directly to your inbox.
+          Updates on HIV access, digital health, digital rights, and the development of Synapse, Orenta, and DigiHub, delivered directly to your inbox.
         </p>
         <div className="max-w-md mx-auto">
           <NewsletterForm source="homepage" variant="inline" />

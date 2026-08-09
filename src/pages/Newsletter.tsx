@@ -6,9 +6,9 @@ import NewsletterForm from "@/components/NewsletterForm";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const bullets = [
-  "Monthly community health insights and blog posts",
+  "Community health insights and blog posts",
   "Research and publication updates",
-  "Synapse development milestones",
+  "Synapse, Orenta and DigiHub development milestones",
   "Advocacy news and sector updates",
   "Partnership and funding announcements",
 ];
@@ -31,7 +31,7 @@ const Newsletter = () => {
               Subscribe to Our Newsletter
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              The Ameliorate Project publishes monthly updates on HIV access, LGBTQI+ health rights, digital health innovation, and the development of Synapse. Our newsletter brings our latest research, blog posts, advocacy updates, and partnership news directly to your inbox. Join our growing community of readers across Ghana and beyond.
+              The Ameliorate Project publishes updates on HIV access, LGBTQI+ health rights, digital health innovation, digital rights, and the development of Synapse, Orenta, and DigiHub. Our newsletter brings our latest research, blog posts, advocacy updates, and partnership news directly to your inbox. Join our growing community of readers across Ghana and beyond.
             </p>
           </AnimatedSection>
 
