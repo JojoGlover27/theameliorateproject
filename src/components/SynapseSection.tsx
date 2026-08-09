@@ -8,7 +8,7 @@ const SynapseSection = () => (
     <div className="container mx-auto px-4 md:px-8 max-w-3xl">
       <AnimatedSection>
         <div className="flex items-center gap-4 mb-8">
-          <img src={synapseLogo} alt="Synapse" className="h-16 w-16 md:h-20 md:w-20 rounded-xl shadow-md bg-black p-2 object-contain" />
+          <img src={synapseLogo} alt="Synapse" className="h-14 w-14 rounded-xl shadow-md bg-black object-cover" />
           <h2 className="text-3xl md:text-4xl text-foreground">About Synapse</h2>
         </div>
       </AnimatedSection>
