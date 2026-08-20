@@ -12,6 +12,7 @@ import {
 const primaryLinks = [
   { label: "About Us", href: "/#about" },
   { label: "Synapse", href: "/synapse" },
+  { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "DigiHub", href: "/digihub" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Contact", href: "/#contact" },
