@@ -37,7 +37,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import digihubLogo from "@/assets/digihub-logo.png";
-import { alerts, badges, challenge, clinicEvents, news, secureApps, videos } from "@/data/digihub";
+import digihubShield from "@/assets/digihub-shield.png";
+import { alerts, badges, challenge, news, secureApps, videos } from "@/data/digihub";
+import { appLogo } from "@/pages/digihub/Apps";
 import { getScore, PrivacyScoreResult } from "@/lib/digihub-store";
 
 const journey = [
