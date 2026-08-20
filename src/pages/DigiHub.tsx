@@ -130,22 +130,28 @@ const DigiHub = () => {
             </div>
           </motion.div>
 
-          {/* Shield illustration with floating labels */}
+          {/* Imposing security shield, rotating on its base */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative aspect-square max-w-md mx-auto w-full"
+            className="relative mx-auto w-full max-w-md"
+            style={{ perspective: "1400px" }}
           >
-            <div className="absolute inset-[18%] rounded-full bg-[#8B5CF6]/25 blur-3xl" />
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-[20%] grid place-items-center rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#3B82F6]/25 to-[#8B5CF6]/30 backdrop-blur"
-            >
-              <Shield className="text-[#8B5CF6]" size={120} strokeWidth={1.2} />
-              <Lock className="absolute text-[#60A5FA]" size={44} />
-            </motion.div>
+            <div className="absolute inset-x-8 bottom-6 top-10 rounded-full bg-[#8B5CF6]/30 blur-3xl" />
+            <motion.img
+              src={digihubShield}
+              alt="DigiHub security shield"
+              width={1024}
+              height={1280}
+              loading="eager"
+              decoding="async"
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              className="relative w-full object-contain drop-shadow-[0_35px_60px_rgba(59,130,246,0.35)]"
+              style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
+            />
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-6 w-2/3 rounded-[100%] bg-black/60 blur-xl" />
             {heroLabels.map((l, i) => (
               <motion.div
                 key={l.label}
@@ -160,6 +166,7 @@ const DigiHub = () => {
               </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
