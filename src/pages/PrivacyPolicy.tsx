@@ -40,6 +40,26 @@ const PrivacyPolicy = () => (
           </div>
 
           <div>
+            <h2 className="text-2xl text-foreground mb-3">Cookies Policy</h2>
+            <p>
+              We use only essential cookies to keep our website secure and functioning properly. These cookies are
+              required for website security, accessibility, navigation, and basic functionality, and they cannot be
+              disabled.
+            </p>
+            <p className="mt-3">
+              We do not use advertising cookies, profiling cookies, or third-party trackers. Your visit remains private.
+            </p>
+            <p className="mt-3">
+              Optional analytics cookies help us understand anonymous website usage so we can improve our services and
+              user experience. They are switched off unless you choose to enable them.
+            </p>
+            <p className="mt-3">
+              You can choose which types of cookies we use when you first visit the site, and you can change your
+              preferences at any time. If you decline analytics cookies, any analytics storage is cleared immediately.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-2xl text-foreground mb-3">Newsletter Subscriber Data</h2>
             <p>
               Email addresses collected through our newsletter subscription form are stored securely and used only to send The Ameliorate Project's monthly newsletter. We do not share, sell, or transfer subscriber data to any third party. Subscribers may unsubscribe at any time by clicking the unsubscribe link included in every email.
