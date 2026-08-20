@@ -142,24 +142,6 @@ export type Database = {
         }
         Relationships: []
       }
-      threat_snapshots: {
-        Row: {
-          created_at: string
-          id: string
-          payload: Json
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          payload: Json
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          payload?: Json
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
           created_at: string

@@ -1,6 +1,3 @@
 project_id = "csantdqapeypdwkbtqyy"
 [functions.newsletter-confirm]
 verify_jwt = false
-
-[functions.threat-feed]
-verify_jwt = false
