@@ -158,7 +158,7 @@ Deno.serve(async (req) => {
 
     for (const i of items) {
       const iso = i.date ? new Date(i.date).toISOString() : new Date().toISOString();
-      const country = matchCountry(i.title);
+      const country = matchCountry(i.title) ?? (i.source === "CISA" ? null : matchCountry(i.body));
       if (country && !seen.has(`${country}-${i.type}`)) {
         seen.add(`${country}-${i.type}`);
         const [lat, lon] = COUNTRIES[country];
