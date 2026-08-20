@@ -75,6 +75,7 @@ interface Item {
   source: string;
   date: string;
   type: ThreatType;
+  body: string;
 }
 
 const decode = (s: string) =>
@@ -93,19 +94,37 @@ const pick = (block: string, tag: string) => {
   return m ? decode(m[1]) : "";
 };
 
-async function fetchFeed(q: string, type: ThreatType): Promise<Item[]> {
-  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`;
-  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (DigiHub Intel)" } });
+const classify = (text: string): ThreatType | null => {
+  for (const r of TYPE_RULES) if (r.re.test(text)) return r.type;
+  return null;
+};
+
+async function fetchFeed(url: string, source: string): Promise<Item[]> {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (compatible; DigiHubIntel/1.0; +https://theameliorateproject.lovable.app)",
+      Accept: "application/rss+xml, application/xml, text/xml, */*",
+    },
+  });
   if (!res.ok) throw new Error(`feed ${res.status}`);
   const xml = await res.text();
-  const blocks = xml.split("<item>").slice(1);
-  return blocks.slice(0, 20).map((b) => ({
-    title: pick(b, "title"),
-    link: pick(b, "link"),
-    source: pick(b, "source") || "News",
-    date: pick(b, "pubDate"),
-    type,
-  }));
+  const blocks = xml.split(/<item[\s>]|<entry[\s>]/).slice(1);
+  const items: Item[] = [];
+  for (const b of blocks.slice(0, 25)) {
+    const title = pick(b, "title");
+    let link = pick(b, "link");
+    if (!link) {
+      const m = b.match(/<link[^>]*href="([^"]+)"/);
+      link = m ? m[1] : "";
+    }
+    const date = pick(b, "pubDate") || pick(b, "updated") || pick(b, "published");
+    const body = `${title} ${pick(b, "description") || pick(b, "summary")}`;
+    const type = classify(body);
+    if (!title || !link || !type) continue;
+    items.push({ title, link, source, date, type, body });
+  }
+  return items;
 }
 
 const matchCountry = (text: string): string | null => {
@@ -124,9 +143,9 @@ Deno.serve(async (req) => {
   try {
     const diag: string[] = [];
     const results = await Promise.all(
-      QUERIES.map((q) =>
-        fetchFeed(q.q, q.type).catch((e) => {
-          diag.push(`${q.q}: ${e}`);
+      FEEDS.map((f) =>
+        fetchFeed(f.url, f.source).catch((e) => {
+          diag.push(`${f.source}: ${e}`);
           return [] as Item[];
         }),
       ),
@@ -139,7 +158,7 @@ Deno.serve(async (req) => {
 
     for (const i of items) {
       const iso = i.date ? new Date(i.date).toISOString() : new Date().toISOString();
-      const country = matchCountry(i.title);
+      const country = matchCountry(i.body || i.title);
       if (country && !seen.has(`${country}-${i.type}`)) {
         seen.add(`${country}-${i.type}`);
         const [lat, lon] = COUNTRIES[country];
@@ -155,7 +174,7 @@ Deno.serve(async (req) => {
           date: iso,
         });
       }
-      if (i.type === "Scam" && alerts.length < 14) {
+      if ((i.type === "Scam" || i.type === "Harassment") && alerts.length < 14) {
         alerts.push({
           id: i.link,
           title: i.title,
