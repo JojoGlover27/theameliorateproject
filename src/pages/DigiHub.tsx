@@ -245,7 +245,7 @@ const DigiHub = () => {
       <section className="pb-14 md:pb-20 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
           <AnimatedSection>
-            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+            <div className="rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-magenta/10 p-5 md:p-7 shadow-lg h-full">
               <h2 className="text-xl md:text-2xl font-semibold text-card-foreground">
                 Digital Rights &amp; Safety Clinics
               </h2>
@@ -254,21 +254,29 @@ const DigiHub = () => {
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {clinicFeatures.map((f) => (
-                  <div key={f.label} className="rounded-xl border border-border bg-secondary/50 p-3 text-center">
+                  <div
+                    key={f.label}
+                    className="rounded-xl border border-border bg-gradient-to-br from-primary/5 to-brand-blue/10 p-3 text-center"
+                  >
                     <f.icon className="text-primary mx-auto mb-2" size={18} />
                     <p className="text-xs font-semibold text-card-foreground leading-tight">{f.label}</p>
                     <p className="text-[11px] text-muted-foreground mt-1">{f.sub}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 rounded-xl bg-primary/5 border border-primary/20 p-4 text-sm text-muted-foreground">
-                Next up: {clinicEvents[0].title}, {clinicEvents[0].date}.
+              <div className="mt-5 rounded-xl bg-primary/10 border border-primary/25 p-4">
+                <p className="text-sm font-semibold text-foreground">Clinic Coming Soon</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Dates and locations are being finalised with community partners. Join the list and we
+                  will email you the moment registration opens.
+                </p>
               </div>
-              <Button className="rounded-full mt-5" asChild>
-                <Link to="/digihub/clinics">Join Next Clinic <ArrowRight size={15} /></Link>
+              <Button className="rounded-full mt-5 px-6" asChild>
+                <Link to="/digihub/clinics">Join the waiting list <ArrowRight size={15} /></Link>
               </Button>
             </div>
           </AnimatedSection>
+
 
           <AnimatedSection>
             <div id="ask-orenta" className="scroll-mt-24 h-full">
