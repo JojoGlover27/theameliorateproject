@@ -173,7 +173,7 @@ const DigiHub = () => {
       {/* ============ START YOUR DIGITAL SAFETY JOURNEY ============ */}
       <section className="relative -mt-8 md:-mt-12 pb-4 z-10">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="rounded-3xl border border-border bg-card/90 backdrop-blur shadow-xl p-5 md:p-7">
+          <div className="rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-blue/10 backdrop-blur shadow-2xl p-5 md:p-7">
             <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
               Start Your Digital Safety Journey
             </h2>
@@ -190,7 +190,7 @@ const DigiHub = () => {
                     </span>
                   </>
                 );
-                const cls = `flex items-center gap-3 rounded-2xl border border-border bg-secondary/50 p-4 hover:border-primary hover:bg-secondary transition-all duration-300 hover:-translate-y-0.5`;
+                const cls = `flex items-center gap-3 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-magenta/10 p-4 shadow-sm hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5`;
                 return j.to.startsWith("#") ? (
                   <a key={j.title} href={j.to} className={cls}>{inner}</a>
                 ) : (
@@ -206,7 +206,7 @@ const DigiHub = () => {
       <section className="py-14 md:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
           <AnimatedSection>
-            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+            <div className="rounded-3xl border border-primary/15 bg-gradient-to-br from-brand-blue/5 via-card to-primary/10 p-5 md:p-7 shadow-lg h-full">
               <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
                 What You Can Do in DigiHub
               </h2>
@@ -417,7 +417,7 @@ const DigiHub = () => {
             <div className={`${glass} p-5 h-full`}>
               <h3 className="font-semibold text-card-foreground">Community Challenge</h3>
               <p className="text-xs text-muted-foreground mb-4">Monthly challenges. Real impact.</p>
-              <div className="rounded-xl border border-border bg-secondary/50 p-3">
+              <div className="rounded-xl border border-border bg-gradient-to-br from-primary/5 to-brand-magenta/10 p-3">
                 <p className="text-[11px] text-muted-foreground">{challenge.month} Challenge</p>
                 <p className="text-sm font-semibold text-card-foreground">{challenge.title}</p>
                 <p className="text-[11px] text-muted-foreground mt-1">{challenge.blurb}</p>

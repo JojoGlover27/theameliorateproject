@@ -1,3 +1,6 @@
 project_id = "csantdqapeypdwkbtqyy"
 [functions.newsletter-confirm]
 verify_jwt = false
+
+[functions.digihub-intel]
+verify_jwt = false
