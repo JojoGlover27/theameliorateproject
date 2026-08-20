@@ -74,7 +74,7 @@ const TestimonialsSection = () => {
     return out;
   }, [index, total, isMobile]);
 
-  const spread = isMobile ? 30 : 22;
+  const spread = isMobile ? 30 : 31;
 
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
