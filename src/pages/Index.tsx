@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import EcosystemSection from "@/components/EcosystemSection";
 import AboutSection from "@/components/AboutSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
+import OurJourneySection from "@/components/OurJourneySection";
 import MissionSection from "@/components/MissionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import DonationSection from "@/components/DonationSection";
