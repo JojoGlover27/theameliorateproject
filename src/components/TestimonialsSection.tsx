@@ -287,7 +287,9 @@ const TestimonialsSection = () => {
                       </div>
                     </div>
                   </motion.div>
+                  </motion.div>
                 );
+
               })}
             </AnimatePresence>
           </motion.div>
