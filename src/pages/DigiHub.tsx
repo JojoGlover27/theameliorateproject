@@ -85,7 +85,8 @@ const pillars = [
   { icon: Eye, label: "Evidence Informed" },
 ];
 
-const glass = "rounded-2xl border border-border bg-card/80 backdrop-blur shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5";
+const glass =
+  "rounded-2xl border border-border bg-gradient-to-br from-primary/5 via-card to-brand-blue/5 backdrop-blur shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5";
 
 const DigiHub = () => {
   const [score, setScore] = useState<PrivacyScoreResult | null>(null);
