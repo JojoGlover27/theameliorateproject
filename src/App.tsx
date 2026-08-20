@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import BackToTop from "./components/BackToTop.tsx";
+import CookieConsentBanner from "./components/CookieConsent.tsx";
 
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
@@ -101,6 +102,7 @@ const App = () => (
           </Routes>
         </Suspense>
         <BackToTop />
+        <CookieConsentBanner />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

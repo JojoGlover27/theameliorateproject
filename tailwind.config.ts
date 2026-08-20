@@ -43,6 +43,10 @@ export default {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
+        consent: {
+          DEFAULT: "hsl(var(--consent))",
+          foreground: "hsl(var(--consent-foreground))",
+        },
         brand: {
           magenta: "hsl(var(--brand-magenta))",
           gold: "hsl(var(--brand-gold))",

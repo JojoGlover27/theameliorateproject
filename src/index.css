@@ -40,6 +40,9 @@
 
     --radius: 0.5rem;
 
+    --consent: 258 72% 15%;
+    --consent-foreground: 0 0% 100%;
+
     --hero-gradient: linear-gradient(135deg, hsl(262 55% 92%), hsl(330 60% 93%), hsl(42 80% 92%));
 
     --gradient-card: linear-gradient(150deg, hsl(262 55% 42% / 0.055) 0%, hsl(0 0% 100% / 0) 45%, hsl(330 72% 55% / 0.05) 100%);
@@ -82,6 +85,8 @@
     --border: 250 15% 22%;
     --input: 250 15% 22%;
     --ring: 265 70% 68%;
+    --consent: 258 60% 10%;
+    --consent-foreground: 0 0% 100%;
     --gradient-card: linear-gradient(150deg, hsl(265 70% 68% / 0.10) 0%, hsl(0 0% 100% / 0) 48%, hsl(330 72% 62% / 0.08) 100%);
     --card-border-tint: 265 70% 68%;
     --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.3), 0 10px 28px -14px hsl(265 70% 68% / 0.35);
