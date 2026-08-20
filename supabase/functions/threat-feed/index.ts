@@ -93,14 +93,22 @@ async function fetchType(q: { type: string; query: string; must: string[] }) {
       sort: "datedesc",
     }).toString();
 
-  const res = await fetch(url, { headers: { "User-Agent": "AmelioDigiHub/1.0" } });
-  const text = await res.text();
-  let data: { articles?: Article[] };
-  try {
-    data = JSON.parse(text);
-  } catch {
-    return [];
+  let data: { articles?: Article[] } | null = null;
+  for (let attempt = 0; attempt < 4 && !data; attempt++) {
+    if (attempt > 0) await sleep(7000);
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": "AmelioDigiHub/1.0" } });
+      const text = await res.text();
+      if (!text.trim().startsWith("{")) {
+        console.log(`gdelt throttled/invalid for ${q.type}: ${text.slice(0, 120)}`);
+        continue;
+      }
+      data = JSON.parse(text);
+    } catch (e) {
+      console.log(`gdelt fetch error for ${q.type}: ${e}`);
+    }
   }
+  if (!data) return [];
   const articles = (data.articles ?? []).filter((a) => {
     const t = (a.title ?? "").toLowerCase();
     return a.sourcecountry && CENTROIDS[a.sourcecountry] && q.must.some((k) => t.includes(k));
