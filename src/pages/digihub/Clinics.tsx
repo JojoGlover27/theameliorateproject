@@ -1,29 +1,28 @@
 import { useState } from "react";
-import { CalendarDays, MapPin, Users, CheckCircle2 } from "lucide-react";
+import { CalendarClock, CheckCircle2, HeartHandshake, Sparkles } from "lucide-react";
 import DigiHubShell from "@/components/digihub/DigiHubShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { clinicEvents } from "@/data/digihub";
-import { addClinic, getClinics } from "@/lib/digihub-store";
 import { supabase } from "@/integrations/supabase/client";
 
+const promises = [
+  { icon: HeartHandshake, label: "Community cohorts", sub: "Learn together, not alone" },
+  { icon: Sparkles, label: "Hands-on practice", sub: "Real devices, real settings" },
+  { icon: CheckCircle2, label: "Personal safety plan", sub: "Leave with your own plan" },
+];
+
 const Clinics = () => {
-  const [selected, setSelected] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const [registered, setRegistered] = useState<string[]>(getClinics());
 
-  const register = async (slug: string) => {
+  const notify = async () => {
     if (!email) return;
     setState("loading");
     try {
-      // Registration confirmation is delivered through the existing email system.
       const { error } = await supabase.functions.invoke("newsletter-subscribe", {
-        body: { email, source: `digihub-clinic:${slug}`, website: "" },
+        body: { email, source: "digihub-clinic-waitlist", website: "" },
       });
       if (error) throw error;
-      addClinic(slug);
-      setRegistered(getClinics());
       setState("done");
     } catch {
       setState("error");
@@ -33,60 +32,58 @@ const Clinics = () => {
   return (
     <DigiHubShell
       title="Digital Rights & Safety Clinics"
-      description="Workshops, virtual sessions and multi-week cohorts. These are learning experiences, not consultations, and every participant leaves with a personal Digital Safety Plan."
+      description="Workshops, virtual sessions and multi-week cohorts, built with the communities they serve."
     >
-      <div className="container mx-auto px-4 md:px-8 max-w-4xl py-12 md:py-16 space-y-5">
-        {clinicEvents.map((e) => {
-          const isRegistered = registered.includes(e.slug);
-          return (
-            <div key={e.slug} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/25">
-                  {e.type}
-                </span>
-                <span className={`text-[11px] px-2 py-0.5 rounded-full border ${e.status === "Open" ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/25" : "bg-accent/10 text-accent border-accent/30"}`}>
-                  {e.status === "Open" ? "Registration open" : "Waiting list"}
-                </span>
-              </div>
-              <h2 className="text-lg font-semibold text-card-foreground">{e.title}</h2>
-              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{e.blurb}</p>
-              <div className="flex flex-wrap gap-4 text-xs text-muted-foreground mt-3">
-                <span className="flex items-center gap-1.5"><CalendarDays size={13} /> {e.date}</span>
-                <span className="flex items-center gap-1.5"><MapPin size={13} /> {e.location}</span>
-                <span className="flex items-center gap-1.5"><Users size={13} /> {e.seats}</span>
-              </div>
+      <div className="container mx-auto px-4 md:px-8 max-w-3xl py-14 md:py-20">
+        <div className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/10 via-brand-magenta/10 to-brand-blue/10 p-8 md:p-12 text-center shadow-lg">
+          <span className="inline-grid place-items-center h-14 w-14 rounded-2xl bg-primary text-primary-foreground mx-auto mb-5">
+            <CalendarClock size={26} />
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Clinic Coming Soon</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            Our first Digital Rights &amp; Safety Clinic is being designed with community partners.
+            Dates, locations and registration will be published here as soon as they are confirmed.
+          </p>
 
-              {isRegistered ? (
-                <p className="mt-4 flex items-center gap-2 text-sm text-primary">
-                  <CheckCircle2 size={15} /> You are registered. A confirmation email is on its way.
-                </p>
-              ) : selected === e.slug ? (
-                <div className="mt-4 space-y-2">
+          <div className="grid sm:grid-cols-3 gap-3 mt-8 text-left">
+            {promises.map((p) => (
+              <div key={p.label} className="rounded-2xl border border-border bg-card/80 backdrop-blur p-4">
+                <p.icon className="text-primary mb-2" size={18} />
+                <p className="text-sm font-semibold text-card-foreground">{p.label}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{p.sub}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 max-w-md mx-auto text-left">
+            {state === "done" ? (
+              <p className="flex items-center justify-center gap-2 text-sm text-primary font-medium">
+                <CheckCircle2 size={16} /> You are on the list. We will email you when dates are live.
+              </p>
+            ) : (
+              <>
+                <label htmlFor="clinic-email" className="block text-xs font-medium text-muted-foreground mb-2">
+                  Get notified when the first clinic opens
+                </label>
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Input
+                    id="clinic-email"
                     type="email"
                     value={email}
-                    onChange={(ev) => setEmail(ev.target.value)}
-                    placeholder="Email for your confirmation"
-                    aria-label="Email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
                   />
-                  <div className="flex gap-2">
-                    <Button className="rounded-full" disabled={state === "loading"} onClick={() => register(e.slug)}>
-                      {state === "loading" ? "Registering..." : e.status === "Open" ? "Confirm registration" : "Join waiting list"}
-                    </Button>
-                    <Button variant="ghost" className="rounded-full" onClick={() => setSelected(null)}>Cancel</Button>
-                  </div>
-                  {state === "error" && (
-                    <p className="text-xs text-destructive">Something went wrong. Please try again in a moment.</p>
-                  )}
+                  <Button className="rounded-full px-6" disabled={state === "loading"} onClick={notify}>
+                    {state === "loading" ? "Adding..." : "Notify me"}
+                  </Button>
                 </div>
-              ) : (
-                <Button className="rounded-full mt-4" onClick={() => { setSelected(e.slug); setState("idle"); }}>
-                  {e.status === "Open" ? "Register" : "Join waiting list"}
-                </Button>
-              )}
-            </div>
-          );
-        })}
+                {state === "error" && (
+                  <p className="text-xs text-destructive mt-2">Something went wrong. Please try again shortly.</p>
+                )}
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </DigiHubShell>
   );
