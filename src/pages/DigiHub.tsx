@@ -146,8 +146,8 @@ const DigiHub = () => {
               height={1280}
               loading="eager"
               decoding="async"
-              animate={{ rotateY: 360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              animate={{ rotateY: [-22, 22, -22], y: [0, -8, 0] }}
+              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
               className="relative w-full object-contain drop-shadow-[0_35px_60px_rgba(59,130,246,0.35)]"
               style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
             />
