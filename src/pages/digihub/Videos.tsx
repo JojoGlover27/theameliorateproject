@@ -28,10 +28,10 @@ const Videos = () => {
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
                 filter === c
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-card text-muted-foreground border-border hover:text-primary"
+                  ? "bg-gradient-to-r from-primary to-brand-blue text-primary-foreground border-transparent shadow-md"
+                  : "bg-card text-muted-foreground border-border hover:text-primary hover:border-primary/40"
               }`}
             >
               {c}
@@ -44,8 +44,9 @@ const Videos = () => {
             <button
               key={v.id}
               onClick={() => setOpen(v.id)}
-              className="text-left rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-lg transition-all hover:-translate-y-0.5"
+              className="text-left rounded-2xl border border-border bg-gradient-to-br from-primary/5 via-card to-brand-magenta/5 overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-0.5"
             >
+
               <div className="relative aspect-video bg-secondary">
                 <img
                   src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
