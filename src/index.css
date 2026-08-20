@@ -42,6 +42,11 @@
 
     --hero-gradient: linear-gradient(135deg, hsl(262 55% 92%), hsl(330 60% 93%), hsl(42 80% 92%));
 
+    --gradient-card: linear-gradient(150deg, hsl(262 55% 42% / 0.055) 0%, hsl(0 0% 100% / 0) 45%, hsl(330 72% 55% / 0.05) 100%);
+    --card-border-tint: 262 55% 42%;
+    --shadow-card: 0 1px 2px hsl(250 30% 14% / 0.04), 0 8px 24px -12px hsl(262 55% 42% / 0.22);
+    --shadow-card-hover: 0 2px 4px hsl(250 30% 14% / 0.05), 0 18px 40px -16px hsl(262 55% 42% / 0.34);
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
