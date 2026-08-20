@@ -41,8 +41,7 @@ const HeroSection = () => (
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="rounded-md text-base px-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white"
+              className="rounded-md text-base px-6 bg-brand-gold text-black hover:opacity-90"
               asChild
             >
               <a href="https://orenta-ai-prototype.lovable.app" target="_blank" rel="noopener noreferrer">
@@ -51,8 +50,7 @@ const HeroSection = () => (
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="rounded-md text-base px-6 bg-transparent text-white border-white/40 hover:bg-white/10 hover:text-white"
+              className="rounded-md text-base px-6 bg-brand-magenta text-white hover:opacity-90"
               asChild
             >
               <Link to="/digihub">Visit DigiHub</Link>
