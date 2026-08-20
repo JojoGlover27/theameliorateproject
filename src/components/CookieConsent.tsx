@@ -70,48 +70,43 @@ const CookieConsentBanner = () => {
             transition={{ duration: 0.35, ease: "easeOut" }}
             role="dialog"
             aria-label="Cookies Policy"
-            className="fixed inset-x-3 bottom-3 z-[60] md:inset-x-6 md:bottom-6"
+            className="fixed inset-x-3 bottom-3 z-[60] md:inset-x-auto md:left-6 md:bottom-6 md:max-w-sm"
           >
-            <div className="relative mx-auto max-w-5xl rounded-2xl bg-consent text-consent-foreground shadow-2xl p-6 md:p-8">
+            <div className="relative mx-auto max-w-md rounded-xl bg-consent text-consent-foreground shadow-2xl p-4 md:p-5">
               <button
                 onClick={() => decide(false)}
                 aria-label="Close and accept essential cookies only"
-                className="absolute right-4 top-4 text-consent-foreground/70 hover:text-consent-foreground transition-colors"
+                className="absolute right-3 top-3 text-consent-foreground/70 hover:text-consent-foreground transition-colors"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
 
-              <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
-                <div className="pr-6">
-                  <h2 className="text-2xl md:text-3xl mb-3">Cookies Policy</h2>
-                  <p className="text-sm md:text-base text-consent-foreground/85 leading-relaxed mb-3">
-                    We use only essential cookies to keep our website secure and functioning properly.
-                  </p>
-                  <p className="text-sm md:text-base text-consent-foreground/85 leading-relaxed mb-3">
-                    We do not use advertising cookies, profiling cookies, or third-party trackers. Your visit
-                    remains private.
-                  </p>
-                  <p className="text-sm md:text-base text-consent-foreground/85">Learn more in our {policyLink}.</p>
-                </div>
+              <div className="pr-5">
+                <h2 className="text-lg mb-1.5">Cookies Policy</h2>
+                <p className="text-xs text-consent-foreground/85 leading-relaxed mb-2">
+                  We use only essential cookies to keep our website secure and functioning properly. No advertising
+                  cookies, profiling cookies, or third-party trackers.
+                </p>
+                <p className="text-xs text-consent-foreground/85 mb-3">Learn more in our {policyLink}.</p>
 
-                <div className="flex flex-col gap-3 md:w-64">
+                <div className="flex flex-wrap items-center gap-2">
                   <button
                     onClick={() => decide(true)}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-gold px-5 py-3 font-semibold text-consent hover:brightness-105 transition"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-brand-gold px-3 py-2 text-xs font-semibold text-consent hover:brightness-105 transition"
                   >
-                    <Check size={18} /> Accept Essential
+                    <Check size={14} /> Accept Essential
                   </button>
                   <button
                     onClick={() => decide(false)}
-                    className="inline-flex items-center justify-center rounded-lg border border-consent-foreground/40 px-5 py-3 font-semibold text-consent-foreground hover:bg-consent-foreground/10 transition"
+                    className="inline-flex items-center justify-center rounded-md border border-consent-foreground/40 px-3 py-2 text-xs font-semibold text-consent-foreground hover:bg-consent-foreground/10 transition"
                   >
                     Essential Only
                   </button>
                   <button
                     onClick={() => setPrefsOpen(true)}
-                    className="mx-auto text-sm text-consent-foreground underline decoration-dotted decoration-brand-gold underline-offset-4 hover:text-brand-gold transition-colors"
+                    className="text-xs text-consent-foreground underline decoration-dotted decoration-brand-gold underline-offset-4 hover:text-brand-gold transition-colors"
                   >
-                    Manage Preferences
+                    Manage
                   </button>
                 </div>
               </div>
