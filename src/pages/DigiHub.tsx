@@ -229,7 +229,7 @@ const DigiHub = () => {
                   </motion.div>
                 ))}
               </motion.div>
-              <Button variant="outline" className="rounded-full mt-5" asChild>
+              <Button className="rounded-full mt-5 px-6" asChild>
                 <Link to="/digihub/toolkits">Explore all resources <ArrowRight size={15} /></Link>
               </Button>
             </div>
@@ -316,9 +316,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/apps" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Explore all apps <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/apps">Explore all apps <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -341,9 +341,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/videos" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Browse all videos <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/videos">Browse all videos <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -363,9 +363,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/alerts" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all scam alerts <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/alerts">View all scam alerts <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -426,9 +426,9 @@ const DigiHub = () => {
                   {challenge.participants} / {challenge.target} participants
                 </p>
               </div>
-              <Link to="/digihub/challenge" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Join the challenge <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/challenge">Join the challenge <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -445,9 +445,9 @@ const DigiHub = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/digihub/badges" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all badges <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/badges">View all badges <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -488,9 +488,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/news" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Read more <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/news">Read more <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
         </div>
