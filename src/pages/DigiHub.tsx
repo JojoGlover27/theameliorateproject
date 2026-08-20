@@ -37,7 +37,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import digihubLogo from "@/assets/digihub-logo.png";
-import { alerts, badges, challenge, clinicEvents, news, secureApps, videos } from "@/data/digihub";
+import digihubShield from "@/assets/digihub-shield.png";
+import { alerts, badges, challenge, news, secureApps, videos } from "@/data/digihub";
+import { appLogo } from "@/pages/digihub/Apps";
 import { getScore, PrivacyScoreResult } from "@/lib/digihub-store";
 
 const journey = [
@@ -83,7 +85,8 @@ const pillars = [
   { icon: Eye, label: "Evidence Informed" },
 ];
 
-const glass = "rounded-2xl border border-border bg-card/80 backdrop-blur shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5";
+const glass =
+  "rounded-2xl border border-border bg-gradient-to-br from-primary/5 via-card to-brand-blue/5 backdrop-blur shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5";
 
 const DigiHub = () => {
   const [score, setScore] = useState<PrivacyScoreResult | null>(null);
@@ -127,22 +130,28 @@ const DigiHub = () => {
             </div>
           </motion.div>
 
-          {/* Shield illustration with floating labels */}
+          {/* Imposing security shield, rotating on its base */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative aspect-square max-w-md mx-auto w-full"
+            className="relative mx-auto w-full max-w-md"
+            style={{ perspective: "1400px" }}
           >
-            <div className="absolute inset-[18%] rounded-full bg-[#8B5CF6]/25 blur-3xl" />
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-[20%] grid place-items-center rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#3B82F6]/25 to-[#8B5CF6]/30 backdrop-blur"
-            >
-              <Shield className="text-[#8B5CF6]" size={120} strokeWidth={1.2} />
-              <Lock className="absolute text-[#60A5FA]" size={44} />
-            </motion.div>
+            <div className="absolute inset-x-8 bottom-6 top-10 rounded-full bg-[#8B5CF6]/30 blur-3xl" />
+            <motion.img
+              src={digihubShield}
+              alt="DigiHub security shield"
+              width={1024}
+              height={1280}
+              loading="eager"
+              decoding="async"
+              animate={{ rotateY: [-22, 22, -22], y: [0, -8, 0] }}
+              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full object-contain drop-shadow-[0_35px_60px_rgba(59,130,246,0.35)]"
+              style={{ transformOrigin: "50% 100%", transformStyle: "preserve-3d" }}
+            />
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-6 w-2/3 rounded-[100%] bg-black/60 blur-xl" />
             {heroLabels.map((l, i) => (
               <motion.div
                 key={l.label}
@@ -157,13 +166,14 @@ const DigiHub = () => {
               </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
       {/* ============ START YOUR DIGITAL SAFETY JOURNEY ============ */}
       <section className="relative -mt-8 md:-mt-12 pb-4 z-10">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="rounded-3xl border border-border bg-card/90 backdrop-blur shadow-xl p-5 md:p-7">
+          <div className="rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-blue/10 backdrop-blur shadow-2xl p-5 md:p-7">
             <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
               Start Your Digital Safety Journey
             </h2>
@@ -180,7 +190,7 @@ const DigiHub = () => {
                     </span>
                   </>
                 );
-                const cls = `flex items-center gap-3 rounded-2xl border border-border bg-secondary/50 p-4 hover:border-primary hover:bg-secondary transition-all duration-300 hover:-translate-y-0.5`;
+                const cls = `flex items-center gap-3 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-magenta/10 p-4 shadow-sm hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5`;
                 return j.to.startsWith("#") ? (
                   <a key={j.title} href={j.to} className={cls}>{inner}</a>
                 ) : (
@@ -196,7 +206,7 @@ const DigiHub = () => {
       <section className="py-14 md:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
           <AnimatedSection>
-            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+            <div className="rounded-3xl border border-primary/15 bg-gradient-to-br from-brand-blue/5 via-card to-primary/10 p-5 md:p-7 shadow-lg h-full">
               <h2 className="text-xl md:text-2xl font-semibold text-card-foreground mb-5">
                 What You Can Do in DigiHub
               </h2>
@@ -219,7 +229,7 @@ const DigiHub = () => {
                   </motion.div>
                 ))}
               </motion.div>
-              <Button variant="outline" className="rounded-full mt-5" asChild>
+              <Button className="rounded-full mt-5 px-6" asChild>
                 <Link to="/digihub/toolkits">Explore all resources <ArrowRight size={15} /></Link>
               </Button>
             </div>
@@ -235,7 +245,7 @@ const DigiHub = () => {
       <section className="pb-14 md:pb-20 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
           <AnimatedSection>
-            <div className="rounded-3xl border border-border bg-card p-5 md:p-7 shadow-sm h-full">
+            <div className="rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-brand-magenta/10 p-5 md:p-7 shadow-lg h-full">
               <h2 className="text-xl md:text-2xl font-semibold text-card-foreground">
                 Digital Rights &amp; Safety Clinics
               </h2>
@@ -244,21 +254,29 @@ const DigiHub = () => {
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {clinicFeatures.map((f) => (
-                  <div key={f.label} className="rounded-xl border border-border bg-secondary/50 p-3 text-center">
+                  <div
+                    key={f.label}
+                    className="rounded-xl border border-border bg-gradient-to-br from-primary/5 to-brand-blue/10 p-3 text-center"
+                  >
                     <f.icon className="text-primary mx-auto mb-2" size={18} />
                     <p className="text-xs font-semibold text-card-foreground leading-tight">{f.label}</p>
                     <p className="text-[11px] text-muted-foreground mt-1">{f.sub}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 rounded-xl bg-primary/5 border border-primary/20 p-4 text-sm text-muted-foreground">
-                Next up: {clinicEvents[0].title}, {clinicEvents[0].date}.
+              <div className="mt-5 rounded-xl bg-primary/10 border border-primary/25 p-4">
+                <p className="text-sm font-semibold text-foreground">Clinic Coming Soon</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Dates and locations are being finalised with community partners. Join the list and we
+                  will email you the moment registration opens.
+                </p>
               </div>
-              <Button className="rounded-full mt-5" asChild>
-                <Link to="/digihub/clinics">Join Next Clinic <ArrowRight size={15} /></Link>
+              <Button className="rounded-full mt-5 px-6" asChild>
+                <Link to="/digihub/clinics">Join the waiting list <ArrowRight size={15} /></Link>
               </Button>
             </div>
           </AnimatedSection>
+
 
           <AnimatedSection>
             <div id="ask-orenta" className="scroll-mt-24 h-full">
@@ -279,9 +297,18 @@ const DigiHub = () => {
               <ul className="space-y-3">
                 {secureApps.slice(0, 4).map((a) => (
                   <li key={a.name} className="flex items-start gap-3">
-                    <span className="grid place-items-center h-8 w-8 rounded-lg bg-primary/10 text-primary text-xs font-bold shrink-0">
-                      {a.name[0]}
+                    <span className="grid place-items-center h-8 w-8 rounded-lg bg-card border border-border overflow-hidden shrink-0">
+                      <img
+                        src={appLogo(a.link)}
+                        alt=""
+                        aria-hidden
+                        width={24}
+                        height={24}
+                        loading="lazy"
+                        className="h-5 w-5 object-contain"
+                      />
                     </span>
+
                     <span>
                       <span className="block text-sm font-medium text-card-foreground">{a.name}</span>
                       <span className="block text-[11px] text-muted-foreground">{a.category}</span>
@@ -289,9 +316,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/apps" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Explore all apps <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/apps">Explore all apps <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -314,9 +341,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/videos" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Browse all videos <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/videos">Browse all videos <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -336,9 +363,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/alerts" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all scam alerts <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/alerts">View all scam alerts <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -390,7 +417,7 @@ const DigiHub = () => {
             <div className={`${glass} p-5 h-full`}>
               <h3 className="font-semibold text-card-foreground">Community Challenge</h3>
               <p className="text-xs text-muted-foreground mb-4">Monthly challenges. Real impact.</p>
-              <div className="rounded-xl border border-border bg-secondary/50 p-3">
+              <div className="rounded-xl border border-border bg-gradient-to-br from-primary/5 to-brand-magenta/10 p-3">
                 <p className="text-[11px] text-muted-foreground">{challenge.month} Challenge</p>
                 <p className="text-sm font-semibold text-card-foreground">{challenge.title}</p>
                 <p className="text-[11px] text-muted-foreground mt-1">{challenge.blurb}</p>
@@ -399,9 +426,9 @@ const DigiHub = () => {
                   {challenge.participants} / {challenge.target} participants
                 </p>
               </div>
-              <Link to="/digihub/challenge" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Join the challenge <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/challenge">Join the challenge <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
@@ -418,32 +445,31 @@ const DigiHub = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/digihub/badges" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all badges <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/badges">View all badges <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
 
           {/* Events */}
           <AnimatedSection>
-            <div className={`${glass} p-5 h-full`}>
+            <div className={`${glass} p-5 h-full flex flex-col`}>
               <h3 className="font-semibold text-card-foreground">Events</h3>
-              <p className="text-xs text-muted-foreground mb-4">Upcoming workshops, webinars and community events.</p>
-              <ul className="space-y-3">
-                {clinicEvents.slice(0, 3).map((e) => (
-                  <li key={e.slug} className="flex items-start gap-2.5">
-                    <CalendarDays className="text-primary shrink-0 mt-0.5" size={14} />
-                    <span>
-                      <span className="block text-xs font-medium text-card-foreground leading-snug">{e.title}</span>
-                      <span className="block text-[11px] text-muted-foreground">{e.date} · {e.location}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/digihub/events" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all events <ArrowRight size={13} />
-              </Link>
+              <p className="text-xs text-muted-foreground mb-4">Workshops, webinars and community sessions.</p>
+              <div className="flex-1 rounded-xl border border-brand-gold/30 bg-brand-gold/10 p-4 text-center grid place-items-center">
+                <div>
+                  <CalendarDays className="text-brand-gold mx-auto mb-2" size={22} />
+                  <p className="text-sm font-semibold text-card-foreground">Coming Soon</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    Our calendar opens with the first clinic.
+                  </p>
+                </div>
+              </div>
+              <Button variant="secondary" className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/events">View events <ArrowRight size={13} /></Link>
+              </Button>
             </div>
+
           </AnimatedSection>
 
           {/* News */}
@@ -462,9 +488,9 @@ const DigiHub = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/digihub/news" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                Read more <ArrowRight size={13} />
-              </Link>
+              <Button className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/news">Read more <ArrowRight size={13} /></Link>
+              </Button>
             </div>
           </AnimatedSection>
         </div>

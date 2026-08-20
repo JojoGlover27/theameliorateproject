@@ -55,15 +55,35 @@ export interface Video {
 }
 
 export const videos: Video[] = [
-  { id: "3NjQ9b3pgIg", title: "How to protect your privacy online", duration: "5:23", category: "Privacy", blurb: "A plain-language walkthrough of the settings that matter most." },
-  { id: "hZ7hbmXbFHo", title: "Why strong passwords matter", duration: "4:11", category: "Cybersecurity", blurb: "Passphrases, reuse and what attackers actually do with a leaked password." },
-  { id: "0mvCeNsTa1g", title: "Two-factor authentication explained", duration: "6:02", category: "Cybersecurity", blurb: "Why SMS codes are the weakest option, and what to use instead." },
-  { id: "XBkzBrXlle0", title: "How to spot a phishing message", duration: "7:40", category: "Scam Awareness", blurb: "The patterns behind fake links, urgent requests and cloned pages." },
-  { id: "Bs3xIFDbEDA", title: "Social media privacy settings", duration: "8:15", category: "Social Media Safety", blurb: "Locking down who can find, tag and message you." },
-  { id: "kkROpjvQwLA", title: "What are digital rights?", duration: "5:47", category: "Digital Rights", blurb: "Privacy, expression and access as human rights in the digital space." },
-  { id: "7g_0mFhLZAo", title: "Encryption, simply explained", duration: "6:31", category: "Privacy", blurb: "What end-to-end encryption protects, and what it does not." },
-  { id: "z_KAJyRQm6M", title: "Staying safe on public Wi-Fi", duration: "4:58", category: "Cybersecurity", blurb: "Real risks, exaggerated risks and the practical fix." },
+  { id: "JO55V34EnK8", title: "How to protect your privacy online", duration: "5:47", category: "Privacy", blurb: "Kaspersky walks through the settings that matter most, in plain language." },
+  { id: "sGbixee041A", title: "How to reduce your online footprint", duration: "10:17", category: "Privacy", blurb: "Proton on shrinking the trail you leave behind on everyday services." },
+  { id: "dMWEym0KPcA", title: "The complete Android privacy and security guide", duration: "21:46", category: "Privacy", blurb: "Techlore's full walkthrough for hardening an Android phone." },
+  { id: "hH7hmlEIijQ", title: "Every Android privacy setting to change now", duration: "16:30", category: "Privacy", blurb: "A setting-by-setting tour you can follow on your own device." },
+  { id: "Tw1wX9sbstw", title: "Turn off phone tracking and listening", duration: "4:53", category: "Privacy", blurb: "The location and microphone permissions worth revoking today." },
+  { id: "3rxTrhSjNPE", title: "End-to-end encryption in three minutes", duration: "2:49", category: "Privacy", blurb: "The simplest explanation of what encryption does and does not hide." },
+  { id: "jkV1KEJGKRA", title: "End-to-end encryption explained", duration: "8:12", category: "Privacy", blurb: "Computerphile goes a level deeper for anyone who wants the detail." },
+  { id: "c2OkOckSD20", title: "What is end-to-end encryption?", duration: "5:25", category: "Privacy", blurb: "BBC News on why encryption matters and why governments contest it." },
+  { id: "xUp5S0nBnfc", title: "How to make passwords more secure", duration: "2:56", category: "Cybersecurity", blurb: "IBM on passphrases, reuse and what attackers do with a leaked password." },
+  { id: "wcDtLMraTkQ", title: "What is a password manager?", duration: "4:53", category: "Cybersecurity", blurb: "A simple explainer plus a first-time setup walkthrough." },
+  { id: "ugeLoJNjfPk", title: "How to use a password manager, beginners guide", duration: "7:10", category: "Cybersecurity", blurb: "Step-by-step from install to importing your existing passwords." },
+  { id: "0mvCeNsTa1g", title: "What is two-factor authentication?", duration: "1:59", category: "Cybersecurity", blurb: "The short version: why one password is never enough." },
+  { id: "ZXFYT-BG2So", title: "Two-factor authentication, in depth", duration: "12:34", category: "Cybersecurity", blurb: "Why SMS codes are the weakest option, and what to use instead." },
+  { id: "Uy60wy20ADE", title: "Seven cybersecurity habits that are easy to keep", duration: "13:49", category: "Cybersecurity", blurb: "Practical habits that survive a lost phone or a leaked password." },
+  { id: "mqZzXUzxUYM", title: "How attackers use public Wi-Fi against you", duration: "3:31", category: "Cybersecurity", blurb: "What actually happens on an untrusted network." },
+  { id: "bdVkkRmJEeM", title: "Is public Wi-Fi safe?", duration: "2:54", category: "Cybersecurity", blurb: "Real risks, exaggerated risks and the practical fix." },
+  { id: "uCjP0fGglYI", title: "Practical cybersecurity for activists and organisers", duration: "1:00:55", category: "Cybersecurity", blurb: "A full training session aimed at people organising under pressure." },
+  { id: "iHetr8xTWIU", title: "How to spot a phishing email", duration: "2:07", category: "Scam Awareness", blurb: "The patterns behind fake links, urgent requests and cloned pages." },
+  { id: "e3f8mldBTKE", title: "Spot a phishing email in seconds", duration: "3:16", category: "Scam Awareness", blurb: "A fast checklist you can run before clicking anything." },
+  { id: "ykP-9gFkIcs", title: "Text message scams, smishing explained", duration: "3:19", category: "Scam Awareness", blurb: "How fake delivery, bank and payment texts are built." },
+  { id: "npDZ4ILnvyI", title: "How to instantly spot a romance scam", duration: "4:11", category: "Scam Awareness", blurb: "Early signals in the conversation, before any money is asked for." },
+  { id: "DrPk0G8NXec", title: "Protecting yourself from romance and sextortion scams", duration: "2:40", category: "Scam Awareness", blurb: "What to do first if someone threatens to expose your images." },
+  { id: "C55T8KkDgSU", title: "What are digital rights?", duration: "0:57", category: "Digital Rights", blurb: "A one-minute definition from the African Digital Rights Network." },
+  { id: "bZzKmZFHA1w", title: "Your clicks, your rights", duration: "5:34", category: "Digital Rights", blurb: "Privacy, expression and access as human rights in the digital space." },
+  { id: "WvVM61Nn1Xs", title: "You need to know your digital rights", duration: "6:55", category: "Digital Rights", blurb: "What your rights mean in everyday online situations." },
+  { id: "w_QdpSryyUE", title: "Master your social media privacy settings", duration: "5:36", category: "Social Media Safety", blurb: "Locking down who can find, tag and message you." },
+  { id: "VrcZCe62Kd8", title: "Keep your personal information safe on social media", duration: "6:10", category: "Social Media Safety", blurb: "What a stranger can learn from a single public profile." },
 ];
+
 
 export interface Alert {
   slug: string;
