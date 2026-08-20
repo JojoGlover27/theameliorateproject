@@ -78,7 +78,17 @@ const EcosystemSection = () => (
             <h3 className="text-2xl font-semibold text-card-foreground mb-1">{item.name}</h3>
             <p className="text-sm font-medium text-primary mb-4">{item.tagline}</p>
             <p className="text-muted-foreground text-sm leading-relaxed flex-1">{item.description}</p>
-            <Button variant="outline" className="mt-6 self-start rounded-md" asChild>
+            <Button
+              variant={item.name === "Synapse" ? "default" : "outline"}
+              className={`mt-6 self-start rounded-md ${
+                item.name === "Orenta"
+                  ? "bg-brand-gold text-black hover:opacity-90 border-transparent"
+                  : item.name === "DigiHub"
+                    ? "bg-brand-magenta text-white hover:opacity-90 border-transparent"
+                    : ""
+              }`}
+              asChild
+            >
               {item.to ? (
                 <Link to={item.to}>
                   {item.cta} <ArrowRight size={16} className="ml-1" />
