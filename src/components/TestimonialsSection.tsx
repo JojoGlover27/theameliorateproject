@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState, useMemo } from "react";
-import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,11 +7,23 @@ import { testimonials } from "@/data/testimonials";
 
 const AUTOPLAY_MS = 6500;
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return isMobile;
+};
+
 const TestimonialsSection = () => {
   const [index, setIndex] = useState(0);
   const [hover, setHover] = useState(false);
   const [direction, setDirection] = useState(1);
-  const controls = useAnimationControls();
+  const isMobile = useIsMobile();
   const prefersReducedMotion = useMemo(
     () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
     []
@@ -54,20 +66,20 @@ const TestimonialsSection = () => {
   }, [go]);
 
   const visible = useMemo(() => {
-    const prev2 = (index - 2 + total) % total;
-    const prev1 = (index - 1 + total) % total;
-    const next1 = (index + 1) % total;
-    const next2 = (index + 2) % total;
-    return [
-      { i: prev2, offset: -2 },
-      { i: prev1, offset: -1 },
-      { i: index, offset: 0 },
-      { i: next1, offset: 1 },
-      { i: next2, offset: 2 },
-    ];
-  }, [index, total]);
+    const range = isMobile ? 1 : 2;
+    const out: { i: number; offset: number }[] = [];
+    for (let offset = -range; offset <= range; offset++) {
+      out.push({ i: (index + offset + total * 2) % total, offset });
+    }
+    return out;
+  }, [index, total, isMobile]);
 
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number }; velocity: { x: number } }) => {
+  const spread = isMobile ? 30 : 31;
+
+  const handleDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number }; velocity: { x: number } }
+  ) => {
     const swipe = info.offset.x + info.velocity.x * 0.2;
     if (swipe < -60) go(1);
     else if (swipe > 60) go(-1);
@@ -89,19 +101,29 @@ const TestimonialsSection = () => {
         }}
       />
 
-      {/* soft grid texture */}
+      {/* technical grid texture */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "linear-gradient(hsl(var(--background)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--background)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      {/* horizon scan line */}
+      <div
+        aria-hidden
+        className="absolute left-0 right-0 top-1/2 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.45), hsl(var(--brand-magenta) / 0.35), transparent)",
         }}
       />
 
       <div className="relative container mx-auto px-4 md:px-8 max-w-6xl">
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-14 md:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +146,7 @@ const TestimonialsSection = () => {
 
         {/* Carousel stage */}
         <div
-          className="relative h-[520px] md:h-[580px] mx-auto max-w-6xl select-none"
+          className="relative h-[440px] sm:h-[500px] md:h-[580px] mx-auto max-w-6xl select-none overflow-hidden px-2"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           role="region"
@@ -137,78 +159,80 @@ const TestimonialsSection = () => {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.12}
             onDragEnd={handleDragEnd}
-            animate={controls}
           >
             <AnimatePresence initial={false} mode="popLayout">
               {visible.map(({ i, offset }) => {
                 const isCenter = offset === 0;
-                const isEdge = Math.abs(offset) === 2;
                 const abs = Math.abs(offset);
+                const isEdge = abs === 2;
 
                 return (
                   <motion.div
                     key={testimonials[i].id}
-                    layout
-                    initial={{
-                      opacity: 0,
-                      scale: 0.78,
-                      x: direction * 200,
-                    }}
+                    initial={{ opacity: 0, x: `${direction * 18}%` }}
                     animate={{
-                      opacity: isEdge ? 0.15 : isCenter ? 1 : 0.45,
-                      scale: isCenter ? 1 : 0.82 - abs * 0.06,
-                      x: `${offset * 58}%`,
+                      opacity: isEdge ? 0.18 : isCenter ? 1 : 0.45,
+                      x: `${offset * spread}%`,
                       zIndex: isCenter ? 30 : 20 - abs * 5,
-                      filter: isCenter ? "blur(0px)" : `blur(${abs * 1.5}px)`,
+                      filter: isCenter ? "blur(0px)" : `blur(${abs * 1.4}px)`,
                     }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.72,
-                      x: -direction * 220,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 120,
-                      damping: 22,
-                      mass: 1.1,
-                    }}
+                    exit={{ opacity: 0, x: `${-direction * 20}%` }}
+                    transition={{ type: "spring", stiffness: 120, damping: 22, mass: 1.1 }}
+                    className="absolute inset-0 flex items-center justify-center will-change-transform pointer-events-none"
+                  >
+                  <motion.div
+                    animate={{ scale: isCenter ? 1 : 0.84 - abs * 0.06 }}
+                    transition={{ type: "spring", stiffness: 120, damping: 22, mass: 1.1 }}
                     className={[
-                      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full aspect-square flex items-center justify-center text-center",
-                      "will-change-transform",
+                      "relative rounded-full aspect-square flex items-center justify-center text-center",
                       isCenter
-                        ? "w-[min(86vw,440px)] md:w-[480px]"
-                        : "w-[min(58vw,320px)] md:w-[340px]",
+                        ? "w-[min(72vw,400px)] md:w-[460px]"
+                        : "w-[min(44vw,260px)] md:w-[330px]",
                     ].join(" ")}
                   >
-                    {/* ambient glow behind active circle */}
+
+                    {/* orbiting technical rings on the active node */}
                     {isCenter && (
-                      <motion.div
-                        aria-hidden
-                        className="absolute inset-0 rounded-full"
-                        animate={{
-                          boxShadow: [
-                            "0 0 40px -10px hsl(var(--primary) / 0.5)",
-                            "0 0 70px -5px hsl(var(--brand-magenta) / 0.45)",
-                            "0 0 40px -10px hsl(var(--primary) / 0.5)",
-                          ],
-                        }}
-                        transition={{
-                          duration: 6,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                      />
+                      <>
+                        <motion.div
+                          aria-hidden
+                          className="absolute -inset-4 rounded-full border border-dashed border-[hsl(var(--primary))]/35"
+                          animate={prefersReducedMotion ? {} : { rotate: 360 }}
+                          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                        />
+                        <motion.div
+                          aria-hidden
+                          className="absolute -inset-10 rounded-full border border-background/10"
+                          animate={prefersReducedMotion ? {} : { rotate: -360 }}
+                          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                        >
+                          <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[hsl(var(--brand-gold))]" />
+                          <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[hsl(var(--brand-magenta))]" />
+                        </motion.div>
+                        <motion.div
+                          aria-hidden
+                          className="absolute inset-0 rounded-full"
+                          animate={{
+                            boxShadow: [
+                              "0 0 40px -10px hsl(var(--primary) / 0.5)",
+                              "0 0 70px -5px hsl(var(--brand-magenta) / 0.45)",
+                              "0 0 40px -10px hsl(var(--primary) / 0.5)",
+                            ],
+                          }}
+                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                      </>
                     )}
 
                     <div
                       className={[
                         "relative w-full h-full rounded-full flex items-center justify-center overflow-hidden",
                         isCenter
-                          ? "bg-gradient-to-br from-primary/25 via-background/45 to-background/15 border border-[hsl(var(--primary))]/50 backdrop-blur-md"
+                          ? "bg-gradient-to-br from-primary/25 via-background/10 to-[hsl(var(--brand-magenta))]/15 border border-[hsl(var(--primary))]/50 backdrop-blur-md"
                           : "bg-gradient-to-br from-background/8 to-background/3 border border-background/15 backdrop-blur-sm",
                       ].join(" ")}
                     >
-                      {/* inner shimmer */}
+                      {/* inner shimmer sweep */}
                       <motion.div
                         aria-hidden
                         className="absolute inset-0 rounded-full opacity-30"
@@ -216,53 +240,63 @@ const TestimonialsSection = () => {
                           background:
                             "conic-gradient(from 0deg, transparent 0%, hsl(var(--primary) / 0.25) 35%, hsl(var(--brand-magenta) / 0.15) 55%, transparent 100%)",
                         }}
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 18,
-                          repeat: Infinity,
-                          ease: "linear",
+                        animate={prefersReducedMotion ? {} : { rotate: 360 }}
+                        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                      />
+
+                      {/* fine circuit grid inside the node */}
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 rounded-full opacity-[0.07]"
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(hsl(var(--background)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--background)) 1px, transparent 1px)",
+                          backgroundSize: "22px 22px",
                         }}
                       />
 
                       <div
                         className={[
                           "relative z-10 flex flex-col items-center justify-center",
-                          isCenter ? "px-8 md:px-14 py-10 max-w-[86%]" : "px-6 md:px-8 max-w-[80%]",
+                          isCenter ? "px-7 md:px-14 py-8 max-w-[84%]" : "px-5 md:px-8 max-w-[80%]",
                         ].join(" ")}
                       >
                         <motion.div
-                          animate={isCenter ? { y: [0, -6, 0] } : {}}
-                          transition={{
-                            duration: 5,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
+                          animate={isCenter && !prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                         >
                           <Quote
                             className={isCenter ? "mx-auto mb-4 text-[hsl(var(--primary))]" : "mx-auto mb-3 text-background/30"}
-                            size={isCenter ? 40 : 22}
+                            size={isCenter ? 36 : 20}
                             aria-hidden
                           />
                         </motion.div>
                         <p
                           className={[
                             "leading-snug text-background",
-                            isCenter ? "text-lg md:text-2xl font-medium" : "text-sm md:text-base font-normal",
+                            isCenter ? "text-base sm:text-lg md:text-2xl font-medium" : "text-xs sm:text-sm md:text-base font-normal",
                           ].join(" ")}
                         >
                           &ldquo;{testimonials[i].quote}&rdquo;
                         </p>
+                        {isCenter && (
+                          <span className="mt-5 text-[10px] md:text-xs uppercase tracking-[0.28em] text-background/45">
+                            Voice {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </motion.div>
+                  </motion.div>
                 );
+
               })}
             </AnimatePresence>
           </motion.div>
         </div>
 
-        {/* Controls — minimal, no play/pause */}
-        <div className="relative mt-4 flex items-center justify-center gap-5">
+        {/* Controls */}
+        <div className="relative mt-6 flex items-center justify-center gap-4 md:gap-5">
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
@@ -273,7 +307,7 @@ const TestimonialsSection = () => {
             <ChevronLeft size={20} />
           </motion.button>
 
-          <div className="flex items-center gap-2.5" role="tablist" aria-label="Testimonial pagination">
+          <div className="flex items-center gap-2 flex-wrap justify-center max-w-[55vw]" role="tablist" aria-label="Testimonial pagination">
             {testimonials.map((t, i) => (
               <button
                 key={t.id}
