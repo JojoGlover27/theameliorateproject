@@ -31,8 +31,8 @@ const MissionSection = () => (
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
       >
-        {aims.map((a) => (
-          <motion.div key={a.text} variants={fadeUp} className="flex items-start gap-3 bg-card p-5 rounded-xl shadow-sm">
+        {aims.map((a, idx) => (
+          <motion.div key={a.text} variants={fadeUp} className={`flex items-start gap-3 bg-card border border-border ${["tint-purple", "tint-gold", "tint-pink", "tint-blue"][idx % 4]} p-5 rounded-xl shadow-sm`}>
             <a.icon className="text-primary mt-1 shrink-0" size={22} />
             <p className="text-card-foreground">{a.text}</p>
           </motion.div>

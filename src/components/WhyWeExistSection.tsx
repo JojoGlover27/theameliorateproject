@@ -8,6 +8,8 @@ const stats = [
   { value: "30–40%", label: "MSM HIV testing uptake in Ghana", color: "text-brand-blue" },
 ];
 
+const cardTints = ["tint-purple", "tint-pink", "tint-orange", "tint-blue", "tint-gold"];
+
 const insightColors = ["text-primary", "text-brand-magenta", "text-accent", "text-brand-blue", "text-brand-gold", "text-primary"];
 
 const insights = [
@@ -41,8 +43,8 @@ const WhyWeExistSection = () => (
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
       >
-        {stats.map((s) => (
-          <motion.div key={s.value} variants={fadeUp} className="bg-card rounded-xl p-5 text-center shadow-sm border border-border">
+        {stats.map((s, idx) => (
+          <motion.div key={s.value} variants={fadeUp} className={`bg-card ${cardTints[idx % cardTints.length]} rounded-xl p-5 text-center shadow-sm border border-border`}>
             <p className={`text-2xl md:text-3xl font-bold ${s.color} mb-2`}>{s.value}</p>
             <p className="text-muted-foreground text-sm">{s.label}</p>
           </motion.div>
@@ -70,7 +72,7 @@ const WhyWeExistSection = () => (
         variants={staggerContainer}
       >
         {insights.map((i, idx) => (
-          <motion.div key={i.pct} variants={fadeUp} className="flex items-start gap-4 bg-card rounded-xl p-4 shadow-sm border border-border">
+          <motion.div key={i.pct} variants={fadeUp} className={`flex items-start gap-4 bg-card ${cardTints[idx % cardTints.length]} rounded-xl p-4 shadow-sm border border-border`}>
             <span className={`text-xl md:text-2xl font-bold ${insightColors[idx % insightColors.length]} shrink-0 w-20 text-right`}>{i.pct}</span>
             <p className="text-card-foreground text-sm md:text-base">{i.text}</p>
           </motion.div>

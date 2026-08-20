@@ -47,9 +47,9 @@ const DonationSection = () => (
         viewport={{ once: true, amount: 0.2 }}
         variants={staggerContainer}
       >
-        {funds.map((f) => (
+        {funds.map((f, idx) => (
           <motion.div key={f.title} variants={fadeUp}>
-            <Card className="border-border shadow-sm h-full">
+            <Card className={`bg-card ${["tint-purple", "tint-gold", "tint-pink", "tint-blue"][idx % 4]} border-border shadow-sm h-full`}>
               <CardHeader className="flex flex-row items-start gap-3 pb-2">
                 <f.icon className="w-7 h-7 text-primary shrink-0 mt-1" />
                 <CardTitle className="text-lg md:text-xl leading-snug">{f.title}</CardTitle>
@@ -64,9 +64,9 @@ const DonationSection = () => (
 
       <AnimatedSection>
         <div className="max-w-2xl mx-auto space-y-5">
-          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+          <div className="bg-card tint-gold rounded-xl border border-border p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
-              <Banknote className="w-6 h-6 text-primary" />
+              <Banknote className="w-6 h-6 text-accent" />
               <h3 className="font-semibold text-lg text-card-foreground">Mobile Money</h3>
             </div>
             <div className="space-y-2 text-sm text-card-foreground">
@@ -76,9 +76,9 @@ const DonationSection = () => (
             </div>
           </div>
 
-          <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+          <div className="bg-card tint-blue rounded-xl border border-border p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
-              <Banknote className="w-6 h-6 text-primary" />
+              <Banknote className="w-6 h-6 text-brand-blue" />
               <h3 className="font-semibold text-lg text-card-foreground">Bank Transfer</h3>
             </div>
             <div className="space-y-2 text-sm text-card-foreground">

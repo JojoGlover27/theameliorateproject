@@ -68,11 +68,11 @@ const EcosystemSection = () => (
         viewport={{ once: true, amount: 0.15 }}
         variants={staggerContainer}
       >
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <motion.div
             key={item.name}
             variants={fadeUp}
-            className="flex flex-col bg-card border border-border rounded-2xl p-7 shadow-sm hover:shadow-lg transition-shadow"
+            className={`flex flex-col bg-card ${["tint-purple","tint-gold","tint-pink"][idx % 3]} border border-border rounded-2xl p-7 shadow-sm hover:shadow-lg transition-shadow`}
           >
             <img src={item.logo} alt={`${item.name} logo`} className={`mb-5 rounded-xl shadow-md ${item.name === "Synapse" ? "h-14 w-14 bg-black object-cover" : "h-14 w-14 object-contain"}`} loading="lazy" />
             <h3 className="text-2xl font-semibold text-card-foreground mb-1">{item.name}</h3>
