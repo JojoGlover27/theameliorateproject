@@ -60,7 +60,7 @@ const TYPE_RULES: { type: ThreatType; re: RegExp }[] = [
   { type: "Scam", re: /(scam|phish|fraud|sextortion|impersonat|smishing|romance sca|sim swap|fake app)/i },
   { type: "Data Breach", re: /(breach|leaked|exposed data|stolen data|ransomware|hacked|infostealer)/i },
   { type: "Surveillance", re: /(spyware|surveillance|pegasus|stalkerware|facial recognition|wiretap)/i },
-  { type: "Censorship", re: /(censor|internet shutdown|blocked|ban on|throttl|firewall)/i },
+  { type: "Censorship", re: /(censorship|internet shutdown|network shutdown|website blocking|online ban|content takedown)/i },
   { type: "Harassment", re: /(harassment|doxx|abuse|lgbt|queer|outing|hate speech|extort)/i },
 ];
 
@@ -120,7 +120,7 @@ async function fetchFeed(url: string, source: string): Promise<Item[]> {
     }
     const date = pick(b, "pubDate") || pick(b, "updated") || pick(b, "published");
     const body = `${title} ${pick(b, "description") || pick(b, "summary")}`;
-    const type = classify(body);
+    const type = classify(title) ?? classify(body);
     if (!title || !link || !type) continue;
     items.push({ title, link, source, date, type, body });
   }
@@ -158,7 +158,7 @@ Deno.serve(async (req) => {
 
     for (const i of items) {
       const iso = i.date ? new Date(i.date).toISOString() : new Date().toISOString();
-      const country = matchCountry(i.body || i.title);
+      const country = matchCountry(i.title);
       if (country && !seen.has(`${country}-${i.type}`)) {
         seen.add(`${country}-${i.type}`);
         const [lat, lon] = COUNTRIES[country];
