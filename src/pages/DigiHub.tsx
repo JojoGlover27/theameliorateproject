@@ -297,9 +297,18 @@ const DigiHub = () => {
               <ul className="space-y-3">
                 {secureApps.slice(0, 4).map((a) => (
                   <li key={a.name} className="flex items-start gap-3">
-                    <span className="grid place-items-center h-8 w-8 rounded-lg bg-primary/10 text-primary text-xs font-bold shrink-0">
-                      {a.name[0]}
+                    <span className="grid place-items-center h-8 w-8 rounded-lg bg-card border border-border overflow-hidden shrink-0">
+                      <img
+                        src={appLogo(a.link)}
+                        alt=""
+                        aria-hidden
+                        width={24}
+                        height={24}
+                        loading="lazy"
+                        className="h-5 w-5 object-contain"
+                      />
                     </span>
+
                     <span>
                       <span className="block text-sm font-medium text-card-foreground">{a.name}</span>
                       <span className="block text-[11px] text-muted-foreground">{a.category}</span>
