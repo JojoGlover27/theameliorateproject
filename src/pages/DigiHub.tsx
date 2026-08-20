@@ -444,24 +444,23 @@ const DigiHub = () => {
 
           {/* Events */}
           <AnimatedSection>
-            <div className={`${glass} p-5 h-full`}>
+            <div className={`${glass} p-5 h-full flex flex-col`}>
               <h3 className="font-semibold text-card-foreground">Events</h3>
-              <p className="text-xs text-muted-foreground mb-4">Upcoming workshops, webinars and community events.</p>
-              <ul className="space-y-3">
-                {clinicEvents.slice(0, 3).map((e) => (
-                  <li key={e.slug} className="flex items-start gap-2.5">
-                    <CalendarDays className="text-primary shrink-0 mt-0.5" size={14} />
-                    <span>
-                      <span className="block text-xs font-medium text-card-foreground leading-snug">{e.title}</span>
-                      <span className="block text-[11px] text-muted-foreground">{e.date} · {e.location}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/digihub/events" className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-                View all events <ArrowRight size={13} />
-              </Link>
+              <p className="text-xs text-muted-foreground mb-4">Workshops, webinars and community sessions.</p>
+              <div className="flex-1 rounded-xl border border-brand-gold/30 bg-brand-gold/10 p-4 text-center grid place-items-center">
+                <div>
+                  <CalendarDays className="text-brand-gold mx-auto mb-2" size={22} />
+                  <p className="text-sm font-semibold text-card-foreground">Coming Soon</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    Our calendar opens with the first clinic.
+                  </p>
+                </div>
+              </div>
+              <Button variant="secondary" className="rounded-full mt-4 w-full" asChild>
+                <Link to="/digihub/events">View events <ArrowRight size={13} /></Link>
+              </Button>
             </div>
+
           </AnimatedSection>
 
           {/* News */}
