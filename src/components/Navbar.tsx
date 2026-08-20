@@ -12,13 +12,13 @@ import {
 const primaryLinks = [
   { label: "About Us", href: "/#about" },
   { label: "Synapse", href: "/synapse" },
+  { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "DigiHub", href: "/digihub" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Contact", href: "/#contact" },
 ];
 
 const moreLinks: { label: string; href: string; external?: boolean }[] = [
-  { label: "Orenta", href: "https://orenta-ai-prototype.lovable.app", external: true },
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
   { label: "Research & Publications", href: "/research" },
@@ -43,7 +43,11 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center gap-8">
           {primaryLinks.map((l) => (
             <li key={l.href}>
-              {l.href.includes("#") ? (
+              {l.external ? (
+                <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              ) : l.href.includes("#") ? (
                 <a href={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                   {l.label}
                 </a>
@@ -84,7 +88,17 @@ const Navbar = () => {
           <ul className="flex flex-col gap-4">
             {primaryLinks.map((l) => (
               <li key={l.href}>
-                {l.href.includes("#") ? (
+                {l.external ? (
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ) : l.href.includes("#") ? (
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
