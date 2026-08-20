@@ -108,3 +108,18 @@
     font-family: 'DM Serif Display', serif;
   }
 }
+
+@layer components {
+  /* Premium tinted treatment for every card surface on the site */
+  .bg-card {
+    background-image: var(--gradient-card);
+    border-color: hsl(var(--card-border-tint) / 0.14);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
+  }
+
+  .bg-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--card-border-tint) / 0.28);
+  }
+}
