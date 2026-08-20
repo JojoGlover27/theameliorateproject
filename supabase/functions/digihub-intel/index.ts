@@ -43,15 +43,27 @@ const ALIASES: Record<string, string> = {
   Delhi: "India", Mumbai: "India", Manila: "Philippines", Seoul: "South Korea", Tokyo: "Japan",
 };
 
-const QUERIES: { q: string; type: ThreatType }[] = [
-  { q: "phishing scam warning", type: "Scam" },
-  { q: "mobile money fraud OR sim swap fraud", type: "Scam" },
-  { q: "sextortion OR romance scam arrest", type: "Scam" },
-  { q: "data breach personal data exposed", type: "Data Breach" },
-  { q: "digital surveillance spyware activists", type: "Surveillance" },
-  { q: "internet shutdown OR online censorship", type: "Censorship" },
-  { q: "LGBTQ online safety OR online harassment doxxing", type: "Harassment" },
+// Public RSS feeds from established security, consumer-protection and digital
+// rights publishers. Items are classified by keyword; nothing is invented.
+const FEEDS: { url: string; source: string }[] = [
+  { url: "https://www.bleepingcomputer.com/feed/", source: "BleepingComputer" },
+  { url: "https://feeds.feedburner.com/TheHackersNews", source: "The Hacker News" },
+  { url: "https://krebsonsecurity.com/feed/", source: "Krebs on Security" },
+  { url: "https://www.cisa.gov/cybersecurity-advisories/all.xml", source: "CISA" },
+  { url: "https://www.accessnow.org/feed/", source: "Access Now" },
+  { url: "https://www.eff.org/rss/updates.xml", source: "EFF" },
+  { url: "https://consumer.ftc.gov/blog/rss", source: "FTC Consumer Alerts" },
+  { url: "https://www.ncsc.gov.uk/api/1/services/v1/news-rss-feed.xml", source: "UK NCSC" },
 ];
+
+const TYPE_RULES: { type: ThreatType; re: RegExp }[] = [
+  { type: "Scam", re: /(scam|phish|fraud|sextortion|impersonat|smishing|romance sca|sim swap|fake app)/i },
+  { type: "Data Breach", re: /(breach|leaked|exposed data|stolen data|ransomware|hacked|infostealer)/i },
+  { type: "Surveillance", re: /(spyware|surveillance|pegasus|stalkerware|facial recognition|wiretap)/i },
+  { type: "Censorship", re: /(censor|internet shutdown|blocked|ban on|throttl|firewall)/i },
+  { type: "Harassment", re: /(harassment|doxx|abuse|lgbt|queer|outing|hate speech|extort)/i },
+];
+
 
 const RISK_BY_TYPE: Record<ThreatType, "High" | "Medium" | "Low"> = {
   Scam: "High", "Data Breach": "High", Surveillance: "High", Censorship: "Medium", Harassment: "Medium",
