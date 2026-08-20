@@ -169,24 +169,28 @@ const TestimonialsSection = () => {
                 return (
                   <motion.div
                     key={testimonials[i].id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.78, x: direction * 160 }}
+                    initial={{ opacity: 0, x: `${direction * 18}%` }}
                     animate={{
                       opacity: isEdge ? 0.18 : isCenter ? 1 : 0.45,
-                      scale: isCenter ? 1 : 0.84 - abs * 0.06,
                       x: `${offset * spread}%`,
                       zIndex: isCenter ? 30 : 20 - abs * 5,
                       filter: isCenter ? "blur(0px)" : `blur(${abs * 1.4}px)`,
                     }}
-                    exit={{ opacity: 0, scale: 0.72, x: -direction * 180 }}
+                    exit={{ opacity: 0, x: `${-direction * 20}%` }}
+                    transition={{ type: "spring", stiffness: 120, damping: 22, mass: 1.1 }}
+                    className="absolute inset-0 flex items-center justify-center will-change-transform pointer-events-none"
+                  >
+                  <motion.div
+                    animate={{ scale: isCenter ? 1 : 0.84 - abs * 0.06 }}
                     transition={{ type: "spring", stiffness: 120, damping: 22, mass: 1.1 }}
                     className={[
-                      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full aspect-square flex items-center justify-center text-center will-change-transform",
+                      "relative rounded-full aspect-square flex items-center justify-center text-center",
                       isCenter
-                        ? "w-[min(74vw,400px)] md:w-[480px]"
-                        : "w-[min(46vw,260px)] md:w-[340px]",
+                        ? "w-[min(72vw,400px)] md:w-[460px]"
+                        : "w-[min(44vw,260px)] md:w-[330px]",
                     ].join(" ")}
                   >
+
                     {/* orbiting technical rings on the active node */}
                     {isCenter && (
                       <>
