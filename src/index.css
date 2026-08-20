@@ -112,14 +112,27 @@
 @layer components {
   /* Premium tinted treatment for every card surface on the site */
   .bg-card {
-    background-image: var(--gradient-card);
-    border-color: hsl(var(--card-border-tint) / 0.14);
+    background-image: linear-gradient(150deg, hsl(var(--tint-h, 262) var(--tint-s, 55%) var(--tint-l, 42%) / 0.14) 0%, hsl(var(--card) / 0) 55%, hsl(var(--tint-h2, 330) var(--tint-s2, 72%) var(--tint-l2, 55%) / 0.12) 100%);
+    border-color: hsl(var(--tint-h, 262) var(--tint-s, 55%) var(--tint-l, 42%) / 0.22);
     box-shadow: var(--shadow-card);
     transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
   }
 
   .bg-card:hover {
     box-shadow: var(--shadow-card-hover);
-    border-color: hsl(var(--card-border-tint) / 0.28);
+    border-color: hsl(var(--tint-h, 262) var(--tint-s, 55%) var(--tint-l, 42%) / 0.4);
+  }
+
+  /* Colour tinge variants — apply alongside bg-card (or on shadcn Card) */
+  .tint-purple { --tint-h: 262; --tint-s: 55%; --tint-l: 42%; --tint-h2: 265; --tint-s2: 70%; --tint-l2: 60%; }
+  .tint-gold   { --tint-h: 42;  --tint-s: 95%; --tint-l: 58%; --tint-h2: 22;  --tint-s2: 92%; --tint-l2: 56%; }
+  .tint-pink   { --tint-h: 330; --tint-s: 72%; --tint-l: 55%; --tint-h2: 262; --tint-s2: 55%; --tint-l2: 52%; }
+  .tint-blue   { --tint-h: 218; --tint-s: 70%; --tint-l: 52%; --tint-h2: 190; --tint-s2: 70%; --tint-l2: 50%; }
+  .tint-orange { --tint-h: 22;  --tint-s: 92%; --tint-l: 56%; --tint-h2: 42;  --tint-s2: 95%; --tint-l2: 58%; }
+
+  .tint-purple, .tint-gold, .tint-pink, .tint-blue, .tint-orange {
+    background-image: linear-gradient(150deg, hsl(var(--tint-h) var(--tint-s) var(--tint-l) / 0.16) 0%, hsl(var(--card) / 0) 58%, hsl(var(--tint-h2) var(--tint-s2) var(--tint-l2) / 0.14) 100%);
+    border-color: hsl(var(--tint-h) var(--tint-s) var(--tint-l) / 0.28);
   }
 }
+
