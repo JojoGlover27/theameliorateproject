@@ -20,11 +20,16 @@ const TeamSection = () => (
             Amelio is a small, dedicated team of technologists, health practitioners, researchers and advocates united by one conviction: privacy should never be a privilege. We build privacy-first innovations that remove the barriers standing between people and healthcare, trusted knowledge, digital rights and cybersecurity.
           </p>
           <p>
-            Our expertise spans product and software engineering, data protection and security, community health and clinical care, research, finance and advocacy. That mix is deliberate. Building Synapse, Orenta and DigiHub takes people who understand both how a system is engineered and how it feels to be surveilled, misinformed or turned away by one.
+            We come from different backgrounds. Some of us build software, some work in health and community care,
+            some spend their days on research, funding or advocacy. What we share is a simple belief that people
+            should be able to get help without being watched, judged or put at risk.
           </p>
           <p>
-            We are practitioners, not just advocates. We design with LGBTQI+ communities, key populations and other marginalized populations in Ghana, grounded in lived experience, evidence and the realities of stigma, surveillance and digital exclusion, so that everything we ship is safe to actually use.
+            We listen first. We design with LGBTQI+ communities, key populations and other marginalized populations in
+            Ghana, and we build around what people tell us they actually need, so that everything we make is safe and
+            simple to use in real life.
           </p>
+
         </div>
       </AnimatedSection>
 
