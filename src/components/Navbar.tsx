@@ -44,7 +44,11 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center gap-8">
           {primaryLinks.map((l) => (
             <li key={l.href}>
-              {l.href.includes("#") ? (
+              {l.external ? (
+                <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              ) : l.href.includes("#") ? (
                 <a href={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                   {l.label}
                 </a>
