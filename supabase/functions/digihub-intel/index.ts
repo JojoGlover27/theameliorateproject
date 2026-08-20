@@ -84,7 +84,7 @@ const pick = (block: string, tag: string) => {
 async function fetchFeed(q: string, type: ThreatType): Promise<Item[]> {
   const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`;
   const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (DigiHub Intel)" } });
-  if (!res.ok) return [];
+  if (!res.ok) throw new Error(`feed ${res.status}`);
   const xml = await res.text();
   const blocks = xml.split("<item>").slice(1);
   return blocks.slice(0, 20).map((b) => ({
@@ -110,7 +110,15 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const results = await Promise.all(QUERIES.map((q) => fetchFeed(q.q, q.type).catch(() => [])));
+    const diag: string[] = [];
+    const results = await Promise.all(
+      QUERIES.map((q) =>
+        fetchFeed(q.q, q.type).catch((e) => {
+          diag.push(`${q.q}: ${e}`);
+          return [] as Item[];
+        }),
+      ),
+    );
     const items = results.flat().filter((i) => i.title && i.link);
 
     const seen = new Set<string>();
@@ -151,7 +159,7 @@ Deno.serve(async (req) => {
     alerts.sort((a, b) => ((b as { date: string }).date > (a as { date: string }).date ? 1 : -1));
 
     return new Response(
-      JSON.stringify({ updatedAt: new Date().toISOString(), threats, alerts }),
+      JSON.stringify({ updatedAt: new Date().toISOString(), threats, alerts, diag, fetched: items.length }),
       {
         headers: {
           ...corsHeaders,
