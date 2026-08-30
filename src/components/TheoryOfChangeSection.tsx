@@ -113,8 +113,8 @@ const TheoryOfChangeSection = () => (
               ))}
             </ul>
           </motion.div>
-        ))}
-</motion.div>
+))}
+      </motion.div>
     </div>
   </section>
 );
