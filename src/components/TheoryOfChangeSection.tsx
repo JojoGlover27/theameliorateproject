@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import {
   Users, ShieldCheck, Search, Cpu, Handshake,
   Ear, Microscope, Lightbulb, Link2, Megaphone, LineChart,
-  Heart, Lock, BookOpen, MessagesSquare, Building2, Globe,
+  Heart, Lock, BookOpen, MessagesSquare, Building2,
+  Sparkles, KeyRound, Compass, Scale,
 } from "lucide-react";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 
@@ -36,7 +37,7 @@ const columns = [
       { icon: LineChart, title: "Learn & improve", text: "Continuously test, monitor and adapt to ensure greater impact." },
     ],
   },
-  {
+{
     number: "03",
     title: "What We Achieve",
     tint: "tint-gold",
@@ -48,6 +49,19 @@ const columns = [
       { icon: BookOpen, title: "Better-informed communities", text: "People have access to clear, credible and usable information." },
       { icon: MessagesSquare, title: "Stronger community voice", text: "Lived experience and community evidence influence programmes, policies and decisions." },
       { icon: Building2, title: "More responsive systems", text: "Health, digital and social systems become more inclusive, accountable and responsive." },
+    ],
+  },
+  {
+    number: "04",
+    title: "The Change We See",
+    tint: "tint-teal",
+    heading: "text-brand-teal",
+    badge: "bg-brand-teal text-primary-foreground",
+    items: [
+      { icon: Sparkles, title: "Healthier, safer, more informed lives", text: "People who have historically faced exclusion or greater risk can live healthier, safer and more informed lives." },
+      { icon: KeyRound, title: "Privacy, dignity and agency", text: "People can seek services and participate digitally without unnecessary exposure or risk." },
+      { icon: Compass, title: "Confident access to services & information", text: "People can access services and navigate information with confidence and fewer barriers." },
+      { icon: Scale, title: "Shaping the systems that affect them", text: "Community voice and lived experience influence programmes, policies and decisions." },
     ],
   },
 ];
