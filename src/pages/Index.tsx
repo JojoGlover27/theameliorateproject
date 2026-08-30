@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
 import OurJourneySection from "@/components/OurJourneySection";
 import MissionSection from "@/components/MissionSection";
+import TheoryOfChangeSection from "@/components/TheoryOfChangeSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import DonationSection from "@/components/DonationSection";
 import FaqSection from "@/components/FaqSection";
