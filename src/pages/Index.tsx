@@ -23,6 +23,7 @@ const Index = () => (
     <EcosystemSection />
     <AboutSection />
     <MissionSection />
+    <TheoryOfChangeSection />
     <WhyWeExistSection />
     <OurJourneySection />
     <TestimonialsSection />
