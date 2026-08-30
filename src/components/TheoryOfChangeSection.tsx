@@ -114,28 +114,7 @@ const TheoryOfChangeSection = () => (
             </ul>
           </motion.div>
         ))}
-      </motion.div>
-
-      <AnimatedSection>
-        <div className="bg-card tint-gold rounded-xl border border-border shadow-sm p-6 md:p-8">
-          <div className="flex flex-col md:flex-row items-start gap-5">
-            <div className="flex items-center gap-3 shrink-0">
-              <span className="grid place-items-center h-12 w-12 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/40">
-                <Globe size={24} strokeWidth={1.75} />
-              </span>
-              <div>
-                <p className="text-xl font-bold font-sans text-brand-gold">04</p>
-                <p className="font-semibold font-sans uppercase tracking-wide text-sm text-card-foreground">The Change We See</p>
-              </div>
-            </div>
-            <p className="text-card-foreground text-base md:text-lg leading-relaxed">
-              People who have historically faced exclusion or greater risk can live{" "}
-              <span className="font-semibold text-brand-gold">healthier, safer and more informed lives</span>{" "}
-              — with the privacy, dignity and agency to access services, navigate information and shape the systems that affect them.
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
+</motion.div>
     </div>
   </section>
 );
