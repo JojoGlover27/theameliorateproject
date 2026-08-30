@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import {
   Users, ShieldCheck, Search, Cpu, Handshake,
   Ear, Microscope, Lightbulb, Link2, Megaphone, LineChart,
-  Heart, Lock, BookOpen, MessagesSquare, Building2, Globe,
+  Heart, Lock, BookOpen, MessagesSquare, Building2,
+  Sparkles, KeyRound, Compass, Scale,
 } from "lucide-react";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 
@@ -36,7 +37,7 @@ const columns = [
       { icon: LineChart, title: "Learn & improve", text: "Continuously test, monitor and adapt to ensure greater impact." },
     ],
   },
-  {
+{
     number: "03",
     title: "What We Achieve",
     tint: "tint-gold",
@@ -48,6 +49,19 @@ const columns = [
       { icon: BookOpen, title: "Better-informed communities", text: "People have access to clear, credible and usable information." },
       { icon: MessagesSquare, title: "Stronger community voice", text: "Lived experience and community evidence influence programmes, policies and decisions." },
       { icon: Building2, title: "More responsive systems", text: "Health, digital and social systems become more inclusive, accountable and responsive." },
+    ],
+  },
+  {
+    number: "04",
+    title: "The Change We See",
+    tint: "tint-teal",
+    heading: "text-brand-teal",
+    badge: "bg-brand-teal text-primary-foreground",
+    items: [
+      { icon: Sparkles, title: "Healthier, safer, more informed lives", text: "People who have historically faced exclusion or greater risk can live healthier, safer and more informed lives." },
+      { icon: KeyRound, title: "Privacy, dignity and agency", text: "People can seek services and participate digitally without unnecessary exposure or risk." },
+      { icon: Compass, title: "Confident access to services & information", text: "People can access services and navigate information with confidence and fewer barriers." },
+      { icon: Scale, title: "Shaping the systems that affect them", text: "Community voice and lived experience influence programmes, policies and decisions." },
     ],
   },
 ];
@@ -99,29 +113,8 @@ const TheoryOfChangeSection = () => (
               ))}
             </ul>
           </motion.div>
-        ))}
+))}
       </motion.div>
-
-      <AnimatedSection>
-        <div className="bg-card tint-gold rounded-xl border border-border shadow-sm p-6 md:p-8">
-          <div className="flex flex-col md:flex-row items-start gap-5">
-            <div className="flex items-center gap-3 shrink-0">
-              <span className="grid place-items-center h-12 w-12 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/40">
-                <Globe size={24} strokeWidth={1.75} />
-              </span>
-              <div>
-                <p className="text-xl font-bold font-sans text-brand-gold">04</p>
-                <p className="font-semibold font-sans uppercase tracking-wide text-sm text-card-foreground">The Change We See</p>
-              </div>
-            </div>
-            <p className="text-card-foreground text-base md:text-lg leading-relaxed">
-              People who have historically faced exclusion or greater risk can live{" "}
-              <span className="font-semibold text-brand-gold">healthier, safer and more informed lives</span>{" "}
-              — with the privacy, dignity and agency to access services, navigate information and shape the systems that affect them.
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
     </div>
   </section>
 );
