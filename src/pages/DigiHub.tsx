@@ -51,6 +51,7 @@ const journey = [
 ];
 
 const capabilities = [
+  { icon: BookOpen, title: "Your Rights in Ghana", blurb: "Ghana's digital rights laws and policies explained in plain language.", to: "/digihub/your-rights", tone: "text-brand-gold bg-brand-gold/10" },
   { icon: Scale, title: "Digital Rights", blurb: "Understand your rights online and offline.", to: "/digihub/digital-rights", tone: "text-primary bg-primary/10" },
   { icon: ShieldCheck, title: "Cybersecurity", blurb: "Practical tools and training to stay safe online.", to: "/digihub/cybersecurity", tone: "text-brand-blue bg-brand-blue/10" },
   { icon: Lock, title: "Privacy Guides", blurb: "Step-by-step guides to protect your privacy.", to: "/digihub/privacy-guides", tone: "text-brand-magenta bg-brand-magenta/10" },
