@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Clock, ChevronDown } from "lucide-react";
 import DigiHubShell from "@/components/digihub/DigiHubShell";
 import { Guide } from "@/data/digihub";
@@ -7,14 +7,16 @@ interface Props {
   title: string;
   description: string;
   items: Guide[];
+  intro?: ReactNode;
 }
 
-const GuideList = ({ title, description, items }: Props) => {
+const GuideList = ({ title, description, items, intro }: Props) => {
   const [open, setOpen] = useState<string | null>(items[0]?.slug ?? null);
 
   return (
     <DigiHubShell title={title} description={description}>
       <div className="container mx-auto px-4 md:px-8 max-w-3xl py-12 md:py-16 space-y-4">
+        {intro}
         {items.map((g) => {
           const isOpen = open === g.slug;
           return (

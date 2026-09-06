@@ -36,6 +36,9 @@ const DhChallenge = lazy(() => import("./pages/digihub/Challenge.tsx"));
 const DhDigitalRights = lazy(() => import("./pages/digihub/DigitalRights.tsx"));
 const DhCybersecurity = lazy(() => import("./pages/digihub/Cybersecurity.tsx"));
 const DhPrivacyGuides = lazy(() => import("./pages/digihub/PrivacyGuides.tsx"));
+const DhYourRights = lazy(() => import("./pages/digihub/YourRights.tsx"));
+const DhRightsHelp = lazy(() => import("./pages/digihub/RightsHelp.tsx"));
+const DhRightsResource = lazy(() => import("./pages/digihub/RightsResource.tsx"));
 const Unsubscribed = lazy(() => import("./pages/Unsubscribed.tsx"));
 const ConfirmSubscription = lazy(() => import("./pages/ConfirmSubscription.tsx"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
@@ -86,6 +89,9 @@ const App = () => (
             <Route path="/digihub/digital-rights" element={<DhDigitalRights />} />
             <Route path="/digihub/cybersecurity" element={<DhCybersecurity />} />
             <Route path="/digihub/privacy-guides" element={<DhPrivacyGuides />} />
+            <Route path="/digihub/your-rights" element={<DhYourRights />} />
+            <Route path="/digihub/your-rights/help" element={<DhRightsHelp />} />
+            <Route path="/digihub/your-rights/:resource/:provision?" element={<DhRightsResource />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route path="/newsletter/confirm" element={<ConfirmSubscription />} />
 
