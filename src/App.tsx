@@ -89,6 +89,9 @@ const App = () => (
             <Route path="/digihub/digital-rights" element={<DhDigitalRights />} />
             <Route path="/digihub/cybersecurity" element={<DhCybersecurity />} />
             <Route path="/digihub/privacy-guides" element={<DhPrivacyGuides />} />
+            <Route path="/digihub/your-rights" element={<DhYourRights />} />
+            <Route path="/digihub/your-rights/help" element={<DhRightsHelp />} />
+            <Route path="/digihub/your-rights/:resource/:provision?" element={<DhRightsResource />} />
             <Route path="/unsubscribed" element={<Unsubscribed />} />
             <Route path="/newsletter/confirm" element={<ConfirmSubscription />} />
 
