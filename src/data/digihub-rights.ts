@@ -206,10 +206,10 @@ export const legalResources: LegalResource[] = [
     topics: ["Privacy & Data Protection", "Rights & Remedies", "Digital Identity"],
     topicLine: "Personal data · Sensitive data · Consent · Data subject rights · Complaints",
     sourceOrg: "Data Protection Commission, Ghana",
-    sourceOrgUrl: "https://www.dataprotection.org.gh",
-    sourceUrl: null,
+    sourceOrgUrl: "https://dataprotection.org.gh",
+    sourceUrl: "https://dataprotection.org.gh/documents/",
     version: "Act 843 of 2012",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Data Protection Act sets rules for how organisations collect, store, use and share personal information about you, and establishes the Data Protection Commission to oversee compliance. It is the main law you rely on when a company, clinic, employer or app mishandles your information.",
     provisions: [
@@ -238,7 +238,8 @@ export const legalResources: LegalResource[] = [
         title: "Sensitive personal data",
         topics: ["Privacy & Data Protection"],
         keywords: ["sensitive data", "health", "HIV status", "sexual life", "religion", "ethnicity", "special personal data"],
-        sourceText: null,
+        sourceText:
+          "37. (1) Unless otherwise provided by this Act, a person shall not process personal data which relates to (a) a child who is under parental control in accordance with the law, or (b) the religious or philosophical beliefs, ethnic origin, race, trade union membership, political opinions, health, sexual life or criminal behavior of an individual.",
         explains:
           "Some categories of information are treated as especially sensitive because misuse can cause serious harm. Health information and information about a person's sexual life are commonly treated as sensitive categories under data-protection frameworks.",
         whyItMatters:
@@ -257,7 +258,8 @@ export const legalResources: LegalResource[] = [
         title: "Consent, purpose and fair processing",
         topics: ["Privacy & Data Protection"],
         keywords: ["consent", "purpose", "lawful processing", "fair", "data controller", "data processor"],
-        sourceText: null,
+        sourceText:
+          "19. Personal data may only be processed if the purpose for which it is to be processed, is necessary, relevant and not excessive. 20. (1) A person shall not process personal data without the prior consent of the data subject unless the purpose for which the personal data is processed is (a) necessary for the purpose of a contract to which the data subject is a party; (b) authorised or required by law; (c) to protect a legitimate interest of the data subject; (d) necessary for the proper performance of a statutory duty; or (e) necessary to pursue the legitimate interest of the data controller or a third party to whom the data is supplied.",
         explains:
           "Data-protection law is generally built on principles such as processing information fairly, for a specific purpose, and with a lawful basis such as consent. In simple terms, an organisation should not collect your information for one reason and quietly use it for another.",
         whyItMatters:
@@ -276,7 +278,8 @@ export const legalResources: LegalResource[] = [
         title: "Your rights as a data subject",
         topics: ["Privacy & Data Protection", "Rights & Remedies"],
         keywords: ["access", "correction", "deletion", "object", "data subject", "rights"],
-        sourceText: null,
+        sourceText:
+          "20. (2) Unless otherwise provided by law, a data subject may object to the processing of personal data. (3) Where a data subject objects to the processing of personal data, the person who processes the personal data shall stop the processing of the personal data. 35. (1) A data controller shall (a) inform an individual who is the data subject of the processing of the individual's personal data by the data controller or another person on behalf of the data controller; (b) give to the data subject, a description of (i) the personal data of which that individual is the data subject; (ii) the purpose for which the data is being or is to be processed; and (iii) the recipient or class of recipients to whom the data may be disclosed. 39. (1) An individual shall at any time by notice in writing to a data controller require the data controller to cease or not begin processing for a specified purpose or in a specified manner, personal data which causes or is likely to cause unwarranted damage or distress to the individual.",
         explains:
           "As the person the data is about (the data subject), data-protection frameworks generally give you rights such as knowing what is held about you, asking for corrections, and objecting to certain uses. The exact rights and procedures are set out in the Act itself.",
         whyItMatters:
