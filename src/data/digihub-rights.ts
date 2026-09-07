@@ -100,9 +100,10 @@ export const legalResources: LegalResource[] = [
         title: "Respect for human dignity",
         topics: ["Rights & Remedies"],
         keywords: ["dignity", "degrading treatment", "humiliation", "harassment"],
-        sourceText: null,
+        sourceText:
+          "(1) The dignity of all persons shall be inviolable. (2) No person shall, whether or not he is arrested, restricted or detained, be subjected to — (a) torture or other cruel, inhuman or degrading treatment or punishment; (b) any other condition that detracts or is likely to detract from his dignity and worth as a human being.",
         explains:
-          "Article 15 is generally understood as protecting the dignity of every person. Treating someone in a degrading or humiliating way is not acceptable, and that principle does not disappear because the treatment happens on a phone or online.",
+          "Article 15 protects the dignity of every person. Treating someone in a degrading or humiliating way is not acceptable, and that principle does not disappear because the treatment happens on a phone or online.",
         whyItMatters:
           "Online harassment, doxxing and the sharing of intimate images without consent are often experienced as attacks on a person's dignity. Understanding that dignity is a constitutional value helps you name what happened and seek support.",
         protects: ["Your dignity as a person", "Freedom from degrading treatment"],
@@ -119,9 +120,10 @@ export const legalResources: LegalResource[] = [
         title: "Equality and freedom from discrimination",
         topics: ["Rights & Remedies", "Expression & Information"],
         keywords: ["equality", "discrimination", "equal treatment"],
-        sourceText: null,
+        sourceText:
+          "(1) All persons shall be equal before the law. (2) A person shall not be discriminated against on grounds of gender, race, colour, ethnic origin, religion, creed or social or economic status.",
         explains:
-          "Article 17 is generally understood as guaranteeing equality before the law and protecting people from discrimination on listed grounds. In simple terms, the law should treat people equally.",
+          "Article 17 guarantees equality before the law and protects people from discrimination on the grounds it lists. In simple terms, the law should treat people equally.",
         whyItMatters:
           "Marginalised communities are often targeted online precisely because of who they are. Knowing that equality is a constitutional principle can inform how you describe what happened when you seek help or report an incident.",
         protects: ["Equal treatment under the law", "Protection from discrimination on the grounds listed in the Constitution"],
@@ -138,9 +140,10 @@ export const legalResources: LegalResource[] = [
         title: "Property rights and privacy of home, correspondence and communication",
         topics: ["Privacy & Data Protection", "Communications & Internet"],
         keywords: ["privacy", "correspondence", "communication", "home", "surveillance", "interference"],
-        sourceText: null,
+        sourceText:
+          "(2) No person shall be subjected to interference with the privacy of his home, property, correspondence or communication except in accordance with law and as may be necessary in a free and democratic society for public safety or the economic well-being of the country, for the protection of health or morals, for the prevention of disorder or crime or for the protection of the rights or freedoms of others.",
         explains:
-          "Article 18 is widely understood as protecting your privacy, including the privacy of your home, property, correspondence and communication, from interference that is not in accordance with law. For an ordinary person, this means your private messages and calls are not open to anyone who wants to look, unless the law specifically allows it.",
+          "Article 18 protects your privacy, including the privacy of your home, property, correspondence and communication, from interference that is not in accordance with law. For an ordinary person, this means your private messages and calls are not open to anyone who wants to look, unless the law specifically allows it.",
         whyItMatters:
           "Almost everything you do on a phone, from chats to banking, is a form of correspondence or communication. This provision is the constitutional foundation for the more detailed rules found in the Data Protection Act and the Electronic Communications Act.",
         protects: ["Privacy of your home and property", "Privacy of your correspondence", "Privacy of your communications", "Protection from interference that is not in accordance with law"],
@@ -157,9 +160,10 @@ export const legalResources: LegalResource[] = [
         title: "General fundamental freedoms, including speech, expression and information",
         topics: ["Expression & Information"],
         keywords: ["expression", "speech", "press", "information", "assembly", "association", "freedom"],
-        sourceText: null,
+        sourceText:
+          "(1) All persons shall have the right to — (a) freedom of speech and expression, which shall include freedom of the press and other media; (b) freedom of thought, conscience and belief, which shall include academic freedom; (c) freedom to practice any religion and to manifest such practice; (d) freedom of assembly including freedom to take part in processions and demonstrations; (e) freedom of association, which shall include freedom to form or join trade unions or other associations, national and international, for the protection of their interest; (f) information, subject to such qualifications and laws as are necessary in a democratic society; (g) freedom of movement which means the right to move freely in Ghana, the right to leave and to enter Ghana and immunity from expulsion from Ghana.",
         explains:
-          "Article 21 is generally understood as protecting a set of fundamental freedoms, including freedom of speech and expression, freedom of thought, freedom of information, and freedoms of assembly and association. Posting, publishing, organising and seeking information online sit within these freedoms, subject to limits set by law.",
+          "Article 21 protects a set of fundamental freedoms, including freedom of speech and expression, freedom of thought, freedom of information, and freedoms of assembly and association. Posting, publishing, organising and seeking information online sit within these freedoms, subject to limits set by law.",
         whyItMatters:
           "When a post is taken down, an account is restricted or someone is pressured to stay silent, this is the provision people usually point to. It also underpins your ability to look for information about health, rights and services.",
         protects: ["Freedom of speech and expression", "Freedom of thought and conscience", "Freedom of information", "Freedom of assembly and association"],
@@ -176,9 +180,10 @@ export const legalResources: LegalResource[] = [
         title: "Protection of rights by the courts",
         topics: ["Rights & Remedies"],
         keywords: ["enforcement", "court", "remedy", "high court", "redress"],
-        sourceText: null,
+        sourceText:
+          "(1) Where a person alleges that a provision of this Constitution on the fundamental human rights and freedoms has been, or is being or is likely to be contravened in relation to him, then, without prejudice to any other action that is lawfully available, that person may apply to the High Court for redress.",
         explains:
-          "Article 33 is generally understood as giving a person whose fundamental rights have been, are being, or are likely to be violated a route to seek redress in the courts. In simple terms, rights in the Constitution are meant to be enforceable, not decorative.",
+          "Article 33 gives a person whose fundamental rights have been, are being, or are likely to be violated a route to seek redress in the courts. In simple terms, rights in the Constitution are meant to be enforceable, not decorative.",
         whyItMatters:
           "Knowing that a formal remedy exists changes how you approach a violation. It makes preserving evidence and getting proper advice worthwhile, even if you never go to court.",
         protects: ["Access to a court remedy for violations of fundamental rights"],
