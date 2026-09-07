@@ -86,11 +86,11 @@ export const legalResources: LegalResource[] = [
     country: "Ghana",
     topics: ["Privacy & Data Protection", "Expression & Information", "Rights & Remedies"],
     topicLine: "Privacy · Expression · Information · Equality · Dignity",
-    sourceOrg: "Republic of Ghana",
-    sourceOrgUrl: null,
-    sourceUrl: null,
+    sourceOrg: "Republic of Ghana · Judicial Service of Ghana",
+    sourceOrgUrl: "https://judicial.gov.gh/index.php/the-constitution",
+    sourceUrl: "https://osp.gov.gh/media/Resources/Ghana_Constitution.pdf",
     version: "1992 Constitution (as amended)",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Constitution is Ghana's highest law. Chapter 5 sets out fundamental human rights and freedoms. Although it was written before smartphones and social media, several of its protections, such as privacy, dignity, equality and freedom of expression, apply to how you live online today.",
     provisions: [
@@ -100,9 +100,10 @@ export const legalResources: LegalResource[] = [
         title: "Respect for human dignity",
         topics: ["Rights & Remedies"],
         keywords: ["dignity", "degrading treatment", "humiliation", "harassment"],
-        sourceText: null,
+        sourceText:
+          "(1) The dignity of all persons shall be inviolable. (2) No person shall, whether or not he is arrested, restricted or detained, be subjected to — (a) torture or other cruel, inhuman or degrading treatment or punishment; (b) any other condition that detracts or is likely to detract from his dignity and worth as a human being.",
         explains:
-          "Article 15 is generally understood as protecting the dignity of every person. Treating someone in a degrading or humiliating way is not acceptable, and that principle does not disappear because the treatment happens on a phone or online.",
+          "Article 15 protects the dignity of every person. Treating someone in a degrading or humiliating way is not acceptable, and that principle does not disappear because the treatment happens on a phone or online.",
         whyItMatters:
           "Online harassment, doxxing and the sharing of intimate images without consent are often experienced as attacks on a person's dignity. Understanding that dignity is a constitutional value helps you name what happened and seek support.",
         protects: ["Your dignity as a person", "Freedom from degrading treatment"],
@@ -119,9 +120,10 @@ export const legalResources: LegalResource[] = [
         title: "Equality and freedom from discrimination",
         topics: ["Rights & Remedies", "Expression & Information"],
         keywords: ["equality", "discrimination", "equal treatment"],
-        sourceText: null,
+        sourceText:
+          "(1) All persons shall be equal before the law. (2) A person shall not be discriminated against on grounds of gender, race, colour, ethnic origin, religion, creed or social or economic status.",
         explains:
-          "Article 17 is generally understood as guaranteeing equality before the law and protecting people from discrimination on listed grounds. In simple terms, the law should treat people equally.",
+          "Article 17 guarantees equality before the law and protects people from discrimination on the grounds it lists. In simple terms, the law should treat people equally.",
         whyItMatters:
           "Marginalised communities are often targeted online precisely because of who they are. Knowing that equality is a constitutional principle can inform how you describe what happened when you seek help or report an incident.",
         protects: ["Equal treatment under the law", "Protection from discrimination on the grounds listed in the Constitution"],
@@ -138,9 +140,10 @@ export const legalResources: LegalResource[] = [
         title: "Property rights and privacy of home, correspondence and communication",
         topics: ["Privacy & Data Protection", "Communications & Internet"],
         keywords: ["privacy", "correspondence", "communication", "home", "surveillance", "interference"],
-        sourceText: null,
+        sourceText:
+          "(2) No person shall be subjected to interference with the privacy of his home, property, correspondence or communication except in accordance with law and as may be necessary in a free and democratic society for public safety or the economic well-being of the country, for the protection of health or morals, for the prevention of disorder or crime or for the protection of the rights or freedoms of others.",
         explains:
-          "Article 18 is widely understood as protecting your privacy, including the privacy of your home, property, correspondence and communication, from interference that is not in accordance with law. For an ordinary person, this means your private messages and calls are not open to anyone who wants to look, unless the law specifically allows it.",
+          "Article 18 protects your privacy, including the privacy of your home, property, correspondence and communication, from interference that is not in accordance with law. For an ordinary person, this means your private messages and calls are not open to anyone who wants to look, unless the law specifically allows it.",
         whyItMatters:
           "Almost everything you do on a phone, from chats to banking, is a form of correspondence or communication. This provision is the constitutional foundation for the more detailed rules found in the Data Protection Act and the Electronic Communications Act.",
         protects: ["Privacy of your home and property", "Privacy of your correspondence", "Privacy of your communications", "Protection from interference that is not in accordance with law"],
@@ -157,9 +160,10 @@ export const legalResources: LegalResource[] = [
         title: "General fundamental freedoms, including speech, expression and information",
         topics: ["Expression & Information"],
         keywords: ["expression", "speech", "press", "information", "assembly", "association", "freedom"],
-        sourceText: null,
+        sourceText:
+          "(1) All persons shall have the right to — (a) freedom of speech and expression, which shall include freedom of the press and other media; (b) freedom of thought, conscience and belief, which shall include academic freedom; (c) freedom to practice any religion and to manifest such practice; (d) freedom of assembly including freedom to take part in processions and demonstrations; (e) freedom of association, which shall include freedom to form or join trade unions or other associations, national and international, for the protection of their interest; (f) information, subject to such qualifications and laws as are necessary in a democratic society; (g) freedom of movement which means the right to move freely in Ghana, the right to leave and to enter Ghana and immunity from expulsion from Ghana.",
         explains:
-          "Article 21 is generally understood as protecting a set of fundamental freedoms, including freedom of speech and expression, freedom of thought, freedom of information, and freedoms of assembly and association. Posting, publishing, organising and seeking information online sit within these freedoms, subject to limits set by law.",
+          "Article 21 protects a set of fundamental freedoms, including freedom of speech and expression, freedom of thought, freedom of information, and freedoms of assembly and association. Posting, publishing, organising and seeking information online sit within these freedoms, subject to limits set by law.",
         whyItMatters:
           "When a post is taken down, an account is restricted or someone is pressured to stay silent, this is the provision people usually point to. It also underpins your ability to look for information about health, rights and services.",
         protects: ["Freedom of speech and expression", "Freedom of thought and conscience", "Freedom of information", "Freedom of assembly and association"],
@@ -176,9 +180,10 @@ export const legalResources: LegalResource[] = [
         title: "Protection of rights by the courts",
         topics: ["Rights & Remedies"],
         keywords: ["enforcement", "court", "remedy", "high court", "redress"],
-        sourceText: null,
+        sourceText:
+          "(1) Where a person alleges that a provision of this Constitution on the fundamental human rights and freedoms has been, or is being or is likely to be contravened in relation to him, then, without prejudice to any other action that is lawfully available, that person may apply to the High Court for redress.",
         explains:
-          "Article 33 is generally understood as giving a person whose fundamental rights have been, are being, or are likely to be violated a route to seek redress in the courts. In simple terms, rights in the Constitution are meant to be enforceable, not decorative.",
+          "Article 33 gives a person whose fundamental rights have been, are being, or are likely to be violated a route to seek redress in the courts. In simple terms, rights in the Constitution are meant to be enforceable, not decorative.",
         whyItMatters:
           "Knowing that a formal remedy exists changes how you approach a violation. It makes preserving evidence and getting proper advice worthwhile, even if you never go to court.",
         protects: ["Access to a court remedy for violations of fundamental rights"],
@@ -201,10 +206,10 @@ export const legalResources: LegalResource[] = [
     topics: ["Privacy & Data Protection", "Rights & Remedies", "Digital Identity"],
     topicLine: "Personal data · Sensitive data · Consent · Data subject rights · Complaints",
     sourceOrg: "Data Protection Commission, Ghana",
-    sourceOrgUrl: "https://www.dataprotection.org.gh",
-    sourceUrl: null,
+    sourceOrgUrl: "https://dataprotection.org.gh",
+    sourceUrl: "https://dataprotection.org.gh/documents/",
     version: "Act 843 of 2012",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Data Protection Act sets rules for how organisations collect, store, use and share personal information about you, and establishes the Data Protection Commission to oversee compliance. It is the main law you rely on when a company, clinic, employer or app mishandles your information.",
     provisions: [
@@ -233,7 +238,8 @@ export const legalResources: LegalResource[] = [
         title: "Sensitive personal data",
         topics: ["Privacy & Data Protection"],
         keywords: ["sensitive data", "health", "HIV status", "sexual life", "religion", "ethnicity", "special personal data"],
-        sourceText: null,
+        sourceText:
+          "37. (1) Unless otherwise provided by this Act, a person shall not process personal data which relates to (a) a child who is under parental control in accordance with the law, or (b) the religious or philosophical beliefs, ethnic origin, race, trade union membership, political opinions, health, sexual life or criminal behavior of an individual.",
         explains:
           "Some categories of information are treated as especially sensitive because misuse can cause serious harm. Health information and information about a person's sexual life are commonly treated as sensitive categories under data-protection frameworks.",
         whyItMatters:
@@ -252,7 +258,8 @@ export const legalResources: LegalResource[] = [
         title: "Consent, purpose and fair processing",
         topics: ["Privacy & Data Protection"],
         keywords: ["consent", "purpose", "lawful processing", "fair", "data controller", "data processor"],
-        sourceText: null,
+        sourceText:
+          "19. Personal data may only be processed if the purpose for which it is to be processed, is necessary, relevant and not excessive. 20. (1) A person shall not process personal data without the prior consent of the data subject unless the purpose for which the personal data is processed is (a) necessary for the purpose of a contract to which the data subject is a party; (b) authorised or required by law; (c) to protect a legitimate interest of the data subject; (d) necessary for the proper performance of a statutory duty; or (e) necessary to pursue the legitimate interest of the data controller or a third party to whom the data is supplied.",
         explains:
           "Data-protection law is generally built on principles such as processing information fairly, for a specific purpose, and with a lawful basis such as consent. In simple terms, an organisation should not collect your information for one reason and quietly use it for another.",
         whyItMatters:
@@ -271,7 +278,8 @@ export const legalResources: LegalResource[] = [
         title: "Your rights as a data subject",
         topics: ["Privacy & Data Protection", "Rights & Remedies"],
         keywords: ["access", "correction", "deletion", "object", "data subject", "rights"],
-        sourceText: null,
+        sourceText:
+          "20. (2) Unless otherwise provided by law, a data subject may object to the processing of personal data. (3) Where a data subject objects to the processing of personal data, the person who processes the personal data shall stop the processing of the personal data. 35. (1) A data controller shall (a) inform an individual who is the data subject of the processing of the individual's personal data by the data controller or another person on behalf of the data controller; (b) give to the data subject, a description of (i) the personal data of which that individual is the data subject; (ii) the purpose for which the data is being or is to be processed; and (iii) the recipient or class of recipients to whom the data may be disclosed. 39. (1) An individual shall at any time by notice in writing to a data controller require the data controller to cease or not begin processing for a specified purpose or in a specified manner, personal data which causes or is likely to cause unwarranted damage or distress to the individual.",
         explains:
           "As the person the data is about (the data subject), data-protection frameworks generally give you rights such as knowing what is held about you, asking for corrections, and objecting to certain uses. The exact rights and procedures are set out in the Act itself.",
         whyItMatters:
