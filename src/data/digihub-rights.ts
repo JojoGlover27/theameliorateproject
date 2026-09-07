@@ -86,11 +86,11 @@ export const legalResources: LegalResource[] = [
     country: "Ghana",
     topics: ["Privacy & Data Protection", "Expression & Information", "Rights & Remedies"],
     topicLine: "Privacy · Expression · Information · Equality · Dignity",
-    sourceOrg: "Republic of Ghana",
-    sourceOrgUrl: null,
-    sourceUrl: null,
+    sourceOrg: "Republic of Ghana · Judicial Service of Ghana",
+    sourceOrgUrl: "https://judicial.gov.gh/index.php/the-constitution",
+    sourceUrl: "https://osp.gov.gh/media/Resources/Ghana_Constitution.pdf",
     version: "1992 Constitution (as amended)",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Constitution is Ghana's highest law. Chapter 5 sets out fundamental human rights and freedoms. Although it was written before smartphones and social media, several of its protections, such as privacy, dignity, equality and freedom of expression, apply to how you live online today.",
     provisions: [
