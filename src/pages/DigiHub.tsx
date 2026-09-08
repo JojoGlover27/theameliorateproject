@@ -203,6 +203,15 @@ const DigiHub = () => {
         </div>
       </section>
 
+      {/* ============ RIGHTS READER ============ */}
+      <section className="pt-14 md:pt-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <AnimatedSection>
+            <RightsReader />
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ============ WHAT YOU CAN DO + THREAT MAP ============ */}
       <section className="py-14 md:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid lg:grid-cols-2 gap-6">
