@@ -31,6 +31,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NewsletterForm from "@/components/NewsletterForm";
 import ThreatMap from "@/components/digihub/ThreatMap";
+import RightsReader from "@/components/digihub/RightsReader";
 import AskOrenta from "@/components/digihub/AskOrenta";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
