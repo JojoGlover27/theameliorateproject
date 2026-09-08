@@ -279,9 +279,12 @@ const RightsReader = () => {
           <p className="text-[11px] text-slate-500">
             Official wording is quoted from verified public sources. Explanations are DigiHub's own plain-language summaries.
           </p>
-          <Button size="sm" variant="outline" className="rounded-full border-white/15 text-slate-200 hover:bg-white/10" asChild>
-            <Link to="/digihub/your-rights">Browse the full library <ArrowRight size={13} /></Link>
-          </Button>
+          <Link
+            to="/digihub/your-rights"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-slate-200 hover:bg-white/10 transition-colors"
+          >
+            Browse the full library <ArrowRight size={13} />
+          </Link>
         </div>
       </div>
     </div>
