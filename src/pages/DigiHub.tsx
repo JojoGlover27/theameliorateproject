@@ -31,6 +31,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NewsletterForm from "@/components/NewsletterForm";
 import ThreatMap from "@/components/digihub/ThreatMap";
+import RightsReader from "@/components/digihub/RightsReader";
 import AskOrenta from "@/components/digihub/AskOrenta";
 import { AnimatedSection, fadeUp, staggerContainer } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
@@ -200,6 +201,15 @@ const DigiHub = () => {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ============ RIGHTS READER ============ */}
+      <section className="pt-14 md:pt-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <AnimatedSection>
+            <RightsReader />
+          </AnimatedSection>
         </div>
       </section>
 

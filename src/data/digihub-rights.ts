@@ -324,9 +324,9 @@ export const legalResources: LegalResource[] = [
     topicLine: "Cybersecurity · Cyber incidents · Online harms · Reporting",
     sourceOrg: "Cyber Security Authority, Ghana",
     sourceOrgUrl: "https://www.csa.gov.gh",
-    sourceUrl: null,
+    sourceUrl: "https://csa.gov.gh/resources/cybersecurity_Act_2020(Act_1038).pdf",
     version: "Act 1038 of 2020",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Cybersecurity Act establishes the Cyber Security Authority and creates a national framework for preventing, reporting and responding to cybersecurity incidents. It is relevant when you are hacked, scammed, or harmed through digital means.",
     provisions: [
@@ -417,10 +417,10 @@ export const legalResources: LegalResource[] = [
     topics: ["Communications & Internet", "Privacy & Data Protection", "Digital Identity"],
     topicLine: "Networks · Telecoms · Consumers · SIM registration",
     sourceOrg: "National Communications Authority, Ghana",
-    sourceOrgUrl: "https://nca.org.gh",
-    sourceUrl: null,
+    sourceOrgUrl: "https://nca.org.gh/regulatory-framework/",
+    sourceUrl: "https://ghalii.org/akn/gh/act/2008/775/eng@2009-01-09",
     version: "Act 775 of 2008",
-    lastVerified: null,
+    lastVerified: "September 2026",
     overview:
       "The Electronic Communications Act regulates electronic communications services and networks in Ghana, including the telecom operators you rely on for calls, SMS and mobile data. It is the framework behind how networks are licensed and how consumers are treated.",
     provisions: [
@@ -491,11 +491,11 @@ export const legalResources: LegalResource[] = [
     country: "Ghana",
     topics: ["Communications & Internet", "Cybersecurity", "Emerging Technology"],
     topicLine: "Electronic records · Online transactions · Digital evidence · Cyber offences",
-    sourceOrg: "Republic of Ghana",
-    sourceOrgUrl: null,
-    sourceUrl: null,
-    version: "Act 772 of 2008",
-    lastVerified: null,
+    sourceOrg: "Parliament of Ghana",
+    sourceOrgUrl: "https://repository.parliament.gh",
+    sourceUrl: "https://repository.parliament.gh/server/api/core/bitstreams/c42be318-f8a0-46ab-b912-481d687f8d19/content",
+    version: "Act 772 of 2008 (as amended)",
+    lastVerified: "September 2026",
     overview:
       "The Electronic Transactions Act gives legal recognition to electronic records, signatures and transactions, and historically contained provisions on computer-related offences. It matters whenever you buy, sign, pay or agree to something electronically.",
     provisions: [
