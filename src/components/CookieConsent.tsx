@@ -8,10 +8,17 @@ export const CONSENT_KEY = "amelio-cookie-consent";
 
 export type CookieConsent = { essential: true; analytics: boolean; ts: string };
 
+const CONSENT_TTL_MS = 24 * 60 * 60 * 1000; // re-ask every 24 hours
+
 export const getConsent = (): CookieConsent | null => {
   try {
     const raw = localStorage.getItem(CONSENT_KEY);
-    return raw ? (JSON.parse(raw) as CookieConsent) : null;
+    if (!raw) return null;
+    const consent = JSON.parse(raw) as CookieConsent;
+    // Treat consent older than 24 hours as expired so the banner re-appears.
+    const ts = Date.parse(consent.ts);
+    if (!Number.isFinite(ts) || Date.now() - ts > CONSENT_TTL_MS) return null;
+    return consent;
   } catch {
     return null;
   }
