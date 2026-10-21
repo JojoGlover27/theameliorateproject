@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import synapseLogo from "@/assets/synapse-logo.png";
 import orentaLogo from "@/assets/orenta-logo.png";
 import digihubLogo from "@/assets/digihub-logo.png";
-import transformLogo from "@/assets/transform-community-logo.png.asset.json";
+import transformLogo from "@/assets/transform-logo.png";
 
 type Item = {
   name: string;
@@ -49,7 +49,7 @@ const items: Item[] = [
   },
   {
     name: "TRANSform",
-    logo: transformLogo.url,
+    logo: transformLogo,
     tagline: "Build. Connect. Empower.",
     description:
       "TRANSform is Amelio’s community initiative for transgender, non-binary and gender-diverse people in Ghana. It brings together community connection, HIV health information and education, gender-affirming health and wellbeing resources, support navigation for people experiencing abuse, economic empowerment, and opportunities for shared learning through TRANSformation Workshops.\n\nGrounded in dignity, inclusion and community leadership, TRANSform works to strengthen belonging, improve access to relevant information and help gender-diverse people connect, learn and pursue safer, healthier and more empowered lives.",
@@ -72,7 +72,7 @@ const EcosystemSection = () => (
       </AnimatedSection>
 
       <motion.div
-        className="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
+        className="grid md:grid-cols-2 gap-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
