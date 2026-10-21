@@ -52,7 +52,7 @@ const items: Item[] = [
     logo: transformLogo,
     tagline: "Build. Connect. Empower.",
     description:
-      "TRANSform is Amelio’s community initiative for transgender, non-binary and gender-diverse people in Ghana. It brings together community connection, HIV health information and education, gender-affirming health and wellbeing resources, support navigation for people experiencing abuse, economic empowerment, and opportunities for shared learning through TRANSformation Workshops.\n\nGrounded in dignity, inclusion and community leadership, TRANSform works to strengthen belonging, improve access to relevant information and help gender-diverse people connect, learn and pursue safer, healthier and more empowered lives.",
+      "TRANSform is Amelio’s community initiative for transgender, non-binary and gender-diverse people in Ghana. It brings together community connection, HIV health information and education, gender-affirming health and wellbeing information, support navigation, economic empowerment and shared learning through TRANSformation Workshops — grounded in dignity, inclusion and community leadership.",
     cta: "Explore TRANSform",
     to: "/transform",
   },
