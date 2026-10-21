@@ -95,7 +95,9 @@ const EcosystemSection = () => (
                   ? "bg-brand-gold text-black hover:opacity-90 border-transparent"
                   : item.name === "DigiHub"
                     ? "bg-brand-magenta text-white hover:opacity-90 border-transparent"
-                    : ""
+                    : item.name === "TRANSform"
+                      ? "bg-brand-teal text-white hover:opacity-90 border-transparent"
+                      : ""
               }`}
               asChild
             >
