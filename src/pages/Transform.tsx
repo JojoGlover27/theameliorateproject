@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { WorkshopListing } from "@/components/transform/TransformListings";
 import { TRANSFORM_WHATSAPP_INVITE_URL, isValidExternalUrl, transformAreas, transformCommitments, transformPrivacyGuidance } from "@/data/transform";
-import wordmark from "@/assets/transform-wordmark.png.asset.json";
+import wordmark from "@/assets/transform-wordmark-transparent.png";
+import heroImg from "@/assets/transform-hero.jpg";
 import workshopImg from "@/assets/transform-workshop.jpg";
 import portraitImg from "@/assets/transform-portrait.jpg";
 import communityImg from "@/assets/transform-community.jpg";
@@ -43,11 +44,15 @@ export default function Transform() {
   return <div className="min-h-screen">
     <Navbar /><RotatingKeywordsBar />
     <main id="transform-main">
-      <section className="pt-32 md:pt-36 pb-10 border-b border-border">
+      <div className="relative pt-28 md:pt-32">
+        <img src={heroImg} alt="A proud group of transgender, non-binary and gender-diverse friends together at sunset" width={1920} height={1088} className="w-full h-[45vh] md:h-[65vh] object-cover object-[center_30%]" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
+      </div>
+      <section className="pt-4 pb-10 border-b border-border">
         <div className={`${wrap} text-center`}>
           <p className="text-xs font-semibold text-primary mb-4">AN AMELIO COMMUNITY INITIATIVE</p>
           <h1 className="sr-only">TRANSform</h1>
-          <img src={wordmark.url} alt="TRANSform — Build. Connect. Empower." width={1152} height={768} className="w-full max-w-lg mx-auto aspect-[3/2] object-contain" />
+          <img src={wordmark} alt="TRANSform — Build. Connect. Empower." className="w-full max-w-lg mx-auto object-contain my-8" />
           <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-5">A community for transgender, non-binary and gender-diverse people in Ghana.</p>
           <div className="max-w-3xl mx-auto text-muted-foreground leading-relaxed space-y-4 mb-7">
             <p>TRANSform is an initiative of The Ameliorate Project (Amelio), created to strengthen community connection, improve access to relevant health information and education, promote affirming health and wellbeing, support people navigating abuse and safety concerns, and advance economic empowerment.</p>
