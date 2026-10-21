@@ -117,6 +117,22 @@
 }
 
 @layer components {
+  .transform-page {
+    --background: 325 50% 96%;
+    --transform-page-wash: linear-gradient(135deg, hsl(var(--brand-magenta) / 0.07), hsl(var(--brand-gold) / 0.08) 48%, hsl(var(--brand-blue) / 0.08));
+    --transform-privacy-wash: linear-gradient(120deg, hsl(var(--brand-teal) / 0.16), hsl(var(--brand-blue) / 0.12));
+    background-color: hsl(var(--background));
+    background-image: var(--transform-page-wash);
+  }
+
+  .dark .transform-page {
+    --background: 250 30% 8%;
+  }
+
+  .transform-privacy {
+    background-image: var(--transform-privacy-wash);
+  }
+
   /* Premium tinted treatment for every card surface on the site */
   .bg-card {
     background-image: linear-gradient(150deg, hsl(var(--tint-h, 262) var(--tint-s, 55%) var(--tint-l, 42%) / 0.14) 0%, hsl(var(--card) / 0) 55%, hsl(var(--tint-h2, 330) var(--tint-s2, 72%) var(--tint-l2, 55%) / 0.12) 100%);
