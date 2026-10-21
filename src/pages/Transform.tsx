@@ -14,6 +14,14 @@ import communityImg from "@/assets/transform-community.jpg";
 
 const icons = [Users, HeartPulse, HeartHandshake, ShieldCheck, Sprout, MessagesSquare];
 const tints = ["tint-blue", "tint-pink", "tint-purple", "tint-teal", "tint-gold", "tint-blue"];
+const commitmentStyles = [
+  ["tint-pink", "bg-brand-magenta/20", "text-brand-magenta"],
+  ["tint-gold", "bg-brand-gold/25", "text-brand-gold"],
+  ["tint-blue", "bg-brand-blue/20", "text-brand-blue"],
+  ["tint-teal", "bg-brand-teal/20", "text-brand-teal"],
+  ["tint-purple", "bg-primary/15", "text-primary"],
+  ["tint-orange", "bg-accent/20", "text-accent"],
+] as const;
 const wrap = "container mx-auto max-w-6xl px-4 md:px-8";
 
 function JoinCommunity() {
