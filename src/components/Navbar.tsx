@@ -19,6 +19,7 @@ const primaryLinks = [
 ];
 
 const moreLinks: { label: string; href: string; external?: boolean }[] = [
+  { label: "TRANSform", href: "/transform" },
   { label: "Our Story", href: "/our-story" },
   { label: "Blog / Updates", href: "/blog" },
   { label: "Research & Publications", href: "/research" },

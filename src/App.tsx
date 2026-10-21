@@ -21,6 +21,7 @@ const NeedsAssessmentReport = lazy(() => import("./pages/research/NeedsAssessmen
 const AnonymityClinicalNecessity = lazy(() => import("./pages/research/AnonymityClinicalNecessity.tsx"));
 const Newsletter = lazy(() => import("./pages/Newsletter.tsx"));
 const Synapse = lazy(() => import("./pages/Synapse.tsx"));
+const Transform = lazy(() => import("./pages/Transform.tsx"));
 const DigiHub = lazy(() => import("./pages/DigiHub.tsx"));
 const DhPrivacyScore = lazy(() => import("./pages/digihub/PrivacyScore.tsx"));
 const DhActionPlan = lazy(() => import("./pages/digihub/ActionPlan.tsx"));
@@ -74,6 +75,7 @@ const App = () => (
             <Route path="/research/anonymity-clinical-necessity" element={<AnonymityClinicalNecessity />} />
             <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/synapse" element={<Synapse />} />
+            <Route path="/transform" element={<Transform />} />
             <Route path="/digihub" element={<DigiHub />} />
             <Route path="/digihub/privacy-score" element={<DhPrivacyScore />} />
             <Route path="/digihub/action-plan" element={<DhActionPlan />} />
