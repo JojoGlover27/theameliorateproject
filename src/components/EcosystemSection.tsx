@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import synapseLogo from "@/assets/synapse-logo.png";
 import orentaLogo from "@/assets/orenta-logo.png";
 import digihubLogo from "@/assets/digihub-logo.png";
+import transformLogo from "@/assets/transform-community-logo.png.asset.json";
 
 type Item = {
   name: string;
@@ -46,6 +47,15 @@ const items: Item[] = [
     cta: "Visit DigiHub",
     to: "/digihub",
   },
+  {
+    name: "TRANSform",
+    logo: transformLogo.url,
+    tagline: "Build. Connect. Empower.",
+    description:
+      "TRANSform is Amelio’s community initiative for transgender, non-binary and gender-diverse people in Ghana. It brings together community connection, HIV health information and education, gender-affirming health and wellbeing resources, support navigation for people experiencing abuse, economic empowerment, and opportunities for shared learning through TRANSformation Workshops.\n\nGrounded in dignity, inclusion and community leadership, TRANSform works to strengthen belonging, improve access to relevant information and help gender-diverse people connect, learn and pursue safer, healthier and more empowered lives.",
+    cta: "Explore TRANSform",
+    to: "/transform",
+  },
 ];
 
 const EcosystemSection = () => (
@@ -62,7 +72,7 @@ const EcosystemSection = () => (
       </AnimatedSection>
 
       <motion.div
-        className="grid md:grid-cols-3 gap-6"
+        className="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
@@ -72,12 +82,12 @@ const EcosystemSection = () => (
           <motion.div
             key={item.name}
             variants={fadeUp}
-            className={`flex flex-col bg-card ${["tint-purple","tint-gold","tint-pink"][idx % 3]} border border-border rounded-2xl p-7 shadow-sm hover:shadow-lg transition-shadow`}
+            className={`flex flex-col bg-card ${["tint-purple","tint-gold","tint-pink","tint-blue"][idx % 4]} border border-border rounded-2xl p-7 shadow-sm hover:shadow-lg transition-shadow`}
           >
             <img src={item.logo} alt={`${item.name} logo`} className={`mb-5 rounded-xl shadow-md ${item.name === "Synapse" ? "h-14 w-14 bg-black object-cover" : "h-14 w-14 object-contain"}`} loading="lazy" />
             <h3 className="text-2xl font-semibold text-card-foreground mb-1">{item.name}</h3>
             <p className="text-sm font-medium text-primary mb-4">{item.tagline}</p>
-            <p className="text-muted-foreground text-sm leading-relaxed flex-1">{item.description}</p>
+            <p className="text-muted-foreground text-sm leading-relaxed flex-1 whitespace-pre-line">{item.description}</p>
             <Button
               variant={item.name === "Synapse" ? "default" : "outline"}
               className={`mt-6 self-start rounded-md ${

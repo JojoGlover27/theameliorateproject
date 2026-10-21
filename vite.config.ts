@@ -8,6 +8,12 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "/__l5e/assets-v1/": {
+        target: "https://theameliorateproject.lovable.app",
+        changeOrigin: true,
+      },
+    },
     hmr: {
       overlay: false,
     },
