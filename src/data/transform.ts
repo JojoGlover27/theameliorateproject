@@ -1,4 +1,3 @@
-import workshopPoster from "@/assets/transformation-workshop-poster.png.asset.json";
 import healthcareFlyer from "@/assets/transform-healthcare-workshop-flyer.png.asset.json";
 
 export const TRANSFORM_WHATSAPP_INVITE_URL = "https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb";
@@ -50,7 +49,6 @@ export const transformWorkshops: TransformWorkshop[] = [{
   registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSevOrulfkz6VGzJpBJCHrsn5op1w8Ozb5LH-tNK9e179uCTrA/viewform",
   flyers: [
     { url: healthcareFlyer.url, alt: "Online TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Friday, 30 October 2026, 3:00 pm–4:30 pm GMT." },
-    { url: workshopPoster.url, alt: "TRANSformation Workshop poster: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Registration deadline: 28 October 2026." },
   ],
 }];
 export const transformResources: TransformResource[] = [];
