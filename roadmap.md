@@ -1,4 +1,5 @@
 # TRANSform integration
+- [x] Add the approved October workshop, unchanged flyers and exact registration links; verify details and desktop/mobile display (11 tests pass; Google Form opens correctly).
 - [x] Add supplied branding and fourth ecosystem card with focused navigation integration.
 - [x] Create /transform with all eight requested sections, privacy and service limits.
 - [x] Add maintainable approved-event and verified-resource listings with empty states and rule tests.
