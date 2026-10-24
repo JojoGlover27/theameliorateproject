@@ -24,7 +24,7 @@ export function WorkshopListing() {
       {event.participation && <div><dt className="font-semibold">Participation</dt><dd>{event.participation}</dd></div>}
       {event.accessibilityNotes && <div><dt className="font-semibold">Accessibility</dt><dd>{event.accessibilityNotes}</dd></div>}
     </dl>
-    {isValidExternalUrl(event.registrationUrl) && <div className="mt-6"><Button asChild size="lg" className="h-auto whitespace-normal bg-brand-teal text-primary-foreground hover:bg-brand-teal/90 focus-visible:ring-brand-teal"><a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register for the Workshop <ExternalLink aria-hidden="true" /></a></Button>{isCalendarDate(event.registrationDeadline) && <p className="mt-3 font-semibold text-sm">Registration closes on <time dateTime={event.registrationDeadline}>{displayDate(event.registrationDeadline)}</time>.</p>}</div>}
+    {isValidExternalUrl(event.registrationUrl) && <div className="mt-6"><Button asChild size="lg" className="h-auto min-h-11 py-3 whitespace-normal bg-brand-teal text-primary-foreground hover:bg-brand-teal/90 focus-visible:ring-brand-teal"><a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register for the Workshop <ExternalLink aria-hidden="true" /></a></Button>{isCalendarDate(event.registrationDeadline) && <p className="mt-3 font-semibold text-sm">Registration closes on <time dateTime={event.registrationDeadline}>{displayDate(event.registrationDeadline)}</time>.</p>}</div>}
   </article>)}</div>;
 }
 
