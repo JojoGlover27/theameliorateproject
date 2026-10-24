@@ -1,3 +1,6 @@
+import workshopPoster from "@/assets/transformation-workshop-poster.png.asset.json";
+import healthcareFlyer from "@/assets/transform-healthcare-workshop-flyer.png.asset.json";
+
 export const TRANSFORM_WHATSAPP_INVITE_URL = "https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb";
 
 export interface TransformWorkshop {
@@ -14,6 +17,8 @@ export interface TransformWorkshop {
   venue?: string;
   participation?: string;
   registrationUrl?: string;
+  registrationDeadline?: string;
+  flyers?: { url: string; alt: string }[];
   imageUrl?: string;
   accessibilityNotes?: string;
 }
@@ -31,7 +36,23 @@ export interface TransformResource {
 }
 
 // Add owner-approved announcements and destination-verified resources here.
-export const transformWorkshops: TransformWorkshop[] = [];
+export const transformWorkshops: TransformWorkshop[] = [{
+  id: "healthcare-spaces-2026-10-30",
+  title: "Online TRANSformation Workshop",
+  status: "approved",
+  description: "Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person",
+  date: "2026-10-30",
+  startTime: "3:00 pm",
+  endTime: "4:30 pm",
+  timeZone: "GMT",
+  format: "online",
+  registrationDeadline: "2026-10-28",
+  registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSevOrulfkz6VGzJpBJCHrsn5op1w8Ozb5LH-tNK9e179uCTrA/viewform",
+  flyers: [
+    { url: healthcareFlyer.url, alt: "Online TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Friday, 30 October 2026, 3:00 pm–4:30 pm GMT." },
+    { url: workshopPoster.url, alt: "TRANSformation Workshop poster: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Registration deadline: 28 October 2026." },
+  ],
+}];
 export const transformResources: TransformResource[] = [];
 
 export function isValidExternalUrl(value?: string): boolean {

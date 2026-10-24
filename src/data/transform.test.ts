@@ -1,7 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, TRANSFORM_WHATSAPP_INVITE_URL, type TransformResource, type TransformWorkshop } from "./transform";
+import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, TRANSFORM_WHATSAPP_INVITE_URL, transformWorkshops, type TransformResource, type TransformWorkshop } from "./transform";
 
 describe("TRANSform publication safeguards", () => {
+  it("keeps the confirmed healthcare workshop date", () => {
+    expect(transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.date).toBe("2026-10-30");
+  });
+  it("keeps the confirmed workshop time in GMT", () => {
+    const event = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30");
+    expect([event?.startTime, event?.endTime, event?.timeZone]).toEqual(["3:00 pm", "4:30 pm", "GMT"]);
+  });
+  it("keeps the owner's registration deadline", () => {
+    expect(transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.registrationDeadline).toBe("2026-10-28");
+  });
+  it("preserves registration and publication after the deadline", () => {
+    const event = getPublishedWorkshops(transformWorkshops, "2026-10-31").find(event => event.id === "healthcare-spaces-2026-10-30");
+    expect(event?.registrationUrl).toBe("https://docs.google.com/forms/d/e/1FAIpQLSevOrulfkz6VGzJpBJCHrsn5op1w8Ozb5LH-tNK9e179uCTrA/viewform");
+  });
   it("uses the owner's TRANSform invitation", () => {
     expect(TRANSFORM_WHATSAPP_INVITE_URL).toBe("https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb");
   });
