@@ -1,4 +1,4 @@
-import healthcareFlyer from "@/assets/transform-healthcare-workshop-flyer.png.asset.json";
+import healthcareFlyer from "@/assets/transform-healthcare-flyer.png.asset.json";
 
 export const TRANSFORM_WHATSAPP_INVITE_URL = "https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb";
 
