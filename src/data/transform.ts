@@ -1,4 +1,6 @@
-import healthcareFlyer from "@/assets/transform-healthcare-flyer.png.asset.json";
+// Bundled with the site (like the page photos) so the flyer never depends on a separate image host.
+import healthcareFlyerUrl from "@/assets/transform-workshop-healthcare.jpg";
+const healthcareFlyer = { url: healthcareFlyerUrl };
 
 export const TRANSFORM_WHATSAPP_INVITE_URL = "https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb";
 
