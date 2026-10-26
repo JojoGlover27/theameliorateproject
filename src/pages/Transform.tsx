@@ -11,6 +11,12 @@ import heroImg from "@/assets/transform-hero.jpg";
 import workshopImg from "@/assets/transform-workshop.jpg";
 import portraitImg from "@/assets/transform-portrait.jpg";
 import communityImg from "@/assets/transform-community.jpg";
+import areaCommunityImg from "@/assets/transform-area-community.jpg";
+import areaHivImg from "@/assets/transform-area-hiv.jpg";
+import areaHealthImg from "@/assets/transform-area-health.jpg";
+import areaSafetyImg from "@/assets/transform-area-safety.jpg";
+import areaEconomyImg from "@/assets/transform-area-economy.jpg";
+import areaWorkshopsImg from "@/assets/transform-area-workshops.jpg";
 
 const icons = [Users, HeartPulse, HeartHandshake, ShieldCheck, Sprout, MessagesSquare];
 const tints = ["tint-blue", "tint-pink", "tint-purple", "tint-teal", "tint-gold", "tint-blue"];
