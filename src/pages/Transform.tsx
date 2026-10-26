@@ -20,6 +20,15 @@ import areaWorkshopsImg from "@/assets/transform-area-workshops.jpg";
 
 const icons = [Users, HeartPulse, HeartHandshake, ShieldCheck, Sprout, MessagesSquare];
 const tints = ["tint-blue", "tint-pink", "tint-purple", "tint-teal", "tint-gold", "tint-blue"];
+const areaImages = [areaCommunityImg, areaHivImg, areaHealthImg, areaSafetyImg, areaEconomyImg, areaWorkshopsImg];
+const areaAlts = [
+  "A joyful group of transgender, non-binary and gender-diverse friends laughing together at sunset in Accra",
+  "Two gender-diverse people reading a health information leaflet together at home",
+  "A trans man gently placing a reassuring hand on a friend's shoulder in a bright room",
+  "A trans woman holding a friend's hand supportively on a sofa",
+  "A young Ghanaian man building his small business on a laptop at a colourful creative desk",
+  "A facilitator leading a lively community workshop discussion circle",
+];
 const commitmentStyles = [
   ["tint-pink", "bg-brand-magenta/20", "text-brand-magenta"],
   ["tint-gold", "bg-brand-gold/25", "text-brand-gold"],
