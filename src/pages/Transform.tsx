@@ -11,9 +11,24 @@ import heroImg from "@/assets/transform-hero.jpg";
 import workshopImg from "@/assets/transform-workshop.jpg";
 import portraitImg from "@/assets/transform-portrait.jpg";
 import communityImg from "@/assets/transform-community.jpg";
+import areaCommunityImg from "@/assets/transform-area-community.jpg";
+import areaHivImg from "@/assets/transform-area-hiv.jpg";
+import areaHealthImg from "@/assets/transform-area-health.jpg";
+import areaSafetyImg from "@/assets/transform-area-safety.jpg";
+import areaEconomyImg from "@/assets/transform-area-economy.jpg";
+import areaWorkshopsImg from "@/assets/transform-area-workshops.jpg";
 
 const icons = [Users, HeartPulse, HeartHandshake, ShieldCheck, Sprout, MessagesSquare];
 const tints = ["tint-blue", "tint-pink", "tint-purple", "tint-teal", "tint-gold", "tint-blue"];
+const areaImages = [areaCommunityImg, areaHivImg, areaHealthImg, areaSafetyImg, areaEconomyImg, areaWorkshopsImg];
+const areaAlts = [
+  "A joyful group of transgender, non-binary and gender-diverse friends laughing together at sunset in Accra",
+  "Two gender-diverse people reading a health information leaflet together at home",
+  "A trans man gently placing a reassuring hand on a friend's shoulder in a bright room",
+  "A trans woman holding a friend's hand supportively on a sofa",
+  "A young Ghanaian man building his small business on a laptop at a colourful creative desk",
+  "A facilitator leading a lively community workshop discussion circle",
+];
 const commitmentStyles = [
   ["tint-pink", "bg-brand-magenta/20", "text-brand-magenta"],
   ["tint-gold", "bg-brand-gold/25", "text-brand-gold"],
@@ -75,7 +90,7 @@ export default function Transform() {
 
       <section id="transform-work" className="py-14 md:py-20 scroll-mt-28">
         <div className={wrap}><p className="text-sm text-primary font-semibold mb-3">OUR AREAS OF WORK</p><h2 className="text-3xl md:text-4xl mb-5 max-w-3xl">Supporting healthier, safer and more empowered lives</h2><p className="text-muted-foreground leading-relaxed max-w-3xl mb-8">TRANSform brings together community connection, relevant information, education and practical support to respond to issues that affect transgender, non-binary and gender-diverse people in Ghana.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{transformAreas.map((area, index) => { const Icon = icons[index] ?? Users; return <article key={area.title} className={`bg-card ${tints[index]} border rounded-lg p-6`}><Icon className="text-primary h-7 w-7 mb-5" aria-hidden="true" /><h3 className="text-2xl leading-snug mb-4">{area.title}</h3><p className="text-sm text-muted-foreground leading-relaxed">{area.description}</p>{area.detail && <p className="text-sm text-muted-foreground leading-relaxed mt-3">{area.detail}</p>}</article>; })}</div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{transformAreas.map((area, index) => { const Icon = icons[index] ?? Users; const img = areaImages[index]; return <article key={area.title} className={`bg-card ${tints[index]} border rounded-lg overflow-hidden flex flex-col`}>{img && <img src={img} alt={areaAlts[index]} width={896} height={576} loading="lazy" className="w-full h-40 md:h-44 object-cover" />}<div className="p-6"><Icon className="text-primary h-7 w-7 mb-4" aria-hidden="true" /><h3 className="text-2xl leading-snug mb-4">{area.title}</h3><p className="text-sm text-muted-foreground leading-relaxed">{area.description}</p>{area.detail && <p className="text-sm text-muted-foreground leading-relaxed mt-3">{area.detail}</p>}</div></article>; })}</div>
           <div className="mt-8 border-l-2 border-primary pl-5 text-sm text-muted-foreground leading-relaxed space-y-3">
             <p>These are areas of work, not a guarantee that every service is currently available. Health information is educational, not individualized medical advice. TRANSform does not offer clinical testing, diagnosis, prescriptions, hormone therapy or treatment through this page.</p>
             <p>Safety and relocation navigation means information and support options, not guaranteed accommodation, funded relocation, legal representation, an emergency shelter or 24-hour crisis response. Economic empowerment does not promise grants, jobs, cash transfers, loans or guaranteed employment.</p>
