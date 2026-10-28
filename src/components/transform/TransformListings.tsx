@@ -1,4 +1,4 @@
-import { BookOpen, CalendarDays, ExternalLink } from "lucide-react";
+import { BookOpen, CalendarDays, ClipboardList, ExternalLink, HandHeart, Lock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, transformResources, transformWorkshops } from "@/data/transform";
 
