@@ -22,6 +22,7 @@ export interface TransformWorkshop {
   flyers?: { url: string; alt: string }[];
   imageUrl?: string;
   accessibilityNotes?: string;
+  narrative?: { about: string; participate: string; privacy: string; closing: string };
 }
 
 export interface TransformResource {
