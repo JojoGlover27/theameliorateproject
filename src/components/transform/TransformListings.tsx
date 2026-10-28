@@ -1,4 +1,4 @@
-import { BookOpen, CalendarDays, ExternalLink } from "lucide-react";
+import { BookOpen, CalendarDays, ClipboardList, ExternalLink, HandHeart, Lock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, transformResources, transformWorkshops } from "@/data/transform";
 
@@ -27,6 +27,20 @@ export function WorkshopListing() {
       {event.accessibilityNotes && <div><dt className="font-semibold">Accessibility</dt><dd>{event.accessibilityNotes}</dd></div>}
     </dl>
     {isValidExternalUrl(event.registrationUrl) && <div className={`mt-6${single ? " text-center" : ""}`}><Button asChild size="lg" className="h-auto min-h-11 py-3 whitespace-normal bg-brand-teal text-primary-foreground hover:bg-brand-teal/90 focus-visible:ring-brand-teal"><a href={event.registrationUrl} target="_blank" rel="noopener noreferrer">Register for the Workshop <ExternalLink aria-hidden="true" /></a></Button>{isCalendarDate(event.registrationDeadline) && <p className="mt-3 font-semibold text-sm">Registration closes on <time dateTime={event.registrationDeadline}>{displayDate(event.registrationDeadline)}</time>.</p>}</div>}
+    {event.narrative && <div className="mt-8 rounded-xl border border-border bg-gradient-to-br from-brand-magenta/10 via-brand-gold/10 to-brand-blue/10 p-6 md:p-8">
+      <h4 className="text-xl md:text-2xl mb-5">About this workshop</h4>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-5">
+          <div className="flex gap-3"><HandHeart className="h-5 w-5 text-brand-magenta shrink-0 mt-0.5" aria-hidden="true" /><p className="text-sm text-muted-foreground leading-relaxed">{event.narrative.about.split("\n").map((line, i) => <span key={i} className="block mb-3 last:mb-0">{line}</span>)}</p></div>
+          <div className="flex gap-3"><ClipboardList className="h-5 w-5 text-brand-teal shrink-0 mt-0.5" aria-hidden="true" /><div><p className="text-sm font-semibold mb-1">How to participate</p><p className="text-sm text-muted-foreground leading-relaxed">{event.narrative.participate}</p></div></div>
+        </div>
+        <div className="space-y-5">
+          <div className="flex gap-3"><Lock className="h-5 w-5 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" /><div><p className="text-sm font-semibold mb-1">Privacy and confidentiality</p><p className="text-sm text-muted-foreground leading-relaxed">{event.narrative.privacy}</p></div></div>
+          <div className="flex gap-3"><Mail className="h-5 w-5 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" /><div><p className="text-sm font-semibold mb-1">Questions?</p><p className="text-sm text-muted-foreground leading-relaxed">Contact <a href="mailto:info@ameliorateproject.org" className="text-primary underline underline-offset-2 hover:text-primary/80">info@ameliorateproject.org</a> — or if you prefer not to use the form.</p></div></div>
+        </div>
+      </div>
+      <p className="mt-6 text-sm text-muted-foreground border-t border-border pt-4">{event.narrative.closing} <span className="font-semibold text-foreground">TRANSform Community Network</span> · <span className="text-primary">Build. Connect. Empower.</span></p>
+    </div>}
     </article>;
   })}</div>;
 }
