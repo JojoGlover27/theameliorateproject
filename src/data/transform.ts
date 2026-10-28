@@ -53,6 +53,12 @@ export const transformWorkshops: TransformWorkshop[] = [{
   flyers: [
     { url: healthcareFlyer.url, alt: "Online TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Friday, 30 October 2026, 3:00 pm–4:30 pm GMT." },
   ],
+  narrative: {
+    about: "This interactive workshop will create a supportive space for sharing experiences, discussing challenges in accessing healthcare, and exploring practical ways to navigate healthcare spaces with greater confidence, dignity and respect.\nWhether you have had positive or difficult experiences with healthcare services, your perspective matters. We hope to learn from one another and encourage more inclusive, respectful and affirming healthcare experiences.",
+    participate: "Please complete this short registration form. The Google Meet joining link will be sent to the email address or WhatsApp contact you provide after registration.",
+    privacy: "We will use your email address or WhatsApp to communicate workshop access details and relevant information about this session. Please provide only the information requested. We ask all participants to respect one another’s privacy and not share other participants’ personal stories or identifying information outside the workshop.",
+    closing: "We look forward to connecting with you!",
+  },
 }];
 export const transformResources: TransformResource[] = [];
 
