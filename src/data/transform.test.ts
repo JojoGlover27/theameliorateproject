@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, TRANSFORM_WHATSAPP_INVITE_URL, transformWorkshops, type TransformResource, type TransformWorkshop } from "./transform";
+import { transformImpact, getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, TRANSFORM_WHATSAPP_INVITE_URL, transformWorkshops, type TransformResource, type TransformWorkshop } from "./transform";
 
 describe("TRANSform publication safeguards", () => {
   it("keeps the confirmed healthcare workshop date", () => {
@@ -45,4 +45,11 @@ describe("TRANSform publication safeguards", () => {
     expect(isCalendarDate("2026-02-30")).toBe(false);
     expect(isCalendarDate("2026-10-21")).toBe(true);
   });
+});
+ describe("Owner-confirmed first-workshop impact", () => {
+  it("keeps 1 workshops", () => { expect(transformImpact.find(item => item.id === "workshops")?.value).toBe(1); });
+  it("keeps 27 participants", () => { expect(transformImpact.find(item => item.id === "participants")?.value).toBe(27); });
+  it("keeps 71 registrations", () => { expect(transformImpact.find(item => item.id === "registrations")?.value).toBe(71); });
+  it("keeps 21 feedback", () => { expect(transformImpact.find(item => item.id === "feedback")?.value).toBe(21); });
+  it("keeps unsupplied recap slides and feedback empty", () => { const recap = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap; expect(recap?.slides).toEqual([]); expect(recap?.feedback).toEqual([]); });
 });

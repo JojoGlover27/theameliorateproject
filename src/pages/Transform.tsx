@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import RotatingKeywordsBar from "@/components/RotatingKeywordsBar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import TransformImpact from "@/components/transform/TransformImpact";
 import { WorkshopListing } from "@/components/transform/TransformListings";
 import { TRANSFORM_WHATSAPP_INVITE_URL, isValidExternalUrl, transformAreas, transformCommitments, transformPrivacyGuidance } from "@/data/transform";
 import wordmark from "@/assets/transform-wordmark-transparent.png";
@@ -97,6 +98,8 @@ export default function Transform() {
           </div>
         </div>
       </section>
+
+      <TransformImpact />
 
       <section id="transform-workshops" className="relative overflow-hidden py-14 md:py-20 scroll-mt-28 bg-gradient-to-br from-brand-magenta/25 via-brand-gold/20 to-brand-blue/25 border-y border-border">
         <div aria-hidden="true" className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-brand-magenta/30 blur-3xl" />

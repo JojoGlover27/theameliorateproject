@@ -23,7 +23,15 @@ export interface TransformWorkshop {
   imageUrl?: string;
   accessibilityNotes?: string;
   narrative?: { about: string; participate: string; privacy: string; closing: string };
+  recap?: { summary: string; slides: { url: string; alt: string }[]; feedback: string[] };
 }
+
+export const transformImpact = [
+  { id: "workshops", value: 1, label: "Workshop Hosted", description: "Our first TRANSformation Workshop." },
+  { id: "participants", value: 27, label: "Workshop Participants", description: "People who attended our first workshop." },
+  { id: "registrations", value: 71, label: "Registrations", description: "People who registered their interest in participating." },
+  { id: "feedback", value: 21, label: "Feedback Responses", description: "Responses received following the workshop." },
+] as const;
 
 export interface TransformResource {
   id: string;
@@ -48,6 +56,12 @@ export const transformWorkshops: TransformWorkshop[] = [{
   endTime: "4:30 pm",
   timeZone: "GMT",
   format: "online",
+  recap: {
+    summary: "In our first TRANSformation Workshop, participants explored safer healthcare navigation, privacy, disclosure, patient dignity, safety and healthcare system responsibilities.",
+    // Add only owner-supplied slides in original order and genuine participant wording.
+    slides: [],
+    feedback: [],
+  },
   registrationDeadline: "2026-10-28",
   registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSevOrulfkz6VGzJpBJCHrsn5op1w8Ozb5LH-tNK9e179uCTrA/viewform",
   flyers: [
