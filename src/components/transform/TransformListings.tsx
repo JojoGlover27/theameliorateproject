@@ -1,4 +1,5 @@
 import { BookOpen, CalendarDays, ClipboardList, ExternalLink, HandHeart, Lock, Mail } from "lucide-react";
+import WorkshopRecap from "./WorkshopRecap";
 import { Button } from "@/components/ui/button";
 import { getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, transformResources, transformWorkshops } from "@/data/transform";
 
@@ -13,7 +14,9 @@ export function WorkshopListing() {
   return <div className="space-y-10 mt-10">{workshops.map(event => {
     const single = !!event.flyers && event.flyers.length === 1;
     return <article key={event.id} className="border-t border-brand-teal/40 pt-8">
-    {event.flyers && <div className="mb-8"><div className={`${single ? "mx-auto max-w-lg" : ""} overflow-hidden rounded-xl shadow-xl`}><div className="flex items-center justify-center gap-3 bg-gradient-to-r from-primary via-brand-magenta to-brand-blue px-5 py-4 text-center"><CalendarDays className="h-6 w-6 shrink-0 text-primary-foreground" aria-hidden="true" /><p className="text-xl md:text-2xl font-extrabold uppercase tracking-[0.06em] text-primary-foreground">Upcoming Events / Workshops</p></div><div className={single ? "" : "grid sm:grid-cols-2 gap-5"}>{event.flyers.map(flyer => isValidExternalUrl(event.registrationUrl) ? <a key={flyer.url} href={event.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label={`${flyer.alt} Register for the Workshop (opens in a new tab)`} className={`block overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-teal hover:ring-2 hover:ring-brand-teal transition-shadow${single ? "" : " rounded-lg"}`}><img src={flyer.url} alt={flyer.alt} width={768} height={1152} loading="eager" fetchPriority="high" className="w-full h-auto object-contain" /></a> : <img key={flyer.url} src={flyer.url} alt={flyer.alt} width={768} height={1152} loading="eager" fetchPriority="high" className={`w-full h-auto object-contain${single ? "" : " rounded-lg"}`} />)}</div></div></div>}
+    <WorkshopRecap event={event} />
+    {event.recap && <h4 className="text-xl mb-5">Original workshop announcement</h4>}
+    {event.flyers && <div className="mb-8"><div className={`${single ? "mx-auto max-w-lg" : ""} overflow-hidden rounded-xl shadow-xl`}><div className="flex items-center justify-center gap-3 bg-gradient-to-r from-primary via-brand-magenta to-brand-blue px-5 py-4 text-center"><CalendarDays className="h-6 w-6 shrink-0 text-primary-foreground" aria-hidden="true" /><p className="text-xl md:text-2xl font-extrabold uppercase tracking-[0.06em] text-primary-foreground">{event.recap ? "Workshop Flyer / Announcement" : "Upcoming Events / Workshops"}</p></div><div className={single ? "" : "grid sm:grid-cols-2 gap-5"}>{event.flyers.map(flyer => isValidExternalUrl(event.registrationUrl) ? <a key={flyer.url} href={event.registrationUrl} target="_blank" rel="noopener noreferrer" aria-label={`${flyer.alt} Register for the Workshop (opens in a new tab)`} className={`block overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-teal hover:ring-2 hover:ring-brand-teal transition-shadow${single ? "" : " rounded-lg"}`}><img src={flyer.url} alt={flyer.alt} width={768} height={1152} loading="eager" fetchPriority="high" className="w-full h-auto object-contain" /></a> : <img key={flyer.url} src={flyer.url} alt={flyer.alt} width={768} height={1152} loading="eager" fetchPriority="high" className={`w-full h-auto object-contain${single ? "" : " rounded-lg"}`} />)}</div></div></div>}
     {isValidExternalUrl(event.imageUrl) && <img src={event.imageUrl} alt="" className="w-full h-auto object-contain mb-5 rounded-lg" loading="lazy" />}
     {event.category && <p className={`text-sm text-primary mb-2${single ? " text-center" : ""}`}>{event.category}</p>}
     <h3 className={`text-2xl mb-3${single ? " text-center" : ""}`}>{event.title}</h3>
@@ -42,7 +45,7 @@ export function WorkshopListing() {
       <p className="mt-6 text-sm text-muted-foreground border-t border-border pt-4">{event.narrative.closing} <span className="font-semibold text-foreground">TRANSform Community Network</span> · <span className="text-primary">Build. Connect. Empower.</span></p>
     </div>}
     </article>;
-  })}</div>;
+  })}<div className="border-t border-brand-teal/40 pt-8"><CalendarDays className="h-7 w-7 text-primary mb-4" aria-hidden="true" /><h3 className="text-2xl mb-3">Upcoming Events / Workshops</h3><p className="text-muted-foreground leading-relaxed">Future workshop dates, topics and registration details will be shared here when confirmed.</p></div></div>;
 }
 
 export function ResourceListing() {
