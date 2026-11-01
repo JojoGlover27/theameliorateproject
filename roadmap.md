@@ -1,4 +1,8 @@
 # TRANSform integration
+- [ ] Add four owner-confirmed impact figures with one-time accessible count-up animation.
+- [ ] Enhance the existing workshop with the completed first-workshop recap and retain its original announcement.
+- [ ] Prepare accessible recap slides and feedback display; awaiting the owner's nine slides and genuine comments.
+- [ ] Verify enhancement preview on desktop, tablet and mobile without publishing.
 - [x] Add the approved October workshop with the owner's healthcare flyer and exact registration links; the second flyer was removed at the owner's request (it only showed the deadline, which is stated in words). 11 tests pass; Google Form opens correctly.
 - [x] Add supplied branding and fourth ecosystem card with focused navigation integration.
 - [x] Create /transform with all eight requested sections, privacy and service limits.
