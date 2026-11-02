@@ -1,12 +1,12 @@
-import recap1 from "@/assets/transform-healthcare-recap-1.png.asset.json";
-import recap2 from "@/assets/transform-healthcare-recap-2.png.asset.json";
-import recap3 from "@/assets/transform-healthcare-recap-3.png.asset.json";
-import recap4 from "@/assets/transform-healthcare-recap-4.png.asset.json";
-import recap5 from "@/assets/transform-healthcare-recap-5.png.asset.json";
-import recap6 from "@/assets/transform-healthcare-recap-6.png.asset.json";
-import recap7 from "@/assets/transform-healthcare-recap-7.png.asset.json";
-import recap8 from "@/assets/transform-healthcare-recap-8.png.asset.json";
-import recap9 from "@/assets/transform-healthcare-recap-9.png.asset.json";
+import recap1 from "@/assets/transform-healthcare-recap-1.webp";
+import recap2 from "@/assets/transform-healthcare-recap-2.webp";
+import recap3 from "@/assets/transform-healthcare-recap-3.webp";
+import recap4 from "@/assets/transform-healthcare-recap-4.webp";
+import recap5 from "@/assets/transform-healthcare-recap-5.webp";
+import recap6 from "@/assets/transform-healthcare-recap-6.webp";
+import recap7 from "@/assets/transform-healthcare-recap-7.webp";
+import recap8 from "@/assets/transform-healthcare-recap-8.webp";
+import recap9 from "@/assets/transform-healthcare-recap-9.webp";
 import { describe, expect, it } from "vitest";
 import { transformImpact, getPublishedResources, getPublishedWorkshops, isCalendarDate, isValidExternalUrl, TRANSFORM_WHATSAPP_INVITE_URL, transformWorkshops, type TransformResource, type TransformWorkshop } from "./transform";
 
@@ -60,5 +60,6 @@ describe("TRANSform publication safeguards", () => {
   it("keeps 27 participants", () => { expect(transformImpact.find(item => item.id === "participants")?.value).toBe(27); });
   it("keeps 71 registrations", () => { expect(transformImpact.find(item => item.id === "registrations")?.value).toBe(71); });
   it("keeps 21 feedback", () => { expect(transformImpact.find(item => item.id === "feedback")?.value).toBe(21); });
-  it("retains the nine supplied slides in numerical order", () => { const slides = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap?.slides; expect(slides?.map(slide => slide.url)).toEqual([recap1.url, recap2.url, recap3.url, recap4.url, recap5.url, recap6.url, recap7.url, recap8.url, recap9.url]); });
+  it("retains the nine supplied slides in numerical order", () => { const slides = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap?.slides; expect(slides?.map(slide => slide.url)).toEqual([recap1, recap2, recap3, recap4, recap5, recap6, recap7, recap8, recap9]); });
+  it("bundles every recap slide with the site so none depends on an external image host", () => { const slides = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap?.slides ?? []; expect(slides).toHaveLength(9); expect(slides.every(slide => !/^(https?:)?\/\//.test(slide.url) && slide.url.includes("transform-healthcare-recap"))).toBe(true); });
 });
