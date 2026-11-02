@@ -1,4 +1,5 @@
 # TRANSform integration
+- [x] Add a coloured COMPLETED bubble, drop the white backdrop from all nine recap slides (transparent bundled images) and remove the "Your Voices. Our Why." section; desktop/mobile checks pass, preview-only.
 - [x] Add four owner-confirmed impact figures with one-time accessible count-up animation.
 - [x] Enhance the existing workshop with the completed first-workshop recap and retain its original announcement.
 - [x] Prepare accessible recap gallery, enlargement and feedback display with honest empty states.

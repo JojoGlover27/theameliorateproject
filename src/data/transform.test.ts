@@ -61,4 +61,5 @@ describe("TRANSform publication safeguards", () => {
   it("keeps 71 registrations", () => { expect(transformImpact.find(item => item.id === "registrations")?.value).toBe(71); });
   it("keeps 21 feedback", () => { expect(transformImpact.find(item => item.id === "feedback")?.value).toBe(21); });
   it("retains the nine supplied slides in numerical order", () => { const slides = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap?.slides; expect(slides?.map(slide => slide.url)).toEqual([recap1, recap2, recap3, recap4, recap5, recap6, recap7, recap8, recap9]); });
+  it("bundles every recap slide with the site so none depends on an external image host", () => { const slides = transformWorkshops.find(event => event.id === "healthcare-spaces-2026-10-30")?.recap?.slides ?? []; expect(slides).toHaveLength(9); expect(slides.every(slide => !/^(https?:)?\/\//.test(slide.url) && slide.url.includes("transform-healthcare-recap"))).toBe(true); });
 });
