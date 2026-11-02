@@ -1,4 +1,5 @@
 # TRANSform integration
+- [x] Fix the blank-screen crash: the recap gallery now reads its slide list defensively, so an incomplete recap record shows the empty state instead of failing; component test added (19 tests pass), preview reloaded clean.
 - [x] Add a coloured COMPLETED bubble, drop the white backdrop from all nine recap slides (transparent bundled images) and remove the "Your Voices. Our Why." section; desktop/mobile checks pass, preview-only.
 - [x] Add four owner-confirmed impact figures with one-time accessible count-up animation.
 - [x] Enhance the existing workshop with the completed first-workshop recap and retain its original announcement.
