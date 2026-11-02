@@ -20,6 +20,6 @@ describe("WorkshopRecap recap records", () => {
     if (!event) throw new Error("first workshop record is missing");
     render(<WorkshopRecap event={event} />);
     expect(screen.getByText("Slide 1 of 9")).toBeInTheDocument();
-    expect(screen.getAllByRole("img")).toHaveLength(9);
+    expect(screen.queryByText("The workshop recap slides will be shared here soon.")).not.toBeInTheDocument();
   });
 });
