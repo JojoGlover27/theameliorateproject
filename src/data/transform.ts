@@ -1,14 +1,14 @@
-// Bundled with the site (like the page photos) so the flyer never depends on a separate image host.
+// Bundled with the site (like the page photos) so the slides never depend on a separate image host.
 import healthcareFlyerUrl from "@/assets/transform-workshop-healthcare.jpg";
-import recap1 from "@/assets/transform-healthcare-recap-1.png.asset.json";
-import recap2 from "@/assets/transform-healthcare-recap-2.png.asset.json";
-import recap3 from "@/assets/transform-healthcare-recap-3.png.asset.json";
-import recap4 from "@/assets/transform-healthcare-recap-4.png.asset.json";
-import recap5 from "@/assets/transform-healthcare-recap-5.png.asset.json";
-import recap6 from "@/assets/transform-healthcare-recap-6.png.asset.json";
-import recap7 from "@/assets/transform-healthcare-recap-7.png.asset.json";
-import recap8 from "@/assets/transform-healthcare-recap-8.png.asset.json";
-import recap9 from "@/assets/transform-healthcare-recap-9.png.asset.json";
+import recap1 from "@/assets/transform-healthcare-recap-1.webp";
+import recap2 from "@/assets/transform-healthcare-recap-2.webp";
+import recap3 from "@/assets/transform-healthcare-recap-3.webp";
+import recap4 from "@/assets/transform-healthcare-recap-4.webp";
+import recap5 from "@/assets/transform-healthcare-recap-5.webp";
+import recap6 from "@/assets/transform-healthcare-recap-6.webp";
+import recap7 from "@/assets/transform-healthcare-recap-7.webp";
+import recap8 from "@/assets/transform-healthcare-recap-8.webp";
+import recap9 from "@/assets/transform-healthcare-recap-9.webp";
 const healthcareFlyer = { url: healthcareFlyerUrl };
 
 export const TRANSFORM_WHATSAPP_INVITE_URL = "https://chat.whatsapp.com/JOLQZ4dGxmUE2sCNvYUvNb";
@@ -32,7 +32,7 @@ export interface TransformWorkshop {
   imageUrl?: string;
   accessibilityNotes?: string;
   narrative?: { about: string; participate: string; privacy: string; closing: string };
-  recap?: { summary: string; slides: { url: string; alt: string }[]; feedback: string[] };
+  recap?: { summary: string; slides: { url: string; alt: string }[] };
 }
 
 export const transformImpact = [
@@ -69,24 +69,16 @@ export const transformWorkshops: TransformWorkshop[] = [{
     summary: "In our first TRANSformation Workshop, participants explored safer healthcare navigation, privacy, disclosure, patient dignity, safety and healthcare system responsibilities.",
     // Add only owner-supplied slides in original order and genuine participant wording.
     slides: [
-      { url: recap1.url, alt: "Our first TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. A space for learning, sharing, connection and conversations about safer and more affirming healthcare experiences." },
-      { url: recap2.url, alt: "Our first gathering by the numbers: 71 registrations, 27 participants attended and 21 feedback responses. Thank you for showing up and being part of this beginning." },
-      { url: recap3.url, alt: "Why this conversation matters: navigating healthcare can come with difficult questions. Stigma, discrimination, privacy, safety and dignity can influence how and where people seek healthcare. The workshop offered space to exchange knowledge and explore safer healthcare navigation." },
-      { url: recap4.url, alt: "What we explored together: informed healthcare decisions, personal disclosure, preparing for consultations, communicating boundaries, protecting privacy, responding to discrimination while prioritising safety, patient dignity and healthcare system responsibilities." },
-      { url: recap5.url, alt: "Your Voices. Our Why. Participant comments: Everything about today’s program has been an eye opener for me. The topics were very interesting and needed. Everything was on point and it was lively. I gained valuable knowledge and insights that will help me in my personal and professional development. Thank you for the workshop! ❤️" },
-      { url: recap6.url, alt: "Participant comments: I think today’s workshop is fruitful and looking forward to the next workshop. So far I think TRANSform is on the right path. I think you are doing a great job. It was perfect and extremely exciting. I would like to appreciate the TRANSform team for organizing such an informative and impactful workshop." },
-      { url: recap7.url, alt: "We heard you, and we’re listening. Participants suggested reviewing the day and time to enable more people to join, face-to-face sessions, more practical hands-on activities, interactive group discussions and more time for questions and shared experiences." },
-      { url: recap8.url, alt: "More than a workshop: an opportunity to connect, share experiences, learn and strengthen community. TRANSform works toward community connection, health information and education, affirming wellbeing, safety navigation and economic empowerment." },
-      { url: recap9.url, alt: "And we’re just getting started! Thank you to everyone who registered, participated, shared experiences and provided feedback. Your voices are helping shape what comes next. Follow @amelioproject for updates." },
+      { url: recap1, alt: "Our first TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. A space for learning, sharing, connection and conversations about safer and more affirming healthcare experiences." },
+      { url: recap2, alt: "Our first gathering by the numbers: 71 registrations, 27 participants attended and 21 feedback responses. Thank you for showing up and being part of this beginning." },
+      { url: recap3, alt: "Why this conversation matters: navigating healthcare can come with difficult questions. Stigma, discrimination, privacy, safety and dignity can influence how and where people seek healthcare. The workshop offered space to exchange knowledge and explore safer healthcare navigation." },
+      { url: recap4, alt: "What we explored together: informed healthcare decisions, personal disclosure, preparing for consultations, communicating boundaries, protecting privacy, responding to discrimination while prioritising safety, patient dignity and healthcare system responsibilities." },
+      { url: recap5, alt: "Your Voices. Our Why. Participant comments: Everything about today’s program has been an eye opener for me. The topics were very interesting and needed. Everything was on point and it was lively. I gained valuable knowledge and insights that will help me in my personal and professional development. Thank you for the workshop! ❤️" },
+      { url: recap6, alt: "Participant comments: I think today’s workshop is fruitful and looking forward to the next workshop. So far I think TRANSform is on the right path. I think you are doing a great job. It was perfect and extremely exciting. I would like to appreciate the TRANSform team for organizing such an informative and impactful workshop." },
+      { url: recap7, alt: "We heard you, and we’re listening. Participants suggested reviewing the day and time to enable more people to join, face-to-face sessions, more practical hands-on activities, interactive group discussions and more time for questions and shared experiences." },
+      { url: recap8, alt: "More than a workshop: an opportunity to connect, share experiences, learn and strengthen community. TRANSform works toward community connection, health information and education, affirming wellbeing, safety navigation and economic empowerment." },
+      { url: recap9, alt: "And we’re just getting started! Thank you to everyone who registered, participated, shared experiences and provided feedback. Your voices are helping shape what comes next. Follow @amelioproject for updates." },
     ],
-    feedback: [
-      "Everything about today’s program has been an eye opener for me.",
-      "The topics were very interesting and needed.",
-      "I gained valuable knowledge and insights that will help me in my personal and professional development.",
-      "I would like to appreciate the TRANSform team for organizing such an informative and impactful workshop",
-      "The timing should be looked at to ensure more people join.",
-      "TRANSform could improve future workshops by including more practical, hands-on activities, interactive group discussions, and allowing more time for participants to ask questions and share their experiences."
-],
   },
   registrationDeadline: "2026-10-28",
   registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSevOrulfkz6VGzJpBJCHrsn5op1w8Ozb5LH-tNK9e179uCTrA/viewform",
