@@ -20,7 +20,8 @@ export default function WorkshopRecap({ event }: { event: TransformWorkshop }) {
   }, [api]);
   const recap = event.recap;
   if (!recap) return null;
-  const selected = enlarged === null ? undefined : recap.slides[enlarged];
+  const slides = recap.slides ?? [];
+  const selected = enlarged === null ? undefined : slides[enlarged];
   return <div className="mb-10">
     <p className="flex flex-wrap items-center gap-2.5 text-sm font-semibold text-primary mb-3"><span>OUR FIRST WORKSHOP</span><span className="rounded-full bg-gradient-to-r from-primary via-brand-magenta to-brand-blue px-3.5 py-1 text-[0.7rem] font-extrabold uppercase tracking-[0.08em] text-primary-foreground shadow-sm">Completed</span></p>
     <h3 className="text-3xl md:text-4xl max-w-4xl leading-snug mb-4">{event.description || event.title}</h3>
