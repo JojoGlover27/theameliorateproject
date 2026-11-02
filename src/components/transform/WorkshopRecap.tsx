@@ -34,7 +34,7 @@ export default function WorkshopRecap({ event }: { event: TransformWorkshop }) {
         <div className="flex items-center justify-between gap-3 mt-2"><p aria-live="polite" className="text-sm text-muted-foreground">Slide {active + 1} of {recap.slides.length}</p><div className="flex gap-3"><CarouselPrevious className="static translate-x-0 translate-y-0 h-11 w-11" /><CarouselNext className="static translate-x-0 translate-y-0 h-11 w-11" /></div></div>
       </Carousel> : <p className="text-sm text-muted-foreground leading-relaxed">The workshop recap slides will be shared here soon.</p>}
     </div>
-    <Dialog open={!!selected} onOpenChange={open => { if (!open) setEnlarged(null); }}><DialogContent onCloseAutoFocus={event => { event.preventDefault(); enlargeTrigger.current?.focus(); }} className="max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-auto motion-reduce:animate-none">
+    <Dialog open={!!selected} onOpenChange={open => { if (!open) setEnlarged(null); }}><DialogContent onCloseAutoFocus={event => { event.preventDefault(); enlargeTrigger.current?.focus(); }} className="max-w-5xl w-[calc(100%-2rem)] max-h-[90vh] overflow-auto motion-reduce:animate-none tint-pink">
       <DialogTitle>Workshop recap · Slide {enlarged === null ? "" : enlarged + 1}</DialogTitle><DialogDescription className="sr-only">Enlarged healthcare workshop recap slide.</DialogDescription>
       {selected && <img src={selected.url} alt={selected.alt} className="w-full max-h-[72vh] object-contain" />}
     </DialogContent></Dialog>
