@@ -14,7 +14,7 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 
-// jsdom has no IntersectionObserver; the recap carousel needs one to mount.
+// jsdom has no IntersectionObserver or ResizeObserver; the recap carousel needs both to mount.
 class IntersectionObserverStub {
   observe() {}
   unobserve() {}
@@ -22,3 +22,10 @@ class IntersectionObserverStub {
   takeRecords() { return []; }
 }
 Object.defineProperty(window, "IntersectionObserver", { writable: true, value: IntersectionObserverStub });
+
+class ResizeObserverStub {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+Object.defineProperty(window, "ResizeObserver", { writable: true, value: ResizeObserverStub });
