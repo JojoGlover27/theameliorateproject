@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Quote, ZoomIn } from "lucide-react";
+import { ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -29,7 +29,7 @@ export default function WorkshopRecap({ event }: { event: TransformWorkshop }) {
     <div className="mt-8 border-t border-brand-blue/30 pt-7"><h4 className="text-2xl mb-4">Workshop recap</h4>
       {recap.slides.length ? <Carousel setApi={setApi} opts={{ loop: false }} aria-label="Healthcare workshop recap slides" className="max-w-2xl mx-auto">
         <CarouselContent>{recap.slides.map((slide, index) => <CarouselItem key={slide.url} aria-label={`Slide ${index + 1} of ${recap.slides.length}`} aria-hidden={index !== active}>
-          <figure><img src={slide.url} alt={slide.alt} className="w-full aspect-[4/5] max-h-[70vh] object-contain bg-background" loading="lazy" /><figcaption className="flex items-center justify-between gap-3 py-3"><span className="text-sm text-muted-foreground">{index + 1} / {recap.slides.length}</span><Button variant="outline" size="icon" tabIndex={index === active ? 0 : -1} title={`Enlarge slide ${index + 1}`} aria-label={`Enlarge slide ${index + 1}`} onClick={event => { enlargeTrigger.current = event.currentTarget; setEnlarged(index); }}><ZoomIn aria-hidden="true" /></Button></figcaption></figure>
+          <figure><img src={slide.url} alt={slide.alt} className="w-full aspect-[4/5] max-h-[70vh] object-contain" loading="lazy" /><figcaption className="flex items-center justify-between gap-3 py-3"><span className="text-sm text-muted-foreground">{index + 1} / {recap.slides.length}</span><Button variant="outline" size="icon" tabIndex={index === active ? 0 : -1} title={`Enlarge slide ${index + 1}`} aria-label={`Enlarge slide ${index + 1}`} onClick={event => { enlargeTrigger.current = event.currentTarget; setEnlarged(index); }}><ZoomIn aria-hidden="true" /></Button></figcaption></figure>
         </CarouselItem>)}</CarouselContent>
         <div className="flex items-center justify-between gap-3 mt-2"><p aria-live="polite" className="text-sm text-muted-foreground">Slide {active + 1} of {recap.slides.length}</p><div className="flex gap-3"><CarouselPrevious className="static translate-x-0 translate-y-0 h-11 w-11" /><CarouselNext className="static translate-x-0 translate-y-0 h-11 w-11" /></div></div>
       </Carousel> : <p className="text-sm text-muted-foreground leading-relaxed">The workshop recap slides will be shared here soon.</p>}
