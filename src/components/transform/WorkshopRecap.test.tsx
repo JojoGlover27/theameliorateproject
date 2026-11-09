@@ -15,11 +15,11 @@ describe("WorkshopRecap recap records", () => {
     expect(screen.getByText("The workshop recap slides will be shared here soon.")).toBeInTheDocument();
   });
 
-  it("renders the nine supplied slides in order for the first workshop", () => {
+  it("renders the ten slides in order for the first workshop", () => {
     const event = transformWorkshops.find(item => item.id === "healthcare-spaces-2026-10-30");
     if (!event) throw new Error("first workshop record is missing");
     render(<WorkshopRecap event={event} />);
-    expect(screen.getByText("Slide 1 of 9")).toBeInTheDocument();
+    expect(screen.getByText("Slide 1 of 10")).toBeInTheDocument();
     expect(screen.queryByText("The workshop recap slides will be shared here soon.")).not.toBeInTheDocument();
   });
 });
