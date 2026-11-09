@@ -69,6 +69,7 @@ export const transformWorkshops: TransformWorkshop[] = [{
     summary: "In our first TRANSformation Workshop, participants explored safer healthcare navigation, privacy, disclosure, patient dignity, safety and healthcare system responsibilities.",
     // Add only owner-supplied slides in original order and genuine participant wording.
     slides: [
+      { url: healthcareFlyer.url, alt: "Workshop flyer: Online TRANSformation Workshop, Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. Friday, 30 October 2026, 3:00 pm–4:30 pm GMT." },
       { url: recap1, alt: "Our first TRANSformation Workshop: Navigating Healthcare Spaces as a Trans, Non-binary and Gender-Diverse Person. A space for learning, sharing, connection and conversations about safer and more affirming healthcare experiences." },
       { url: recap2, alt: "Our first gathering by the numbers: 71 registrations, 27 participants attended and 21 feedback responses. Thank you for showing up and being part of this beginning." },
       { url: recap3, alt: "Why this conversation matters: navigating healthcare can come with difficult questions. Stigma, discrimination, privacy, safety and dignity can influence how and where people seek healthcare. The workshop offered space to exchange knowledge and explore safer healthcare navigation." },
